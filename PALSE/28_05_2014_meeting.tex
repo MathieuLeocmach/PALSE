@@ -149,5 +149,66 @@ Carbopol microgel\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{Herschel-Bulkley fluid?}
+\[ \sigma = \alert{\sigma_Y} + K \dot{\gamma}^n \]
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{HershelBuckley_only_r1}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{HershelBuckley_loglog_r1}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Or power-law fluid?}
+\[ \sigma = K \dot{\gamma}^n\]
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{Power-law_logx_r1}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{Power-law_r1}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Or Herschel-Bulkley with slip at the wall?}
+\[ \sigma = \alert{\sigma_Y} + K \dot{\gamma}^n  \qquad\text{for}\quad\dot{\gamma}>\SI{1}{\per\second}\]
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{HershelBuckley_r1}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{HershelBuckley_slip_loglog_r1}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Yield stress vs concentration}
+\begin{center}
+\includegraphics[height=\textheight-3\baselineskip]{yield_stress_r1}
+\end{center}
+\end{frame}
+
+\begin{frame}{Time to use Couette geometry}
+\begin{columns}
+\column{0.35\textwidth}
+\begin{tikzpicture}
+	\draw circle[x radius=0.5\textwidth, y radius=0.1\textwidth] +(0,-5\baselineskip) circle;
+	\fill (0,0.015\textwidth) circle [x radius=0.4\textwidth, y radius=0.08\textwidth];
+	\draw[->, white, x radius=0.2\textwidth, y radius=0.05\textwidth]  (0,0.03\textwidth) +(90:0.05\textwidth) arc[start angle=90, end angle=270] node[right=1mm, font=\scriptsize] {$\dot{\gamma}$};
+	\draw (0.5\textwidth,0) -- +(0,-5\baselineskip) arc[x radius=0.5\textwidth, y radius=0.1\textwidth, start angle=0, end angle=-180] -- +(0,5\baselineskip);
+	\draw[dotted] (0.4\textwidth,0.015\textwidth) -- +(0,-5\baselineskip) arc[x radius=0.4\textwidth, y radius=0.09\textwidth, start angle=0, end angle=-180] -- +(0,5\baselineskip);
+\end{tikzpicture}
+
+\column{0.65\textwidth}
+\begin{itemize}
+\item Higher shear rates
+\item Less evaporation
+\item Possible to use Ultrasound velocimetry
+\begin{itemize}
+\item To quantify wall slip
+\item To observe instabilities at high shear rate
+\end{itemize}
+\item[But] much more sample needed (\SI{20}{\milli\litre})
+\end{itemize}
+\end{columns}
+\end{frame}
+
 \end{document}
 
