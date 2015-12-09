@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kpfonts}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+
+\author{Mathieu Leocmach}
+\title{Ion pairing rheology}
+
+\begin{document}
+\maketitle
+
+We are dealing with low-salt aqueous solutions of polyelectrolytes with cationic moieties along the chain and a single anionic head (Phosphonate). A chain has $N_0 = 70$ units from NMR measurements. The cationic moieties are either all Pyrrolidinium (\ce{Pyr+}) or all Imidazolium (\ce{Im+}) and we note the polymers \ce{PPyr+X-} and \ce{PIm+X-} respectively. The counterion \ce{X-} can be either Fluoride (\ce{F-}), Chloride (\ce{Cl-}), Bromide (\ce{Br-}) or Iodide (\ce{I-}). According to the Hard and Soft Acid and Bases (HSAB) theory, stronger association is expected for harder cation (\ce{Pyr+}) and softer anion (\ce{F-}). Therefore \ce{PPyr+I-} should be the most charged polymer and \ce{PIm+F-} the least charged.
+
+Experimentally, we are able to dissolve the five polymers that are the most charged, but neither the two fluorides nor \ce{PIm+Cl-}. This means that in absence of charge dissociation the chain is in poor solvent. Furthermore, we held the two fluoride polymers in water at boiling temperature overnight without any dissolution. The $\Theta$ temperature is thus higher than \SI{100}{\celsius}. Nonetheless, due to charge dissociation, most of our polymers are soluble at \SI{25}{\celsius}.
+
+Due to the opposite charge of the phosphonate head, head-to-body ionic bonds are possible. If every chain has a single foreign head attached to its body, every polymer is linked to two others and we obtain a single effective chain of effective polymerisation index $n N_0$ where $n$ is the number of polymers in the effective chain. Here we have supposed that in order to minimize the inter-chain repulsion between charged cationic groups, heads are preferentially attached to the tail of their neighbour.
+
+If as least two foreign heads attach to the same body, we obtain an effective cross-linking point. When the probability of such a configuration is non-zero, we obtain a physically cross-linked gel. Indeed, we observe that our 5 soluble polymers form soft solid when mixed with water. Submitted to sufficient shear stress these gels flow but conserve their rheological properties before and after the flow, confirming the physical nature of the gel.
+
+Let us now discuss the rheological measurements and link them to microstructure. Amplitude sweep measurements at \SI{1}{\hertz} in a cone-plate geometry give access to two main observables: (i) the value of the shear modulus at small amplitude $G^\prime(\gamma\rightarrow 0)$, i.e. the elasticity of the undamaged gel network, and (ii) the critical strain $\gamma_c$ corresponding to the maximum of $G"$, the end of the linear regime and the first broken bonds.
+
+The spatial conformation of a polyelectrolyte (super)chain in semi-dilute, low salt solution is a persistent random walk where the persistence length is the screening length $r_\mathrm{src}$ due to the dissociated counter ions. Between each cross-link point the (super)chain can be considered as an entropic spring made of $N=n N_0$ monomers. The shear modulus of the gel is then given by:
+\begin{equation}
+G = \frac{c}{N}k_\mathrm{B}T,
+\label{eq:G}
+\end{equation}
+where $c$ is the monomer number density, $k_\mathrm{B}$ is the Boltzmann constant and $T$ the temperature. Knowing the molecular mass $M$ of the chains, density $d$ of the solvent and the weight fraction $w$ of polymer, we obtain
+\begin{equation}
+n = \frac{\mathcal{N_A}}{M} w d \frac{k_\mathrm{B}T}{G}.
+\end{equation}
+
+We find that the number $n$ of chains between cross-link point goes from 1 in \ce{PPyr+I-} and \ce{PPy+Br-} to 780 in \ce{PIm+Br-}, following the \textit{a priori} ranking of charge dissociation. This is coherent with a higher probability of attaching two or more heads on a highly dissociated body, i.e. a large cross-linking ratio.
+
+\end{document}
