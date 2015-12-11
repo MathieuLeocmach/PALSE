@@ -1,9 +1,10 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper,prl,reprint]{revtex4-1}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage{kpfonts}
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
@@ -11,37 +12,42 @@
 \usepackage{pgfplots}
 \usetikzlibrary{calc}
 
+\begin{document}
 \author{Mathieu Leocmach}
 \title{Ion pairing rheology}
-
-\begin{document}
 \maketitle
+
+\section{System description}
 
 We are dealing with low-salt aqueous solutions of polyelectrolytes with cationic moieties along the chain and a single anionic head (Phosphonate, \ce{\bond{-}PO3^2-}). A chain has $N_0 = 70$ units from NMR measurements. The cationic moieties are either all Pyrrolidinium (\ce{Pyr+}) or all Imidazolium (\ce{Im+}) and we note the polymers \ce{PPyr+X-} and \ce{PIm+X-} respectively. The counterion \ce{X-} can be either Fluoride (\ce{F-}), Chloride (\ce{Cl-}), Bromide (\ce{Br-}) or Iodide (\ce{I-}). According to the Hard and Soft Acid and Bases (HSAB) theory, stronger association is expected for harder cation (\ce{Pyr+}) and softer anion (\ce{F-}). Therefore \ce{PPyr+I-} should be the most charged polymer and \ce{PIm+F-} the least charged.
 
 Experimentally, we are able to dissolve the five polymers that are the most charged, but neither the two fluorides nor \ce{PIm+Cl-}. This means that in absence of charge dissociation the chain is in poor solvent. Furthermore, we held the two fluoride polymers in water at boiling temperature overnight without any dissolution. The $\Theta$ temperature is thus higher than \SI{100}{\celsius}. Nonetheless, due to charge dissociation, most of our polymers are soluble at \SI{25}{\celsius}. The reduced temperature $\tau = 1 - T/\Theta$ is thus at least 0.2.
 
-Due to the opposite charge of the phosphonate head, head-to-body ionic bonds are possible. If every chain has a single foreign head attached to its body, every polymer is linked to two others and we obtain a single effective chain of effective polymerisation index $n N_0$ where $n$ is the number of polymers in the effective chain. Here we have supposed that in order to minimize the inter-chain repulsion between charged cationic groups, heads are preferentially attached to the tail of their neighbour. We also neglect the possibility of the two charges of the phosphonate head to attach to two separate chains.
+We have previously demonstrated that, due to the opposite charge of the phosphonate head, head-to-body ionic bonds are possible~\cite{Srour2014}. If every chain has a single foreign head attached to its body, every polymer is linked to two others and we obtain a single effective chain of effective polymerisation index $n N_0$ where $n$ is the number of polymers in the effective chain. Here we have supposed that in order to minimize the inter-chain repulsion between charged cationic groups, heads are preferentially attached to the tail of their neighbour. We also neglect the possibility of the two charges of the phosphonate head to attach to two separate chains.
 
 If as least two foreign heads attach to the same body, we obtain an effective cross-linking point. When the probability of such a configuration is non-zero, we obtain a physically cross-linked gel. Indeed, we observe that our 5 soluble polymers form soft solid when mixed with water. Submitted to sufficient shear stress these gels flow but conserve their rheological properties before and after the flow, confirming the physical nature of the gel.
+
+\section{Reological measurements}
 
 Let us now discuss the rheological measurements and link them to microstructure. Amplitude sweep measurements at \SI{1}{\hertz} in a cone-plate geometry give access to two main observables, see Table~\ref{tab:results}: (i) the value of the shear modulus at small amplitude $G^\prime(\gamma\rightarrow 0)$, i.e. the elasticity of the undamaged gel network, and (ii) the critical strain $\gamma_c$ corresponding to the maximum of $G"$, the end of the linear regime and the first broken cross-links.
 
 \begin{table}
-\begin{tabular}{l|ll|lll}
-& $G^\prime(\gamma\rightarrow 0)$ & $\gamma_c$ & $n$ & $E_c$ & $A$\\
-&	\si{\pascal} &  & & \si{\kilo\joule/\mol} & \\\hline&&&&\\[-10pt]
-\ce{PPyr+I-}	& 8800	&	0.004	&	1	&	\cellcolor{gray!25}0.004	&	1\\
-\ce{PPyr+Br-}	& 9800 	& 	0.0016	&	1.05&	\cellcolor{gray!25}0.001	&	1.1\\
-\ce{PPyr+Cl-}	& 270 	&	0.009	&	45	&	\cellcolor{gray!25}0.02	&	7\\
-\ce{PIm+I-}	& 78	&	0.016	&	113	&	\cellcolor{gray!25}0.063	&	9.6\\
-\ce{PIm+Br-}	& 13	&	8	&	790	&	158	&	\cellcolor{gray!25}3.4\\
+\begin{tabular}{l|SS|SSS}
+& {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_c$} & {$n$} & {$E_c$} & {$A$}\\
+&	{\si{\pascal}} &  & & {\si{\kilo\joule/\mol}} & \\\hline&&&&\\[-10pt]
+\ce{PPyr+I-}	& 8800	&	0.004	&	1.	&	0.004\cellcolor{gray!25}	&	1.\\
+\ce{PPyr+Br-}	& 9800 	& 	0.0016	&	1.05&	0.001\cellcolor{gray!25}	&	1.1\\
+\ce{PPyr+Cl-}	& 270 	&	0.009	&	45	&	0.02\cellcolor{gray!25}	&	7.\\
+\ce{PIm+I-}	& 78	&	0.016	&	113	&	0.063\cellcolor{gray!25}	&	9.6\\
+\ce{PIm+Br-}	& 13	&	8.04	&	790	&	160.	&	3.4\cellcolor{gray!25}\\
 \end{tabular}
 \caption{Results. Incoherent values are on gray background.}
 \label{tab:results}
 \end{table}
 
-The spatial conformation of a polyelectrolyte (super)chain in semi-dilute, low salt solution is a persistent random walk where the persistence length is the screening length $r_\mathrm{src}$ due to the dissociated counter ions, see Figure~\ref{fig:persistent}. Between each cross-link point the (super)chain can be considered as an entropic spring made of $N=n N_0$ monomers. The shear modulus of the gel is then given by:
+\subsection{From modulus to effective chain length}
+
+The spatial conformation of a polyelectrolyte (super)chain in semi-dilute, low salt solution is a persistent random walk where the persistence length is the screening length $r_\mathrm{src}$ due to the dissociated counter ions~\cite{Rubinstein1996}, see Figure~\ref{fig:persistent}. Between each cross-link point the (super)chain can be considered as an entropic spring made of $N=n N_0$ monomers. The shear modulus of the gel is then given by:
 \begin{equation}
 G = \frac{c}{N}k_\mathrm{B}T,
 \label{eq:G}
@@ -51,14 +57,16 @@ where $c$ is the monomer number density, $k_\mathrm{B}$ is the Boltzmann constan
 n = \frac{\mathcal{N_A}}{M} w d \frac{k_\mathrm{B}T}{G}.
 \end{equation}
 
-We find that the number $n$ of chains between cross-link point goes from 1 in \ce{PPyr+I-} and \ce{PPy+Br-} to 780 in \ce{PIm+Br-}, following the \textit{a priori} ranking of charge dissociation, see Table~\ref{tab:results}. This is coherent with a higher probability of attaching two or more heads on a highly dissociated body, i.e. a large cross-linking ratio.
+We find that the number $n$ of chains between cross-link point goes from 1 in \ce{PPyr+I-} and \ce{PPy+Br-} to 790 in \ce{PIm+Br-}, following the \textit{a priori} ranking of charge dissociation, see Table~\ref{tab:results}. This is coherent with a higher probability of attaching two or more heads on a highly dissociated body, i.e. a large cross-linking ratio.
+
+\subsection{Bounding energy}
 
 Considering that each super chain is an entropic spring in its linear domain, the mechanical energy stored by a single super chain at a strain $\gamma$ is $E = \gamma^2 k_\mathrm{B}T$. If we suppose that the ionic bonds break before the complete extension of the (super)chains, we evaluate the head-to-body bonding energy to
 \begin{equation}
 E_c = \gamma_c^2 k_\mathrm{B}T.
 \end{equation}
 
-For \ce{PIm+Br-} we measure $\gamma_c = 800\%$ and thus $E_c \approx 64 k_\mathrm{B}T$ per bond or \SI{158}{\kilo\joule\per\mol}, coherent with typical energies of ionic bonds. However for all other samples the critical strain is between 2\% and 20\%, leading to incoherent values for the bonding energies between $10^{-3}k_\mathrm{B}T$ and $10^{-1}k_\mathrm{B}T$ per bond, see Table~\ref{tab:results}. Therefore, the hypothesis of a linear spring fails for these four samples, meaning that the super chain is fully extended at $\gamma_c$.
+For \ce{PIm+Br-} we measure $\gamma_c = 800\%$ and thus $E_c \approx 65 k_\mathrm{B}T$ per bond or \SI{160}{\kilo\joule\per\mol}, coherent with typical energies of ionic bonds. However for all other samples the critical strain is between 2\% and 20\%, leading to incoherent values for the bonding energies between $10^{-3}k_\mathrm{B}T$ and $10^{-1}k_\mathrm{B}T$ per bond, see Table~\ref{tab:results}. Therefore, the hypothesis of a linear spring fails for these four samples, meaning that the super chain is fully extended at $\gamma_c$.
 
 \begin{figure}
 \begin{center}
@@ -80,7 +88,9 @@ For \ce{PIm+Br-} we measure $\gamma_c = 800\%$ and thus $E_c \approx 64 k_\mathr
 \label{fig:persistent}
 \end{figure}
 
-For polyelectrolytes in bad solvent the persistent random walk in made of electrostatic blobs of diameter $D$ containing $g_e$ monomers, see Figure~\ref{fig:persistent}:
+\subsection{From critical strain to charge dissociation}
+
+For polyelectrolytes in bad solvent the persistent random walk in made of electrostatic blobs of diameter $D$ containing $g_e$ monomers~\cite{Rubinstein1996}, see Figure~\ref{fig:persistent}:
 \begin{align}
 g_e &= \frac{A^2}{u}\tau\label{eq:ge},\\
 D &= b \left(\frac{A^2}{u}\right)^{1/3}\label{eq:D}.
@@ -100,7 +110,7 @@ R_0 &= r_\mathrm{scr} \frac{N}{g_\mathrm{scr}},\\
 \gamma_c &= \left(\frac{N}{g_\mathrm{scr}}\right)^{1/2} -1\label{eq:gamma0}.
 \end{align}
 
-One can express the screening length function of $A$ and $\tau$ as
+Following~\cite{Rubinstein1996}, we can express the screening length function of $A$ and $\tau$ as
 \begin{equation}
 r_\mathrm{scr} = \left(\frac{A^2}{u}\right)^{1/3} \left(\frac{\tau}{cb}\right)^{1/2}
 \label{eq:rsrc}
@@ -114,16 +124,19 @@ g_\mathrm{scr} = \frac{A^2}{u} \left(\frac{\tau^3}{c b^3}\right)^{1/2}\label{eq:
 From equations (\ref{eq:gamma0}) and (\ref{eq:gscr}) we can finally relate the measured critical strain to the microscopic parameter $A$:
 \begin{equation}
 A = \frac{\left(N u\right)^{1/2}}{\gamma_c+1}\left(\frac{c b^3}{\tau^3}\right)^{1/4}.
+\label{eq:A}
 \end{equation}
 
 The only unknown here is the reduced temperature $0.2<\tau<1$, possibly different between Poly(pyrrolidinium) based and Poly(immidazolium) based polymers. Setting $\tau\approx 0.235$, corresponding to $\Theta\approx\SI{116}{\celsius}$, yields $A=1$ for both \ce{PPyr+I-} and \ce{PPyr+Br-}, indicating full dissociation of the charges. By contrast \ce{PPyr+Cl-} has a dissociated charge every 7 monomers. Supposing the same $\tau$, \ce{PIm+I-} has a dissociated charge every 10 monomers, see Table~\ref{tab:results}.
+
+\subsection{Charge dissociation and cross-linking ratio}
 
 There must be a link between the charge dissociation and and the amount of physical cross-link. We assume that the probability of having $k$ charge dissociated on a polymer follows a Poisson distribution of mean $\lambda = N_0/A$. Having 2 charges dissociated on a chain implies a cross-link. Therefore, we the cross-link probability $1/n$ is proportional to $\lambda^2$, yielding
 \begin{equation}
 n \sim A^2.
 \end{equation}
 
-This is indeed what we observe, as shown in Figure~\ref{fig:nA}.
+This is indeed what we observe, as shown in Figure~\ref{fig:nA}. We can extrapolate this law for the case of \ce{PIm+Br-} and obtain $A = 28$. Inverting equation~(\ref{eq:A}) yields $\gamma_c = 860\%$, indeed higher than the one observed (804\%). This confirms that in the \ce{PIm+Br-} strain sweep we were actually probing the strength of the ionic bonds.
 
 \begin{figure}
 \begin{center}
@@ -131,16 +144,17 @@ This is indeed what we observe, as shown in Figure~\ref{fig:nA}.
 \begin{loglogaxis}[
 	xlabel = $A$,
 	ylabel = $n$,
-	]
-	\addplot[only marks] coordinates {(1.090233298, 72.59) (6.98656403, 3141.79) (1.000001279, 69.17) (9.589224893, 7876.54)};
-	\addplot[no marks, domain=1:10] {70*x^2};
+	]1.04, 44.88, 0.99, 112.52
+	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52)};
+	\addplot[no marks, domain=1:10] {x^2};
 \end{loglogaxis}
 \end{tikzpicture}
 \end{center}
-\caption{Relation between the number of monomers between uncondensed charges and the number of chains between cross-link points. The line corresponds to power law of exponent 2 and prefactor $N_0$ XXX not understood XXX.}
+\caption{Relation between the number of monomers between uncondensed charges and the number of chains between cross-link points. The line corresponds to $A^2$.}
 \label{fig:nA}
 \end{figure}
 
 
+\bibliography{PALSE}
 
 \end{document}
