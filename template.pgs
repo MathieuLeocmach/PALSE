@@ -1,0 +1,27 @@
+\documentclass[journal=jacsat,manuscript=article]{achemso}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}       % Use modern font encodings
+\usepackage{amssymb}
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+\usepackage{siunitx}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{groupplots}
+\usepackage{pgfplotstable}
+
+\usepackage{chemfig}
+
+\usepackage[active,pdftex,tightpage]{preview}
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+
+\title{Template}
+\author{Mathieu Leocmach}
+\begin{document}
+\section{Introduction}
+\begin{preview}
+<>
+\end{preview}
+\end{document}
