@@ -1,0 +1,23 @@
+\newcommand\setpolymerdelim[2]{\def\delimleft{#1}\def\delimright{#2}}
+\def\makebraces[#1,#2]#3#4#5{%
+\edef\delimhalfdim{\the\dimexpr(#1+#2)/2}%
+\edef\delimvshift{\the\dimexpr(#1-#2)/2}%
+\chemmove{%
+\node[at=(#4),yshift=(\delimvshift)]
+{$\left\delimleft\vrule height\delimhalfdim depth\delimhalfdim
+width0pt\right.$};%
+\node[at=(#5),yshift=(\delimvshift)]
+{$\left.\vrule height\delimhalfdim depth\delimhalfdim
+width0pt\right\delimright^{\rlap{$\scriptstyle#3$}}$};}}
+\setpolymerdelim()
+
+\schemestart
+\setatomsep{2em}
+\small\chemfig{-[1](-[::90]Br)(-[::-90])-[::-15](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]PO_3Et_2}
+\arrow{->[\tiny\setatomsep{2em}\chemfig{[:60]=-[::-60](=O)-[::-60]O-[::60]--[::-60]OH}][CuBr]}
+\setatomsep{2em}
+\small\chemfig{[:-30]-[@{left,0.25}](%
+	-[::-60](=O)-[::-60]O-[::60]--[::-60]OH%
+	)-[::60]-[@{right,0.25}](-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]PO_3Et_2}
+\makebraces[5pt,20pt]{\!\!\!n}{left}{right}
+\schemestop
