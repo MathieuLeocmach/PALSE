@@ -37,8 +37,8 @@ width0pt\right\delimright^{\rlap{$\scriptstyle#3$}}$};}}
 \node[anchor=south east] at (m-2-1.south east) {\ce{PBr}};
 
 %\draw (m.north east) -- (m.south east);
-\node[right =0.15\textwidth of m-1-2, label=below:Pyr] (Pyr) {\chemfig{[2]*5(--N(-)---)}};
-\node[right =0.15\textwidth of m-2-2](Im) {\chemfig{[2]*5(-N(-)-=N-=)}};
+\node[right =0.14\textwidth of m-1-2, label=below:Pyr] (Pyr) {\chemfig{[2]*5(--N(-)---)}};
+\node[right =0.14\textwidth of m-2-2](Im) {\chemfig{[2]*5(-N(-)-=N-=)}};
 \node[anchor=north] at (Im.south-|Pyr) {Im};
 \node[anchor=north] at (Pyr|-m.north) {Nu};
 \node[below =of Pyr] {or};
