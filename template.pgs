@@ -10,8 +10,10 @@
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepackage{pgfplotstable}
+\usetikzlibrary{matrix, calc, positioning, shapes.multipart}
 
 \usepackage{chemfig}
+\usepackage{setspace}
 
 \usepackage[active,pdftex,tightpage]{preview}
 \PreviewEnvironment[]{tikzpicture}
@@ -21,7 +23,9 @@
 \author{Mathieu Leocmach}
 \begin{document}
 \section{Introduction}
+\begin{singlespace}
 \begin{preview}
 <>
 \end{preview}
+\end{singlespace}
 \end{document}
