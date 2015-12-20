@@ -11,13 +11,16 @@ width0pt\right.$};%
 width0pt\right\delimright^{\rlap{$\scriptstyle#3$}}$};}}
 \setpolymerdelim()
 
+\definesubmol{head}{(-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]}
+\definesubmol{mono}{-[::-60](=O)-[::-60]O-[::60]--[::-60]}
+
 \schemestart
 \setatomsep{2em}
-\small\chemfig{-[1](-[::90]Br)(-[::-90])-[::-15](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]PO_3Et_2}
-\arrow{->[\tiny\setatomsep{2em}\chemfig{[:60]=-[::-60](=O)-[::-60]O-[::60]--[::-60]OH}][CuBr]}
+\small\chemfig{Br-[:-30]!{head}PO_3Et_2}
+\arrow{->[\tiny\setatomsep{2em}\chemfig{[:60]=!{mono}OH}][CuBr]}
 \setatomsep{2em}
 \small\chemfig{[:-30]-[@{left,0.25}](%
-	-[::-60](=O)-[::-60]O-[::60]--[::-60]OH%
-	)-[::60]-[@{right,0.25}](-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]PO_3Et_2}
+	!{mono}OH%
+	)-[::60]-[@{right,0.25}]!{head}PO_3Et_2}
 \makebraces[5pt,20pt]{\!\!\!n}{left}{right}
 \schemestop
