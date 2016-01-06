@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{axis}[%
+	xlabel={Temperature (\si{\celsius})},
+	ylabel={Heat flow (\si{\milli\watt})},
+	xmin=25, xmax=200,
+	ymin=0, ymax=12,
+	each nth point=10,
+	mark repeat=5,
+	]
+	\coordinate (la) at (axis cs:150,0);
+	\addplot[mark=triangle*] table[x=Tr, y expr={\thisrow{HF}+12}]{PYI e1.txt} coordinate[pos=0.7] (a) node[above right] at (a-|la) {\ce{PPy+I-}};
+	\addplot[mark=square*, gray] table[x=Tr, y expr={\thisrow{HF}+10}]{PYBr e1.txt} coordinate[pos=0.8] (a) node[above right] at (a-|la) {\ce{PPy+Br-}};
+	\addplot[mark=triangle*, mark options={rotate=180}] table[x=Tr, y expr={\thisrow{HF}+9}]{ImI e1.txt} coordinate[pos=0.7] (a) node[above right] at (a-|la)  {\ce{PIm+I-}};
+	\addplot[mark=diamond*, gray] table[x=Tr, y expr={\thisrow{HF}+12}]{ImBr e1.txt} coordinate[pos=0.7] (a) node[above right] at (a-|la)  {\ce{PIm+Br-}};
+\end{axis}
+\end{tikzpicture}
