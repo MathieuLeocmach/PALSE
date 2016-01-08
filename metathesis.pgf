@@ -15,7 +15,7 @@ width0pt\right\delimright$};}}
 \definesubmol{mono}{-[::-60](=O)-[::-60]O-[::60]--[::-60]}
 
 \begin{tikzpicture}[every node/.style={font=\footnotesize\setatomsep{1.5em}}]
-\matrix[matrix of nodes, column sep=0.2\textwidth] (m){
+\matrix[matrix of nodes, column sep=0.13\textwidth] (m){
 \chemfig{[:-30]-[@{left,0.25}](%
 	!{mono}Nu^{+}-[0,2,,,draw=none]Br^{-}%
 	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}
@@ -27,4 +27,17 @@ width0pt\right\delimright$};}}
 };
 \draw[-stealth, thick] (m-1-1) -- (m-1-2) node[midway, above, -]{\ce{NaX}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{H2O}};
 \node[anchor=south west] at (m-1-1.south east) {X: F, Cl or I};
+\node[anchor=north west] at (m.north west) {(a)};
+\node[anchor=north east] at (m.north east) {(b)};
+\end{tikzpicture}
+\begin{tikzpicture}
+\node[font=\scriptsize] {PBr} [->, font=\scriptsize, level distance=1.75em] 
+	child [grow=south] {node {\ce{PIm+Br-}} [level distance=2em]
+		child {node {\ce{PIm+F-}}} 
+		child {node {\ce{PIm+Cl-}}} 
+		child {node {\ce{PIm+I-}}}} 
+	child [grow=north] {node {\ce{PPyr+Br-}} [level distance=2em]
+		child {node {\ce{PPyr+F-}}} 
+		child {node {\ce{PPyr+Cl-}}} 
+		child {node {\ce{PPyr+I-}}}};
 \end{tikzpicture}
