@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	xlabel = $A$,
+	ylabel = $n$,
+	]1.04, 44.88, 0.99, 112.52
+	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52)};
+	\addplot[no marks, domain=1:10] {x^2};
+\end{loglogaxis}
+\end{tikzpicture}
