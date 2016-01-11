@@ -1,9 +1,77 @@
 \begin{tikzpicture}
 \begin{loglogaxis}[
+	name=ax,
 	xlabel = $A$,
 	ylabel = $n$,
 	]1.04, 44.88, 0.99, 112.52
 	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52)};
 	\addplot[no marks, domain=1:10] {x^2};
 \end{loglogaxis}
+\let\d\relax
+\newlength\d
+\setlength{\d}{0.5em}
+\let\rscr\relax
+\newlength\rscr
+\setlength{\rscr}{3\d}
+\begin{scope}[shift=(ax.outer south east), xshift=-\textwidth]
+\path[radius=\rscr, every node/.style={circle, draw, inner sep=0, minimum width=\d}, head/.style={fill=black}, cl/.style={dotted,fill, fill opacity=0.1, minimum width=3\d}] (20\d,4\d) 
+arc[start angle=-60, delta angle=80] 
+foreach \i [evaluate=\i as \p using {\i/4}] in {0,...,4} {node[pos=\p]{}}
+arc[start angle=160, delta angle=-60]
+foreach \i [evaluate=\i as \p using {\i/3}] in {1,...,2} {node[pos=\p]{}}
+node[head]{}
+arc[start angle=-40, delta angle=220]
+foreach \i [evaluate=\i as \p using {\i/11}] in {1,...,7} {node[pos=\p]{}}
+node[head, pos=8/11]{}
+node[cl, pos=4/11] (CL1) {}
+foreach \i [evaluate=\i as \p using {\i/11}] in {9,...,11} {node[pos=\p]{}}
+arc[start angle=0, delta angle=-180]
+foreach \i [evaluate=\i as \p using {\i/9}] in {1,...,4} {node[pos=\p]{}}
+node[head, pos=5/9]{}
+foreach \i [evaluate=\i as \p using {\i/9}] in {6,...,9} {node[pos=\p]{}}
+arc[start angle=0, delta angle=60]
+foreach \i [evaluate=\i as \p using {\i/3}] in {1,...,3} {node[pos=\p]{}}
+arc[start angle=-100, delta angle=-160]
+node[head, pos=1/8]{}
+foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
+node[cl, pos=4/8] (CL2){}
+arc[start angle=-60, delta angle=60]
+node[head, pos=1/3]{}
+foreach \i [evaluate=\i as \p using {\i/3}] in {2,...,3} {node[pos=\p]{}}
+arc[start angle=180, delta angle=-100]
+foreach \i [evaluate=\i as \p using {\i/5}] in {1,...,5} {node[pos=\p]{}}
+%labeling electrostatic blob diameter
+node[rectangle, draw=none, minimum width=\d, minimum height=3\d] (D) {}
+arc[start angle=-100, delta angle=220]
+node[head, pos=1/11]{}
+foreach \i [evaluate=\i as \p using {\i/11}] in {2,...,8} {node[pos=\p]{}}
+%labeling persistance length
+node[pos=5/11, rectangle, draw=none, minimum width=3\d, minimum height=3\d] (gsrc) {}
+node[head, pos=9/11]{}
+foreach \i [evaluate=\i as \p using {\i/11}] in {10,...,11} {node[pos=\p]{}}
+arc[start angle=-40, delta angle=-120]
+foreach \i [evaluate=\i as \p using {\i/6}] in {1,...,5} {node[pos=\p]{}}
+node[cl, pos=3/6] (CL3) {}
+node[head]{}
+%end of the main chain, now deal with cross-links
+(CL1) arc[start angle=-60, delta angle=160]
+node[head, pos=1/8]{}
+foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
+%
+(CL2) arc[start angle=60, delta angle=160]
+node[head, pos=1/8]{}
+foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
+%
+(CL3) arc[start angle=0, delta angle=-160]
+node[head, pos=1/8]{}
+foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
+;
+% lengths
+\draw[gray] (gsrc.north) -- +(2\d,0) (gsrc.south) -- +(2\d,0) [<->] (gsrc.south east) -- (gsrc.north east) node[midway, right] {$r_\mathrm{scr}$};
+\draw[gray] (D.west) -- +(0,-2\d) (D.east) -- +(0,-2\d) [<->] (D.south west) -- (D.south east) node[midway, below] {$D$};
+\draw[<->] (CL1.center) -- (CL2.center) node[midway, above, sloped]{$R$};
+\end{scope}
+\node[anchor=north west] at (ax.north west) (b) {(b)};
+\node[anchor=base west] at ($(b-|ax.outer east)+(-\textwidth,0)$) {(a)};
+%\draw (ax.outer south east) -- +(-\textwidth,0);
 \end{tikzpicture}
