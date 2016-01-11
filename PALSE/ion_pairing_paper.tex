@@ -115,27 +115,21 @@ We also compare the rheology of \ce{PIm+X-} and \ce{PPyr+X-} with the same count
 
 
 \subsection{Crocodile chain model}
+
+\begin{figure}
+\includegraphics{dissociation.pdf}
+\caption{Crocodile-line model. (a) Sketch of the network in the case of a crocodile line of size $n=3$ between cross-links (gray disks) and a persistence length $r_\mathrm{src}\approx 3D$. Empty circles are not individual monomers but electrostatic blobs of size $D$. Electrostatic blobs containing an anionic head are shown as black filled circles. (b) Relation between the number of monomers between uncondensed charges and the number of chains between cross-link points. The line corresponds to $n = A^2$.}
+\label{fig:dissociation}
+\end{figure}
+
 We have previously demonstrated that, due to the opposite charge of the phosphonate head, head-to-body ionic bonds are possible~\cite{Srour2014}. If at least two foreign heads attach to the same body, we obtain an effective cross-linking point. When the probability of such a configuration is non-zero, we obtain a physically cross-linked gel.
 
 Here we argue that if every chain has a single foreign head attached to its body, every polymer is linked to two others in a crocodile line. We neglect the possibility of the two charges of the phosphonate head to attach to two separate chains. In addition, if we suppose that in order to minimize the inter-chain repulsion between charged cationic groups, heads are preferentially attached to the tail of their neighbour, we obtain a linear chain of effective polymerisation index $n N_0$ where $n$ is the number of polymers in the crocodile line.
 
-We thus have two limiting cases: (i) every chain has at least two heads attached and we have roughly $N_0$ monomers between cross-linking points; (ii) every chain has a single head attached and we have a single supramolecular chain in the system. The former case should be observed at high charge dissociation when many moieties are ionised along the chain providing many sites for a phosphonate head to bound to. The latter case should be observed at negligible charge dissociation. In between we should observe cross-linking points separated by crocodile lines of $n N_0$ monomers.
+We thus have two limiting cases: (i) every chain has at least two heads attached and we have roughly $N_0$ monomers between cross-linking points; (ii) every chain has a single head attached and we have a single supramolecular chain in the system. The former case should be observed at high charge dissociation when many moieties are ionised along the chain providing many sites for a phosphonate head to bound to. The latter case should be observed at negligible charge dissociation. In between we should observe cross-linking points separated by crocodile lines of $n N_0$ monomers as sketched in Figure~\ref{fig:dissociation}a.
 
 Let us now discuss the rheological measurements and link them to microstructure. Amplitude sweep measurements at \SI{1}{\hertz} in a cone-plate geometry give access to two main observables, see Table~\ref{tab:results}: (i) the value of the shear modulus at small amplitude $G^\prime(\gamma\rightarrow 0)$, i.e. the elasticity of the undamaged gel network, and (ii) the critical strain $\gamma_c$ corresponding to the maximum of $G"$, the end of the linear regime and the first broken cross-links.
 
-\begin{table}
-\begin{tabular}{l|SS|SSSS}
-& {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_c$} & {$n$} & \multicolumn{2}{c}{$E_c$} & {$A$}\\
-&	{\si{\pascal}} &  & & {$k_\mathrm{B}T$} & {\si{\kilo\joule/\mol}} & \\\hline&&&&\\[-10pt]
-\ce{PPyr+I-}	& 8800	&	0.04	&	1.	&	2e-3\cellcolor{gray!25}	&	0.004\cellcolor{gray!25}	&	1.\\
-\ce{PPyr+Br-}	& 9800 	& 	0.016	&	1.05&	3e-4\cellcolor{gray!25}	&	0.001\cellcolor{gray!25}	&	1.1\\
-\ce{PPyr+Cl-}	& 270 	&	0.09	&	45	&	8e-3\cellcolor{gray!25}	&	0.02\cellcolor{gray!25}	&	7.\\
-\ce{PIm+I-}	& 78	&	0.16	&	113	&	3e-2\cellcolor{gray!25}	&	0.063\cellcolor{gray!25}	&	9.6\\
-\ce{PIm+Br-}	& 13	&	8.04	&	790	&	64	&	160.	&	3.4\cellcolor{gray!25}\\
-\end{tabular}
-\caption{Summary of rheological measurements and microscopic values deduced from the model. Gray background indicates incoherent values obtained either by (Eq.~\ref{eq:Ec}) or by (Eq.~\ref{eq:A}) outside of their respective validity domain.}
-\label{tab:results}
-\end{table}
 
 \subsubsection{From modulus to effective chain length}
 
@@ -151,6 +145,20 @@ n = \frac{\mathcal{N_A}}{M} w d \frac{k_\mathrm{B}T}{G}.
 
 We find that the number $n$ of chains between cross-link point goes from 1 in \ce{PPyr+I-} and \ce{PPy+Br-} to 790 in \ce{PIm+Br-}, following the \textit{a priori} ranking of charge dissociation, see Table~\ref{tab:results}. This is coherent with a higher probability of attaching two or more heads on a highly dissociated body, i.e. a large cross-linking ratio.
 
+\begin{table}
+\begin{tabular}{l|SS|SSSS}
+& {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_c$} & {$n$} & \multicolumn{2}{c}{$E_c$} & {$A$}\\
+&	{\si{\pascal}} &  & & {$k_\mathrm{B}T$} & {\si{\kilo\joule/\mol}} & \\\hline&&&&\\[-10pt]
+\ce{PPyr+I-}	& 8800	&	0.04	&	1.	&	2e-3\cellcolor{gray!25}	&	0.004\cellcolor{gray!25}	&	1.\\
+\ce{PPyr+Br-}	& 9800 	& 	0.016	&	1.05&	3e-4\cellcolor{gray!25}	&	0.001\cellcolor{gray!25}	&	1.1\\
+\ce{PPyr+Cl-}	& 270 	&	0.09	&	45	&	8e-3\cellcolor{gray!25}	&	0.02\cellcolor{gray!25}	&	7.\\
+\ce{PIm+I-}	& 78	&	0.16	&	113	&	3e-2\cellcolor{gray!25}	&	0.063\cellcolor{gray!25}	&	9.6\\
+\ce{PIm+Br-}	& 13	&	8.04	&	790	&	64	&	160.	&	3.4\cellcolor{gray!25}\\
+\end{tabular}
+\caption{Summary of rheological measurements and microscopic values deduced from the model. Gray background indicates incoherent values obtained either by (Eq.~\ref{eq:Ec}) or by (Eq.~\ref{eq:A}) outside of their respective validity domain.}
+\label{tab:results}
+\end{table}
+
 \subsubsection{Bounding energy}
 
 Considering that each crocodile chain is an entropic spring in its linear domain, the mechanical energy stored by a single crocodile chain at a strain $\gamma$ is $E = \gamma^2 k_\mathrm{B}T$. If we suppose that the ionic bonds breaks before the complete extension of the crocodile chains, we evaluate the head-to-body bonding energy to
@@ -161,29 +169,9 @@ E_c = \gamma_c^2 k_\mathrm{B}T.
 
 For \ce{PIm+Br-} we measure $\gamma_c = 800\%$ and thus $E_c \approx 65 k_\mathrm{B}T$ per bond or \SI{160}{\kilo\joule\per\mol}, coherent with typical energies of ionic bonds. However for all other samples the critical strain is between 2\% and 20\%, leading to incoherent values for the bonding energies between $10^{-3}k_\mathrm{B}T$ and $10^{-1}k_\mathrm{B}T$ per bond, see Table~\ref{tab:results}. Therefore, the hypothesis of a linear spring fails for these four samples, meaning that the crocodile chain is fully extended at $\gamma_c$.
 
-%\begin{figure}
-%\begin{center}
-%\begin{tikzpicture}
-%\begin{axis}[
-%	scale only axis,
-%	width=12\baselineskip, height=6\baselineskip, 
-%	axis lines=none,
-%	xmin=0.5, xmax=4.5,
-%	ymin=-0.7, ymax=1.3,
-%	]
-%\addplot[only marks, mark=o, mark size=2] table {/home/mathieu/tex/PALSE/persistent.xy} coordinate[pos=0.43] (a) coordinate[pos=0.57] (b) coordinate[pos=0.81](c);
-%\draw[<->] ($(a)+(-0.5em,0)$) -- ($(b)+(-0.5em,0)$) node[midway, left]{$r_\mathrm{scr}$};
-%\draw[<->] ($(c)+(-0.25em,-0.5em)$) -- ($(c)+(0.25em,-0.5em)$) node[midway, below]{$D$};
-%\end{axis}
-%\end{tikzpicture}
-%\end{center}
-%\caption{Sketch of the persistent random walk.}
-%\label{fig:persistent}
-%\end{figure}
-
 \subsubsection{From critical strain to charge dissociation}
 
-The spatial conformation of a polyelectrolyte chain in semi-dilute, low salt solution is a persistent random walk where the persistence length is the screening length $r_\mathrm{src}$ due to the dissociated counter ions~\cite{Rubinstein1996}. In bad solvent, the persistent random walk is made of electrostatic blobs of diameter $D$ containing $g_e$ monomers, see Figure~\ref{fig:persistent}:
+The spatial conformation of a polyelectrolyte chain in semi-dilute, low salt solution is a persistent random walk where the persistence length is the screening length $r_\mathrm{src}$ due to the dissociated counter ions~\cite{Rubinstein1996}. In bad solvent, the persistent random walk is made of electrostatic blobs of diameter $D$ containing $g_e$ monomers, see Figure~\ref{fig:dissociation}a:
 \begin{align}
 g_e &= \frac{A^2}{u}\tau\label{eq:ge},\\
 D &= b \left(\frac{A^2}{u}\right)^{1/3}\label{eq:D}.
@@ -225,13 +213,7 @@ Finally we cross check our model by linking the charge dissociation and and the 
 
 This is indeed what we observe, as shown in Figure~\ref{fig:dissociation}. We can extrapolate this law for the case of \ce{PIm+Br-} and obtain $A = 28$. Inverting equation~(\ref{eq:A}) yields $\gamma_c = 860\%$, indeed higher than the one observed (804\%). This confirms that in the \ce{PIm+Br-} strain sweep we were actually probing the strength of the ionic bonds.
 
-\begin{figure}
-\begin{center}
-\includegraphics{dissociation.pdf}
-\end{center}
-\caption{Relation between the number of monomers between uncondensed charges and the number of chains between cross-link points. The line corresponds to $n = A^2$.}
-\label{fig:dissociation}
-\end{figure}
+
 
 
 \subsection{Discussion}

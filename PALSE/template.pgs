@@ -10,7 +10,7 @@
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepackage{pgfplotstable}
-\usetikzlibrary{matrix, calc, positioning, shapes.multipart}
+\usetikzlibrary{matrix, calc, positioning, shapes.multipart, shapes.geometric}
 
 \usepackage{chemfig}
 \usepackage{setspace}
