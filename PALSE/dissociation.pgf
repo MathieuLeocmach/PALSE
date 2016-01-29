@@ -6,9 +6,9 @@
 	xlabel = $A$,
 	ylabel = $n$,
 	]1.04, 44.88, 0.99, 112.52
-	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52)};
+	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52) (3.4, 790)};
 	\addplot[no marks, domain=1:30] {x^2};
-	\draw[->, dotted, every node/.style={draw, solid, inner sep=0, minimum width=4pt, circle}] node (bad) at (axis cs:3.4, 790) {}  node (good) at (axis cs:28, 790) {} (bad) -- (good);
+	\draw[->, dotted, every node/.style={inner sep=0, minimum width=4pt, circle}] node[fill] (bad) at (axis cs:3.4, 790) {}  node (good) at (axis cs:28, 790) {} (bad) -- (good);
 \end{loglogaxis}
 \let\d\relax
 \newlength\d
