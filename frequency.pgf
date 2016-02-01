@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=3 by 1,
+			horizontal sep=1em,
+			y descriptions at=edge left,
+			},
+		scale only axis,
+		width=0.33\textwidth-2em,%
+		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+		xlabel={$f$ (\si{\hertz})},
+		xmode=log, ymode=log,
+		ymin=0.4, ymax=2e4,
+		xmin=0.01, xmax=10,
+		xtickten={-2, -1, ...,0},
+		%height=9\baselineskip,%
+		%ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
+		]
+		\nextgroupplot
+			\addplot[mark=square*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
+			\addplot[mark=square, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
+			\addplot[mark=triangle*] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot[mark=triangle] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot[mark=*, lightgray] table[x=frequency, y=G']{PPyCl0CL70unit_80gperL.freq};
+			\addplot[mark=o, lightgray] table[x=frequency, y=G'']{PPyCl0CL70unit_80gperL.freq};
+
+		\nextgroupplot%[xmin=1e-3, xmax=1e2,xtickten={-3, -2, ...,1}]
+			\addplot[mark=triangle*] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot[mark=triangle] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot[mark=triangle*, mark options={rotate=180}] table[x=frequency, y=G']{PImI0CL70unit_80gperL.freq};
+			\addplot[mark=triangle, mark options={rotate=180}] table[x=frequency, y=G'']{PImI0CL70unit_80gperL.freq};
+
+		\nextgroupplot[xtickten={-2, -1, ...,1},]
+			\addplot[mark=square*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
+			\addplot[mark=square, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
+			\addplot[mark=diamond*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{ImBr_70_PO3_8pc_ter.freq};
+			\addplot[mark=diamond, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{ImBr_70_PO3_8pc_ter.freq};
+\end{groupplot}
+\begin{scope}[every node/.style={anchor=south east, text height=0.8em, text depth=0.2em}]
+	\node at (g c1r1.south east) {(a)};
+	\node at (g c2r1.south east) {(b)};
+	\node at (g c3r1.south east) {(c)};
+\end{scope}
+\end{tikzpicture}
+%\hrule
