@@ -31,7 +31,7 @@ width0pt\right\delimright$};}}
 \makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}\\
 };
 \draw[-stealth, thick] (m-1-1.base east) -- (m-1-2.base west) node[midway, above, -]{\chemfig{[:60]=!{mono}OH}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
-\draw[-stealth, thick] (m-1-2) -- (m-2-1) node[midway, above, sloped]{\ce{TMS-Br}} node[midway, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2-Cl2}\linebreak \SI{85}{\celsius}};
+\draw[-stealth, thick] (m-1-2) -- (m-2-1) node[midway, above, sloped]{\ce{TMS-Br}} node[midway, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
 \draw[-stealth, thick] (m-2-1) -- (m-2-2.west |- m-2-1) node[midway, above]{Nu} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
 \node[anchor=south east] at (m-1-2.south east) {\ce{POH}};
 \node[anchor=south east] at (m-2-1.south east) {\ce{PBr}};
