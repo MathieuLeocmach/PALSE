@@ -5,7 +5,7 @@
 	width=0.33\textwidth-2em,
 	xlabel = $A$,
 	ylabel = $n$,
-	]1.04, 44.88, 0.99, 112.52
+	]%1.04, 44.88, 0.99, 112.52
 	\addplot[only marks] coordinates {(1.090233298, 1.04) (6.98656403, 44.88) (1.000001279, 0.99) (9.589224893, 112.52) (3.4, 790)};
 	\addplot[no marks, domain=1:30] {x^2};
 	\draw[->, dotted, every node/.style={inner sep=0, minimum width=4pt, circle}] node[fill] (bad) at (axis cs:3.4, 790) {}  node (good) at (axis cs:28, 790) {} (bad) -- (good);
@@ -17,66 +17,52 @@
 \let\rscr\relax
 \newlength\rscr
 \setlength{\rscr}{3\d}
-\begin{scope}[shift=(ax.outer south east), xshift=-\textwidth]
-\path[radius=\rscr, every node/.style={circle, draw, inner sep=0, minimum width=\d}, head/.style={fill=black}, cl/.style={dotted,fill, fill opacity=0.1, minimum width=3\d}] (45\d,4\d) 
-arc[start angle=0, delta angle=60] 
-foreach \i [evaluate=\i as \p using {\i/3}] in {0,...,3} {node[pos=\p]{}}
-arc[start angle=-120, delta angle=-80]
-foreach \i [evaluate=\i as \p using {\i/4}] in {1,...,4} {node[pos=\p]{}}
-node[head]{}
-arc[start angle=-40, delta angle=240]
-foreach \i [evaluate=\i as \p using {\i/12}] in {1,...,7} {node[pos=\p]{}}
-node[head, pos=8/12]{}
-node[cl, pos=4/12] (CL1) {}
-foreach \i [evaluate=\i as \p using {\i/12}] in {9,...,12} {node[pos=\p]{}}
-arc[start angle=20, delta angle=-140]
-foreach \i [evaluate=\i as \p using {\i/7}] in {1,...,3} {node[pos=\p]{}}
+\begin{scope}[
+	shift=(ax.outer south east), xshift=-\textwidth,
+	radius=\rscr, 
+	decoration={markings,
+		mark=between positions 0 and 1 step \d
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.style={circle, draw, inner sep=0, minimum width=\d}, 
+	head/.style={fill=black}, cl/.style={dotted,fill, fill opacity=0.1, minimum width=3\d},
+	]
+\draw[decorate]
+	(45\d,4\d) 
+	arc[start angle=0, delta angle=60] 
+	arc[start angle=-120, delta angle=-80]
+	arc[start angle=-40, delta angle=240]
+	arc[start angle=20, delta angle=-140]
+	arc[start angle=20, delta angle=80]
+	arc[start angle=-100, delta angle=-120]
+	arc[start angle=-40, delta angle=200]
+	arc[start angle=-40, delta angle=-100]
+	arc[start angle=40, delta angle=180]
+	arc[start angle=40, delta angle=-160]
+	;
+%draw heads
+\foreach \x in {8,16,...,72}
+	\node[head] at (mark-\x){};
+
 %labeling electrostatic blob diameter
-node[pos=6/7, rectangle, draw=none, minimum width=\d, minimum height=3\d] (D) {}
-node[head, pos=4/7]{}
-foreach \i [evaluate=\i as \p using {\i/7}] in {5,...,7} {node[pos=\p]{}}
-arc[start angle=20, delta angle=80]
-foreach \i [evaluate=\i as \p using {\i/4}] in {1,...,4} {node[pos=\p]{}}
-arc[start angle=-100, delta angle=-120]
-node[head, pos=1/6]{}
-foreach \i [evaluate=\i as \p using {\i/6}] in {2,...,6} {node[pos=\p]{}}
-node[cl, pos=5/6] (CL2){}
-arc[start angle=-40, delta angle=200]
-foreach \i [evaluate=\i as \p using {\i/10}] in {1,...,2} {node[pos=\p]{}}
-node[head, pos=3/10]{}
-foreach \i [evaluate=\i as \p using {\i/10}] in {4,...,10} {node[pos=\p]{}}
+\node[rectangle, draw=none, minimum width=\d, minimum height=3\d] (D) at (mark-26){};
 %labeling persistance length
-node[pos=2/10, rectangle, draw=none, minimum width=3\d, minimum height=3\d] (gsrc) {}
-arc[start angle=-40, delta angle=-100]
-node[head, pos=1/5]{}
-foreach \i [evaluate=\i as \p using {\i/5}] in {2,...,5} {node[pos=\p]{}}
-arc[start angle=40, delta angle=180]
-foreach \i [evaluate=\i as \p using {\i/9}] in {1,...,3} {node[pos=\p]{}}
-node[head, pos=4/9]{}
-foreach \i [evaluate=\i as \p using {\i/9}] in {5,...,9} {node[pos=\p]{}}
-node[cl, pos=7/9] (CL3) {}
-%node[head, pos=9/11]{}
-arc[start angle=40, delta angle=-60]
-foreach \i [evaluate=\i as \p using {\i/3}] in {1,...,3} {node[pos=\p]{}}
-node[head]{}
-%end of the main chain, now deal with cross-links
-(CL1) arc[start angle=-60, delta angle=160]
-node[head, pos=1/8]{}
-foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
-%
-(CL2) arc[start angle=80, delta angle=160]
-node[head, pos=1/8]{}
-foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
-%
-(CL3) arc[start angle=-60, delta angle=-160]
-node[head, pos=1/8]{}
-foreach \i [evaluate=\i as \p using {\i/8}] in {2,...,8} {node[pos=\p]{}}
-;
-% lengths
-\draw[gray] (gsrc.north) -- +(2\d,0) (gsrc.south) -- +(2\d,0) [<->] (gsrc.south east) -- (gsrc.north east) node[midway, right] {$r_\mathrm{scr}$};
-\draw[gray] (D.west) -- +(0,-2\d) (D.east) -- +(0,-2\d) [<->] (D.south west) -- (D.south east) node[midway, below] {$D$};
-\draw[<->] (CL3.center) -- (CL2.center) node[midway, below, sloped]{$R$};
+\node[rectangle, draw=none, minimum width=3\d, minimum height=3\d] (gsrc) at (mark-41) {};
+
+%cross links
+\foreach \x/\sa/\da in {12/-60/160,36/90/160,60/-100/-160}{
+	\node[cl] at (mark-\x){};
+	%side chains /!\ renames mark nodes from 1 to 8
+	\draw[decorate] (mark-\x) arc[start angle=\sa, delta angle=\da];
+	\node[head] at (mark-2){};
+	};
+
 \end{scope}
+% lengths
+\draw[gray] (D.west) -- +(0,-2\d) (D.east) -- +(0,-2\d) [<->] (D.south west) -- (D.south east) node[midway, below] {$D$};
+\draw[gray] (gsrc.north) -- +(2\d,0) (gsrc.south) -- +(2\d,0) [<->] (gsrc.south east) -- (gsrc.north east) node[midway, right] {$r_\mathrm{scr}$};
+\draw[<->] (mark-60.center) -- (mark-36.center) node[midway, below, sloped]{$R$};
+
 \node[anchor=north west] at (ax.north west) (b) {(b)};
 \node[anchor=base west] at ($(b-|ax.outer east)+(-\textwidth,0)$) {(a)};
 %\draw (ax.outer south east) -- +(-\textwidth,0);
