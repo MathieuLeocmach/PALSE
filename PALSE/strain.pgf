@@ -1,43 +1,65 @@
 \begin{tikzpicture}
+\pgfplotscreateplotcyclelist{moduli}{
+	black, mark=*\\%
+	black, mark=square\\%
+}
 \begin{groupplot}[
 	group style={
-			group name=g, group size=3 by 1,
+			group name=g, group size=3 by 2,
 			horizontal sep=1em,
+			vertical sep=1em,
 			y descriptions at=edge left,
+			x descriptions at=edge bottom,
 			},
 		scale only axis,
 		width=0.33\textwidth-2em,%
 		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
 		xlabel={$\gamma$},
 		xmode=log, ymode=log,
+		xmin=1e-3, xmax=9e1,
 		ymin=0.4, ymax=2e4,
+		cycle list name=moduli,
+		title style={at={(1,0.6)},left,font=\footnotesize},
+		axis on top,
 		%height=9\baselineskip,%
 		%ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
 		]
-		\nextgroupplot[xmin=1e-3, xmax=8]
-			\addplot[mark=triangle*] table[x=strain, y=G']{PPyI0CL70unit_80gperL_bis.strain};
-			\addplot[mark=triangle] table[x=strain, y=G'']{PPyI0CL70unit_80gperL_bis.strain};
-			\addplot[mark=square*, gray] table[x=strain, y=G']{PPyBr_70_0pc.strain};
-			\addplot[mark=square, gray] table[x=strain, y=G'']{PPyBr_70_0pc.strain};
-			\addplot[mark=*, lightgray] table[x=strain, y=G']{PPyCl0CL70unit_80gperL.strain};
-			\addplot[mark=o, lightgray] table[x=strain, y=G'']{PPyCl0CL70unit_80gperL.strain};
+		\nextgroupplot[group/empty plot]
+		\nextgroupplot[title=\ce{PIm+Br-},%
+			ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+			yticklabel={\axisdefaultticklabellog}
+			]
+			\fill[lightgray] (axis cs:0.011,1e-1) rectangle (axis cs:8.1, 1e5);
+			\addplot table[x=strain, y=G']{ImBr_70_PO3_8pc_bis.strain};
+			\addplot table[x=strain, y=G'']{ImBr_70_PO3_8pc_bis.strain};
 
-		\nextgroupplot[xmin=1e-3, xmax=1e2,xtickten={-3, -2, ...,1}]
-			\addplot[mark=triangle*] table[x=strain, y=G']{PPyI0CL70unit_80gperL_bis.strain};
-			\addplot[mark=triangle] table[x=strain, y=G'']{PPyI0CL70unit_80gperL_bis.strain};
-			\addplot[mark=triangle*, mark options={rotate=180}] table[x=strain, y=G']{PImI0CL70unit_80gperL.strain};
-			\addplot[mark=triangle, mark options={rotate=180}] table[x=strain, y=G'']{PImI0CL70unit_80gperL.strain};
+		\nextgroupplot[title=\ce{PIm+I-}]
+			\fill[lightgray] (axis cs:0.0179,1e-1) rectangle (axis cs:0.184, 1e5);
+			\addplot table[x=strain, y=G']{PImI0CL70unit_80gperL.strain};
+			\addplot table[x=strain, y=G'']{PImI0CL70unit_80gperL.strain};
 
-		\nextgroupplot[xmin=1e-3, xmax=7e1]
-			\addplot[mark=square*, gray] table[x=strain, y=G']{PPyBr_70_0pc.strain};
-			\addplot[mark=square, gray] table[x=strain, y=G'']{PPyBr_70_0pc.strain};
-			\addplot[mark=diamond*, gray] table[x=strain, y=G']{ImBr_70_PO3_8pc_bis.strain};
-			\addplot[mark=diamond, gray] table[x=strain, y=G'']{ImBr_70_PO3_8pc_bis.strain};
+		\nextgroupplot[title=\ce{PPyr+Cl-}]
+			\fill[lightgray] (axis cs:0.0283,1e-1) rectangle (axis cs:0.12, 1e5);
+			\addplot table[x=strain, y=G']{PPyCl0CL70unit_80gperL.strain};
+			\addplot table[x=strain, y=G'']{PPyCl0CL70unit_80gperL.strain};
+
+		\nextgroupplot[title=\ce{PPyr+Br-}]
+			\fill[lightgray] (axis cs:0.0035,1e-1) rectangle (axis cs:0.022, 1e5);
+			\addplot table[x=strain, y=G']{PPyBr_70_0pc.strain};
+			\addplot table[x=strain, y=G'']{PPyBr_70_0pc.strain};
+
+		\nextgroupplot[title=\ce{PPyr+I-}]
+			\fill[lightgray] (axis cs:1e-3,1e-1) rectangle (axis cs:0.89, 1e5);
+			\addplot table[x=strain, y=G']{PPyI0CL70unit_80gperL_bis.strain};
+			\addplot table[x=strain, y=G'']{PPyI0CL70unit_80gperL_bis.strain};
+			
 \end{groupplot}
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
-	\node at (g c1r1.north east) {(a)};
-	\node at (g c2r1.north east) {(b)};
-	\node at (g c3r1.north east) {(c)};
+	\node at (g c2r1.north east) {(a)};
+	\node at (g c3r1.north east) {(b)};
+	\node at (g c1r2.north east) {(c)};
+	\node at (g c2r2.north east) {(d)};
+	\node at (g c3r2.north east) {(e)};
 \end{scope}
 \end{tikzpicture}
 %\hrule
