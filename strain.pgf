@@ -7,12 +7,13 @@
 	group style={
 			group name=g, group size=3 by 2,
 			horizontal sep=1em,
-			vertical sep=1em,
+			vertical sep=0.5em,
 			y descriptions at=edge left,
 			x descriptions at=edge bottom,
 			},
 		scale only axis,
 		width=0.33\textwidth-2em,%
+		height=7.5\baselineskip,
 		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
 		xlabel={$\gamma$},
 		xmode=log, ymode=log,
@@ -61,5 +62,5 @@
 	\node at (g c2r2.north east) {(d)};
 	\node at (g c3r2.north east) {(e)};
 \end{scope}
-\end{tikzpicture}
+\end{tikzpicture}%
 %\hrule
