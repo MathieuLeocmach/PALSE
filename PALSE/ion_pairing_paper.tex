@@ -219,16 +219,16 @@ We find that the number $n$ of chains between cross-link point goes from 1 in \c
 separate-uncertainty,
 %table-format = 1.3(1),
 }
-\begin{tabular}{l|SSS|SSSSS}
-& {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_0$} & {$\gamma_c$} & {$n$} & {$B$} & {$A$} & {$E_c$} & {$E_c$}\\
-&	{\si{\pascal}} & {\%} & {\%} & & & & {\si{\kilo\joule\per\mole}}& {$k_\mathrm{B}T$}\\\hline&&&&&\\[-10pt]
-\ce{PIm+Br-}	& 13	&	1.1	&	810	&	860	&	930	&	383	&	300	&	120\\
-\ce{PIm+I-}		& 78	&	1.8	&	18	&	122	&	126	&	85	&	116	&	47\\
-\ce{PPyr+Cl-}	& 270 	&	2.8	&	12	&	50.6	&	64	&	52	&	67	&	27\\
-\ce{PPyr+Br-}	& 9800 	& 	0.3	&	2	&	1.15	&	2.8	&	5	&	7.3	&	2.9\\
-\ce{PPyr+I-}	& 8800	&	0.0	&	89	&	1.08	&	2.5	&	4.6	&	7.2	&	2.9\\
+\begin{tabular}{l|SSS|SSSSSS}
+& {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_0$} & {$\gamma_c$} & {$n$} & {$B$} & {$E_c$} & {$E_c$} & {$D$} & {$A$}\\
+&	{\si{\pascal}} & {\%} & {\%} & & & {\si{\kilo\joule\per\mole}}& {$k_\mathrm{B}T$} & {$\ell_B$}&\\\hline&&&&&\\[-10pt]
+\ce{PIm+Br-}	& 13	&	1.1	&	810	&	860	&	930	&	210	&	84	&	13	&	460\\
+\ce{PIm+I-}		& 78	&	1.8	&	18	&	122	&	126	&	80	&	32	&	5	&	103\\
+\ce{PPyr+Cl-}	& 270 	&	2.8	&	12	&	50.6	&	64	&	46	&	19	&	3.4	&	62\\
+\ce{PPyr+Br-}	& 9800 	& 	0.3	&	2	&	1.15	&	2.8	&	5.05	&	2.02	&	0.7	&	6\\
+\ce{PPyr+I-}	& 8800	&	0.0	&	89	&	1.08	&	2.5	&	5	&	2	&	0.7	&	5.5\\
 \end{tabular}
-\caption{Summary of rheological measurements and microscopic values deduced from the model. $A$ and $E_c$ are obtained supposing $\tau=0.588$.}
+\caption{Summary of rheological measurements and microscopic values deduced from the model. $E_c$, $D$ and $A$ are obtained supposing $\tau=0.46$.}
 \label{tab:results}
 \end{table}
 
@@ -251,15 +251,18 @@ A = u^{1/2} \left(\frac{B}{\tau}\right)^{3/4} g_\mathrm{K}^{1/4}
 \label{eq:A}
 \end{equation}.
 
-For the theory to be correct, we need the electrostatic length to be larger than the thermal length, in other words $g_e \geq g_T$. Using Equations (\ref{eq:geD}) and (\ref{eq:B}), we express $g_e$ function of $B$ and $\tau$:
-\begin{equation}
-g_e = \left(\frac{B^3}{g_\mathrm{K}\tau}\right)^{1/2},
-\end{equation}
-which yields the condition $\tau \geq \frac{g_\mathrm{K}}{B}$. This condition it the most stringent for PPyrI (smallest $B$) and yields $\tau \geq 0.58$. In the following we set $\tau$ to this minimal value that corresponds to $\Theta=\SI{450}{\celsius}$.
+We know that $\Theta>\SI{100}{\celsius}$ so $0.2<\tau<1$. In the following we will deduce a more precise measure of $\tau$ and thus values of $A$.
 
-The values we compute for $A$ using Equation (\ref{eq:A}) are shown in Table~\ref{tab:results}. $A$ varies between $4.6$ for \ce{PPyr+I-}, corresponding to $15$ uncondensed counterions per polymer, to $383$ for \ce{PIm+Br-} indicating less than a single dissociated counterion every 5 polymers.
 
-\subsubsection{Extention of the electrostatic blobs}
+%For the theory to be correct, we need the electrostatic length to be larger than the thermal length, in other words $g_e \geq g_T$. Using Equations (\ref{eq:geD}) and (\ref{eq:B}), we express $g_e$ function of $B$ and $\tau$:
+%\begin{equation}
+%g_e = \left(\frac{B^3}{g_\mathrm{K}\tau}\right)^{1/2},
+%\end{equation}
+%which yields the condition $\tau \geq \frac{g_\mathrm{K}}{B}$. This condition it the most stringent for PPyrI (smallest $B$) and yields $\tau \geq 0.58$. In the following we set $\tau$ to this minimal value that corresponds to $\Theta=\SI{450}{\celsius}$.
+%
+%The values we compute for $A$ using Equation (\ref{eq:A}) are shown in Table~\ref{tab:results}. $A$ varies between $4.6$ for \ce{PPyr+I-}, corresponding to $15$ uncondensed counterions per polymer, to $383$ for \ce{PIm+Br-} indicating less than a single dissociated counterion every 5 polymers.
+
+\subsubsection{Extension of the electrostatic blobs}
 
 The fully extended self-avoiding walk is a cylinder of length $R_0 = Nb/Bg_\mathrm{K}$, of diameter $D$, of volume $V = R_0 D^2$ and of area $\Sigma_0 = R_0 D = (R_0 V)^{1/2}$. Extending the cylinder to $R = (\gamma+1) R_0$ while keeping the volume $V$ constant thus creates an extra area 
 $
@@ -271,9 +274,27 @@ that translates into a stretching energy due to the surface tension $k_\mathrm{B
 \label{eq:stretch}
 \end{equation}
 
-If we consider that the head-to-body bonds break at $\gamma_c$, we can extract their bonding energy $E_c$ from Equation (\ref{eq:stretch}). The results are reported in Table~\ref{tab:results}. In the most dissociated \ce{PPyr+I-} and \ce{PPyr+Br-}, the head-to-body bonding energy $E_c$ is compatible with typical ionic bonds, \SI{5}{\kilo\joule\per\mole} in water~\cite{Schneider1992}. However the bonding energy increases with increasing counterion condensation to reach 85\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. Indeed, at high counterion condensation, the electrostatic blobs are large, up to 530 polymers for \ce{PIm+Br-}, and embed head-to-body bonds into compact blobs of low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly~\cite{Rehm2010}.
+If we consider that the head-to-body bonds break at $\gamma_c$, we can express the reduced temperature as
+\begin{equation}
+\tau = B^{1/3} g_\mathrm{K}^{5/3} \left(\frac{1}{(\gamma_c +1)^{1/2} -1}\frac{E_c}{N k_\mathrm{B}T}\right)^{2/3}
+\label{eq:tau}
+\end{equation}
+where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond is not water. One has to keep in mind that the chain is in bad solvent, thus electrostatic blobs have low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}. 
 
+Using Equations~(\ref{eq:geD}) and (\ref{eq:B}) we express the size $D$ of electrostatic blobs function of $B$ and $\tau$:
+\begin{equation}
+g_e = \left(\frac{B^3}{g_\mathrm{K}\tau}\right)^{1/2},\qquad 
+D = b\left(\frac{B}{g_\mathrm{K}^3\tau}\right)^{1/2}.
+\label{eq:DB}
+\end{equation}
 
+We thus expect stronger head-to-body bonds when $B$ is large and the low-polarity environment is extended ($D\gg\ell_\mathrm{B}$). A contrario, the weakest ionic links, closest to their strength in water, should be found in \ce{PPyr+I-} where $B$ is minimum (hopefully $D<\ell_\mathrm{B}$).
+
+Applying Equation~(\ref{eq:tau}) to \ce{PPyr+I-} with $E_c = 2 k_\mathrm{B}T$ yields $\tau \approx 0.46\pm 0.1$. Using this value and Equation (\ref{eq:stretch}) we deduce the bounding energy for each composition, as reported in Table~\ref{tab:results}. Indeed, the bonding energy increases with increasing counterion condensation to reach 60\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. According to Equation (\ref{eq:DB}), in this extreme case an electrostatic blob contains $\approx 500$ polymers which embed the head-to-body bonds in a low-polarity environment 13 times larger than the Bjerrum length. Conversely, for \ce{PPyr+I-} and \ce{PPyr+Br-} electrostatic blobs are smaller than $\ell_\mathrm{B}$, confirming an aqueous microenvironment. Quantitatively, the bonding energy of an ionic bond is inversely proportional to the relative dielectric constant $\epsilon_r$, therefore we need to suppose a local $\epsilon_r$ around 2 (typical of water-insoluble polymers) instead of 80 for water to recover the large bonding energy of \ce{PIm+Br-}.
+
+Table~\ref{tab:results} also shows the values of $A$ deduced from Equation~(\ref{eq:A}) and the measured value of $\tau$. $A$ varies between $5.5$ for \ce{PPyr+I-}, corresponding to $13$ uncondensed counterions per polymer, to $460$ for \ce{PIm+Br-} indicating a single dissociated counterion every 7 polymers.
+
+From purely rheological measurements, we have thus obtained microscopic information on the state of the gel: amount of charge condensation, head-to-body bounding energy and size of a procession.
 
 
 
@@ -281,7 +302,7 @@ If we consider that the head-to-body bonds break at $\gamma_c$, we can extract t
 \section{Conclusion}
 With this work we demonstrated the versatility of our ``head-to-body'' electrostatic approach in the fabrication of hydrogels with readily tunable rheological properties. Thus, depending on the nature of the nucleophile used in the quaternarization step of the polymer, but also on that of the counterion which can be modified in the course of its purification process, we showed that it is possible to manipulate almost at will the gel formability, the density of physical cross-links and the respective magnitudes of the shear modulus and of the shear stress. 
 
-Strongly interacting anions (i.e. small and hard halides, like fluoride) and aromatic cations favour counterion condensation, resulting in too few charges to allow dissolution and gel formation. The hardest gels with the narrowest linear domain are obtained with aliphatic cationic moiety and counterion at the other end of the Hofmeister series that are less bound to the polymer. This gives rise to maximal charge dissociation in water, facilitates charge pairing of the peripheral, iterative cations with the terminal anion and thus affords a very high density of cross-links. In between, in the case of aliphatic cations with a counterion in the middle of the Hofmeister series (\ce{Cl-}) or in the case of aromatic cations and poorly interacting anion, charge dissociation is limited, polymers associate in processions and cross-links are few. We thus obtain soft, highly deformable gels.
+Strongly interacting anions (i.e. small and hard halides, like fluoride) and aromatic cations favour counterion condensation, resulting in too few charges to allow dissolution and gel formation. The hardest gels with the narrowest linear domain are obtained with aliphatic cationic moiety and counterion at the other end of the Hofmeister series that are less bound to the polymer. This gives rise to maximal charge dissociation in water, facilitates charge pairing of the peripheral, iterative cations with the terminal anion and thus affords a very high density of cross-links. In between, in the case of aliphatic cations with a counterion in the middle of the Hofmeister series (\ce{Cl-}) or in the case of aromatic cations and poorly interacting anion, charge dissociation is limited, polymers associate in long processions with strong head-to-body bonds. We thus obtain soft, highly deformable gels. Coincidentally, the mesh size of our gels is always close to the procession persistence length, a regime often encountered in networks of biological semiflexible filaments as collagen or actin\cite{Meng2016}.
 
 To conclude, our procedure yields robust, highly tunable hydrogels from short, linear polymer chains and in the absence of any additive, which could find interesting applications especially in the context of biomaterials. Most importantly, systematic comparisons between the different poly(electrolytes) investigated in this study were used to establish a model linking the microsctructure of the gel to ion pair dissociation efficiency on the individual polymer chains. We hope that this model will join the procession toward future works in supramolecular assemblies.
 
