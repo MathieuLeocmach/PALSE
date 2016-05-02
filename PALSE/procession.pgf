@@ -1,0 +1,57 @@
+\begin{tikzpicture}
+\let\d\relax
+\newlength\d
+\setlength{\d}{0.5em}
+\let\rscr\relax
+\newlength\rscr
+\setlength{\rscr}{3\d}
+\begin{scope}[
+	radius=\rscr, 
+	decoration={markings,
+		mark=between positions 0 and 1 step \d
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.style={circle, draw, inner sep=0, minimum width=\d}, 
+	head/.style={fill=black}, cl/.style={dotted,fill, fill opacity=0.1, minimum width=3\d},
+	]
+\draw[decorate]
+	(45\d,4\d) 
+	arc[start angle=0, delta angle=60] 
+	arc[start angle=-120, delta angle=-80]
+	arc[start angle=-40, delta angle=240]
+	arc[start angle=20, delta angle=-140]
+	arc[start angle=20, delta angle=80]
+	arc[start angle=-100, delta angle=-120]
+	arc[start angle=-40, delta angle=200]
+	arc[start angle=-40, delta angle=-100]
+	arc[start angle=40, delta angle=180]
+	arc[start angle=40, delta angle=-160]
+	;
+%draw heads
+\foreach \x in {8,16,...,72}
+	\node[head] at (mark-\x){};
+
+%labeling electrostatic blob diameter
+\node[rectangle, draw=none, minimum width=\d, minimum height=3\d] (D) at (mark-26){};
+%labeling persistance length
+\node[rectangle, draw=none, minimum width=3\d, minimum height=3\d] (gsrc) at (mark-41) {};
+
+%cross links
+\foreach \x/\sa/\da in {12/-60/160,36/90/160,60/-100/-160}{
+	\node[cl] at (mark-\x){};
+	%side chains /!\ renames mark nodes from 1 to 8
+	\draw[decorate] (mark-\x) arc[start angle=\sa, delta angle=\da];
+	\node[head] at (mark-2){};
+	};
+
+\end{scope}
+% lengths
+\draw[gray] (D.west) -- +(0,-2\d) (D.east) -- +(0,-2\d) [<->] (D.south west) -- (D.south east) node[midway, below] {$D$};
+%\draw[gray] (gsrc.north) -- +(2\d,0) (gsrc.south) -- +(2\d,0) [<->] (gsrc.south east) -- (gsrc.north east) node[midway, right] {$r_\mathrm{scr}$};
+\draw[<->] (mark-39.center) -- (mark-49.center) node[midway, below, sloped]{$r_\mathrm{scr}$};
+%\draw[<->] (mark-60.center) -- (mark-36.center) node[midway, below, sloped]{$R$};
+
+%\node[anchor=north west] at (ax.north west) (b) {(b)};
+%\node[anchor=base west] at ($(b-|ax.outer east)+(-\textwidth,0)$) {(a)};
+%\draw (ax.outer south east) -- +(-\textwidth,0);
+\end{tikzpicture}
