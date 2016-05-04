@@ -14,11 +14,11 @@
 	legend style ={cells={anchor=west},at={(1.02,1)}, anchor=north west},
 	]
 	%name the curves
-	\addplot[name path=xi, draw=none] {6.368 * x^(2/3) * (1 + (x/17.9)^(4/3))^0.25};
-	\addplot[name path=rscr, draw=none] {6.368 * x^(2/3) / (1 + (x/17.9)^(4/3))^0.5};
+	\addplot[name path=xi, draw=none] {6.368 * x^(2/3) * (1 + (x/17.9)^(4/3))^0.25} node[midway, left] {$\xi$};
+	\addplot[name path=rscr, draw=none] {6.368 * x^(2/3) / (1 + (x/17.9)^(4/3))^0.5} node[midway, below] {$r_\mathrm{scr}$};
 	\path[name path=t] (rel axis cs:0,1) -- (rel axis cs:1,1);
 	%compact region
-	\addplot[fill=black!60, draw=none] coordinates {(6.635, 2.17) (595.6, 43.58) (595.6, 1e2) (1e3,1e2)}  \closedcycle;
+	\addplot[fill=black!60, draw=none] coordinates {(6.635, 2.17) (595.6, 43.58) (595.6, 1e2) (1e3,1e2)}  \closedcycle node at (axis cs:20,3.5) {$D$};
 	%random walk
 	\addplot[fill=black!30, draw=none] coordinates {(3.105, 1) (6.635, 2.17) (1e3, 2.17)}  \closedcycle;
 	\addplot[fill=black!30, draw=none] fill between[of=xi and t];
