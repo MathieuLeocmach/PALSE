@@ -1,0 +1,44 @@
+\usepgfplotslibrary{fillbetween}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	xlabel=$A$,
+	ylabel={length$/b$},
+	xmin=1, xmax=1e3,
+	ymin=1, ymax=1e2,
+	domain=1:595.6,
+	axis on top,
+	extra x ticks = {5.5, 6, 62, 103, 460},
+	extra x tick labels = {},
+	extra x tick style  = { grid = major, major grid style={draw=black}, tick style={draw=none}},
+	area legend,
+	legend style ={cells={anchor=west},at={(1.02,1)}, anchor=north west},
+	]
+	%name the curves
+	\addplot[name path=xi, draw=none] {6.368 * x^(2/3) * (1 + (x/17.9)^(4/3))^0.25};
+	\addplot[name path=rscr, draw=none] {6.368 * x^(2/3) / (1 + (x/17.9)^(4/3))^0.5};
+	\path[name path=t] (rel axis cs:0,1) -- (rel axis cs:1,1);
+	%compact region
+	\addplot[fill=black!60, draw=none] coordinates {(6.635, 2.17) (595.6, 43.58) (595.6, 1e2) (1e3,1e2)}  \closedcycle;
+	%random walk
+	\addplot[fill=black!30, draw=none] coordinates {(3.105, 1) (6.635, 2.17) (1e3, 2.17)}  \closedcycle;
+	\addplot[fill=black!30, draw=none] fill between[of=xi and t];
+	%self avoiding walk
+	\addplot[fill=black!10, draw=none] fill between[of=rscr and xi];
+	%linear
+	\addlegendimage{}
+	\legend{,,space filling, random walk,, self avoiding, linear};
+	
+	%constant lengthscales
+	\addplot[domain=1:1e3, dotted] {43.58} node[pos=0, anchor=base west] {$\kappa^{-1}$};
+	\addplot[domain=1:1e3, dotted] {2.173} node[pos=0, anchor=south west, inner ysep=0] {$\xi_T$};
+	\addplot[domain=1:1e3, dotted] {1.904} node[pos=0, anchor=north west, inner ysep=0] {$\ell_\mathrm{B}$};
+	%samples
+	\begin{scope}[every node/.style={rotate=90, anchor=south east, inner ysep=0, font=\footnotesize}]
+	\node at (axis cs:5.5,10) {\ce{PPyr+I-}};
+	\node[anchor=north east] at (axis cs:6,20) {\ce{PPyr+Br-}};
+	\node at (axis cs:62,40) {\ce{PPyr+Cl-}};
+	\node at (axis cs:103,40) {\ce{PIm+I-}};
+	\node at (axis cs:460,20) {\ce{PIm+Br-}};
+	\end{scope}
+\end{loglogaxis}
+\end{tikzpicture}
