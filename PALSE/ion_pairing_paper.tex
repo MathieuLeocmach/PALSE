@@ -100,7 +100,7 @@ The above dependence of solubility on the nature of the counterions follows the 
 
 However Hofmeister series alone cannot explain the difference between soluble \ce{PPyr+Cl-} and insoluble \ce{PIm+Cl-}. This constitutes a strong indication that counterions are more strongly condensed near imidazolium than near pyrrolidinium. Indeed, although both cationic in nature, pyrrolidinium and imidazolium ions have markedly different properties. Because of their aromatic ring, imidazolium ions are particularly prone to promote a variety of supramolecular interactions which strongly contribute to their physicochemical properties, such as \ce{\pi+-\pi} or anion$-\pi^+$.  More recently, \ce{\pi+-\pi+} interactions have also been identified as a distinctive driving force for imidazolium dimerization\cite{Geronimo2011}. Because of strong intercoulombic repulsion, \ce{\pi+-\pi+} interactions are primarily weaker than their \ce{\pi-\pi} counterparts. However it has been established that, in the presence of couterions, the stabilizing effect of \ce{\pi+-\pi+} interaction could reach magnitudes largely exceeding that of the latter\cite{Geronimo2011}. In particular, dimerization of imidazolium-chloride ion pairs have been the object of recent studies, and it has been shown that the involvement of the negatively charged counterion was essential in maximizing the stabilization of the \ce{\pi+-\pi+} complex by minimizing coulombic repulsion between the imidazolium moieties\cite{Matthews2014,Gao2015a}. It is likewise well documented that covalent incorporation of interacting groups within a polymer chain strongly favours intramolecular interactions between these groups, by increasing their so-called effective molarity\cite{Li2003,Mulder2004,Huerta2013}. It is therefore not surprising that both effects participate in making the imidazolium-anion interaction stronger than pyrrolidinium at the detriment of solubility.
 
-Such an insolubility in absence of charge dissociation indicates that the chain is in poor solvent. Locally, the monomers are condensed in collapsed globules to minimize the contacts with water molecules, and solubility on larger scales can only be achieved if the polymer bears enough charges\cite{Khokhlov1980,Raphael1990}. To estimate the $\Theta$-temperature, that delimit bad and good solvent behaviour, we held the two fluoride polymers in water at boiling temperature overnight. No dissolution or swelling was observed, implying that $\Theta>\SI{100}{\celsius}$. %Nonetheless, due to charge dissociation, five of our polyelectrolytes are soluble at \SI{25}{\celsius}.
+Such an insolubility in absence of charge dissociation indicates that the chain is in poor solvent. Locally, the monomers are condensed in collapsed globules to minimize the contacts with water molecules, and solubility on larger scales can only be achieved if the polymer bears enough charges\cite{Khokhlov1980,Raphael1990}. To estimate the $\Theta$-temperature, that delimit poor and good solvent behaviour, we held the two fluoride polymers in water at boiling temperature overnight. No dissolution or swelling was observed, implying that $\Theta>\SI{100}{\celsius}$. %Nonetheless, due to charge dissociation, five of our polyelectrolytes are soluble at \SI{25}{\celsius}.
 
 
 %\begin{figure}
@@ -135,7 +135,7 @@ In the following we show that the correlation between softness and counterion co
 
 \begin{figure}
 \includegraphics{procession.pdf}
-\caption{Processionary model. Sketch of the network in the case of a procession of size $n=3$ between cross-links (gray disks) and a persistence length $r_\mathrm{src}\approx 3D$. Empty circles are not individual monomers but electrostatic blobs of size $D$. Electrostatic blobs containing an anionic head are shown as black filled circles.}
+\caption{Processionary model. Sketch of the network in the case of a procession of size $n=3$ between cross-links (gray disks) and a persistence length $r_\mathrm{src}\approx 6D$. Empty circles are not individual monomers but electrostatic blobs of size $D$. Electrostatic blobs containing an anionic head are shown as black filled circles.}
 \label{fig:dissociation}
 \end{figure}
 
@@ -152,12 +152,16 @@ As we will discuss in the following, all rheological features of the hydrogels s
 
 
 \subsubsection{Conformation at rest}
+\begin{figure}
+\includegraphics{phase_diag.pdf}
+\caption{Conformation of semi-dilute polyelectrolytes at rest at various scales function of dissociated charge frequency. The phase diagram is given for $\tau=0.46$ and for the monomer number density of \ce{PIm+Br-}, although $c$ is slightly different for each sample. Each vertical line represents a sample.}
+\end{figure}
 
 The scaling theory of \citet{Rubinstein1996} describes the structure of a polyelectrolyte chain. In the following, we make the link between this theory and the chemical structure of our polymers. In absence of strain, the structure of a polyelectrolyte chain is organised at various scales.
 
 The smallest scale is the Kuhn length $b$ containing $g_\mathrm{K}$ monomers. For a freely joint chain of tetrahedral carbons $b\approx 367$ pm which corresponds to 3 tetrahedral carbons. Since a monomer counts 2 carbons along the chain $g_\mathrm{K}\approx 3/2$.
 
-In bad solvent, the thermal length $\xi_T$ is larger than $b$. The thermal blob contains $g_T$ monomers and its density is set by the reduced temperature $(g_T/g_\mathrm{K})/\xi_T^3 = \tau/b^3$. Between $b$ and $\xi_T$ we have a persistent random walk $\xi_T = b (g_T/g_\mathrm{K})^{1/2}$. These conditions yields $\xi_T = b/\tau$ and $g_T = g_\mathrm{K}/\tau^2$.
+In poor solvent, the thermal length $\xi_T$ is larger than $b$. The thermal blob contains $g_T$ monomers and its density is set by the reduced temperature $(g_T/g_\mathrm{K})/\xi_T^3 = \tau/b^3$. Between $b$ and $\xi_T$ we have a persistent random walk $\xi_T = b (g_T/g_\mathrm{K})^{1/2}$. These conditions yields $\xi_T = b/\tau$ and $g_T = g_\mathrm{K}/\tau^2$.
 
 At a scale $D$, the electrostatic energy balances the surface energy of the collapsed polymer. We name $g_e$ the number of monomers in the electrostatic blob. If there is a charge every $A$ monomers then there are $g_e/A$ charges in the electrostatic blob. The surface tension is proportional to the number of thermal blobs exposed on the surface $k_\mathrm{B}T/\xi_T^2$, with $k_\mathrm{B}$ the Boltzmann constant and $T$ the temperature. Thus the balance of energies writes:
 \begin{equation}\left(\frac{D}{\xi_T}\right)^2 = \left(\frac{g_e}{A}\right)^2 \frac{\ell_\mathrm{B}}{D},
@@ -178,7 +182,7 @@ B = \frac{g_e}{g_\mathrm{K}}\frac{b}{D} = \left(\frac{A^2}{u}\right)^{2/3} g_\ma
 At constant solvent quality and polymer architecture, $B$ is thus monotonically related to the amount of counterion condensation. In the following we will estimate $B$ from rheological measurements.
 
 
-In dilute solution, the chain is a linear rod of length $L= N b / B g_\mathrm{K}$. The overlap concentration is thus $c^* = N/L^3 = g_\mathrm{K}B / b L^2$. Following \cite{Dobrynin1995}, for a monomer concentration $c > c^*$ and in absence of salt the screening length is
+In dilute solution, the chain is a linear rod of length $L= N b / B g_\mathrm{K}$. The overlap concentration is thus $c^* = N/L^3 = B g_\mathrm{K} / b L^2$. Following \cite{Dobrynin1995}, for a monomer concentration $c > c^*$ and in absence of salt the screening length is
 \begin{equation}
 r_\mathrm{src} = L \left(\frac{c^*}{c}\right)^{1/2} =  \left(\frac{B g_\mathrm{K}}{cb}\right)^{1/2}.
 \label{eq:rscrNoSalt}
@@ -279,7 +283,7 @@ If we consider that the head-to-body bonds break at $\gamma_c$, we can express t
 \tau = B^{1/3} g_\mathrm{K}^{5/3} \left(\frac{1}{(\gamma_c +1)^{1/2} -1}\frac{E_c}{N k_\mathrm{B}T}\right)^{2/3}
 \label{eq:tau}
 \end{equation}
-where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond is not water. One has to keep in mind that the chain is in bad solvent, thus electrostatic blobs have low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}. 
+where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond is not water. One has to keep in mind that the chain is in poor solvent, thus electrostatic blobs have low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}. 
 
 Using Equations~(\ref{eq:geD}) and (\ref{eq:B}) we express the size $D$ of electrostatic blobs function of $B$ and $\tau$:
 \begin{equation}
