@@ -135,7 +135,7 @@ In the following we show that the correlation between softness and counterion co
 
 \begin{figure}
 \includegraphics{procession.pdf}
-\caption{Processionary model. Sketch of the network in the case of a procession of size $n=3$ between cross-links (gray disks) and a persistence length $r_\mathrm{src}\approx 6D$. Empty circles are not individual monomers but electrostatic blobs of size $D$. Electrostatic blobs containing an anionic head are shown as black filled circles.}
+\caption{Processionary model. Sketch of the network in the case of a procession of size $n=3$ between cross-links (gray disks) and a persistence length $r_\mathrm{scr}\approx 6D$. Empty circles are not individual monomers but electrostatic blobs of size $D$. Electrostatic blobs containing an anionic head are shown as black filled circles.}
 \label{fig:dissociation}
 \end{figure}
 
@@ -161,7 +161,11 @@ The scaling theory of \citet{Rubinstein1996} describes the structure of a polyel
 
 The smallest scale is the Kuhn length $b$ containing $g_\mathrm{K}$ monomers. For a freely joint chain of tetrahedral carbons $b\approx 367$ pm which corresponds to 3 tetrahedral carbons. Since a monomer counts 2 carbons along the chain $g_\mathrm{K}\approx 3/2$.
 
-In poor solvent, the thermal length $\xi_T$ is larger than $b$. The thermal blob contains $g_T$ monomers and its density is set by the reduced temperature $(g_T/g_\mathrm{K})/\xi_T^3 = \tau/b^3$. Between $b$ and $\xi_T$ we have a persistent random walk $\xi_T = b (g_T/g_\mathrm{K})^{1/2}$. These conditions yields $\xi_T = b/\tau$ and $g_T = g_\mathrm{K}/\tau^2$.
+In poor solvent, the thermal length $\xi_T$ is larger than $b$. The thermal blob contains $g_T$ monomers and its density is set by the reduced temperature $(g_T/g_\mathrm{K})/\xi_T^3 = \tau/b^3$. Between $b$ and $\xi_T$ we have a persistent random walk $\xi_T = b (g_T/g_\mathrm{K})^{1/2}$. These conditions yields 
+\begin{equation}
+\xi_T = b/\tau,\qquad g_T = g_\mathrm{K}/\tau^2
+\label{eq:thermal}
+\end{equation}
 
 At a scale $D$, the electrostatic energy balances the surface energy of the collapsed polymer. We name $g_e$ the number of monomers in the electrostatic blob. If there is a charge every $A$ monomers then there are $g_e/A$ charges in the electrostatic blob. The surface tension is proportional to the number of thermal blobs exposed on the surface $k_\mathrm{B}T/\xi_T^2$, with $k_\mathrm{B}$ the Boltzmann constant and $T$ the temperature. Thus the balance of energies writes:
 \begin{equation}\left(\frac{D}{\xi_T}\right)^2 = \left(\frac{g_e}{A}\right)^2 \frac{\ell_\mathrm{B}}{D},
@@ -175,37 +179,41 @@ g_e = \frac{A^2}{u g_\mathrm{K}} \tau, \qquad D = b\left(\frac{A^2}{u g_\mathrm{
 
 We define the extension parameter $B$ as the ratio between the length of a chain of $g_e$ monomers fully extended and the actual size of the electrostatic blob: 
 \begin{equation}
-B = \frac{g_e}{g_\mathrm{K}}\frac{b}{D} = \left(\frac{A^2}{u}\right)^{2/3} g_\mathrm{K}^{-1/3}\tau
+B = \frac{g_e}{g_\mathrm{K}}\frac{b}{D} = \left(\frac{A^2}{u g_\mathrm{K}^2}\right)^{2/3} \tau
 \label{eq:B}
 \end{equation}
 
-At constant solvent quality and polymer architecture, $B$ is thus monotonically related to the amount of counterion condensation. In the following we will estimate $B$ from rheological measurements.
+At constant solvent quality and polymer architecture, $B$ is thus monotonically related to the amount of counterion condensation. In the following we will use $B$ as our main variable and estimate it from rheological measurements. We conveniently combine Equations~(\ref{eq:geD}) and (\ref{eq:B}) to express $g_e$ and $D$ function of $B$:
+\begin{equation}
+g_e = \left(\frac{B^3}{\tau}\right)^{1/2} g_\mathrm{K},\qquad D = b \left(\frac{B}{\tau}\right)^{1/2}.
+\label{eq:geDfromB}
+\end{equation}
 
 
 In dilute solution, the chain is a linear rod of length $L= N b / B g_\mathrm{K}$. The overlap concentration is thus $c^* = N/L^3 = B g_\mathrm{K} / b L^2$. Following \cite{Dobrynin1995}, for a monomer concentration $c > c^*$ and in absence of salt the screening length is
 \begin{equation}
-r_\mathrm{src} = L \left(\frac{c^*}{c}\right)^{1/2} =  \left(\frac{B g_\mathrm{K}}{cb}\right)^{1/2}.
+r_\mathrm{scr} = L \left(\frac{c^*}{c}\right)^{1/2} =  \left(\frac{B g_\mathrm{K}}{cb}\right)^{1/2}.
 \label{eq:rscrNoSalt}
 \end{equation}
 
-In the presence of added salt, electrostatic interactions are screened at the Debye length $r_\mathrm{src} = \left(\ell_\mathrm{B} c_s\right)^{-1/2}$. For arbitrary salt concentration,
+In the presence of added salt, electrostatic interactions are screened at the Debye length $r_\mathrm{scr} = \left(\ell_\mathrm{B} c_s\right)^{-1/2}$. For arbitrary salt concentration,
 \begin{equation}
-r_\mathrm{src} = \left(\frac{B g_\mathrm{K}}{cb}\right)^{1/2} \left(1+ B u \frac{c_s}{c} g_\mathrm{K}\right)^{-1/2}.
+r_\mathrm{scr} = \left(\frac{B g_\mathrm{K}}{cb}\right)^{1/2} \left(1+ B u \frac{c_s}{c} g_\mathrm{K}\right)^{-1/2}.
 \label{eq:rscr}
 \end{equation}
 
-Between $D$ and $r_\mathrm{src}$ the electrostatic blobs are organised in a linear rod containing $g_\mathrm{src}$ monomers. The length of this rod is $B$ times shorter than if the electrostatic blobs were extended:
+Between $D$ and $r_\mathrm{scr}$ the electrostatic blobs are organised in a linear rod containing $g_\mathrm{scr}$ monomers. The length of this rod is $B$ times shorter than if the electrostatic blobs were extended:
 \begin{equation}
-g_\mathrm{src} = B \frac{r_\mathrm{src}}{b} g_\mathrm{K} = \left(\frac{B^3 g_\mathrm{K}^3}{cb^3}\right)^{1/2} \left(1 + B u \frac{c_s}{c} g_\mathrm{K}\right)^{-1/2}.
+g_\mathrm{scr} = B \frac{r_\mathrm{scr}}{b} g_\mathrm{K} = \left(\frac{B^3 g_\mathrm{K}^3}{cb^3}\right)^{1/2} \left(1 + B u \frac{c_s}{c} g_\mathrm{K}\right)^{-1/2}.
 \label{eq:gscr}
 \end{equation}
 
-The last length scale is the correlation length $\xi$. Between $r_\mathrm{src}$ and $\xi$ the chain forms a self avoiding walk of persistence length $r_\mathrm{src}$. Above the correlation length the polyelectrolyte chain forms a random walk of correlation blobs containing $g=c\xi^3$ monomers.
+The last length scale is the correlation length $\xi$. Between $r_\mathrm{scr}$ and $\xi$ the chain forms a self avoiding walk of persistence length $r_\mathrm{scr}$. Above the correlation length the polyelectrolyte chain forms a random walk of correlation blobs containing $g=c\xi^3$ monomers.
 
 
 \subsubsection{From modulus to procession length}
 
-If between two crosslinks or entanglements the ``procession'' of polymer chains contains more monomers than $g$ or $g_\mathrm{src}$ it performs a random or self avoiding walk respectively. Each chain is thus an entropic spring of constant stiffness $k_\mathrm{B}T$. The number density of chains is $c/N$ with $c$ the monomer concentration and $N$ the number of monomers between cross-links or entanglements. Therefore, the shear modulus at low strain is given by:
+If between two crosslinks or entanglements the ``procession'' of polymer chains contains more monomers than $g$ or $g_\mathrm{scr}$ it performs a random or self avoiding walk respectively. Each chain is thus an entropic spring of constant stiffness $k_\mathrm{B}T$. The number density of chains is $c/N$ with $c$ the monomer concentration and $N$ the number of monomers between cross-links or entanglements. Therefore, the shear modulus at low strain is given by:
 \begin{equation}
 G = \frac{c}{N}k_\mathrm{B}T,
 \label{eq:G}
@@ -226,13 +234,13 @@ separate-uncertainty,
 \begin{tabular}{@{}l|SSS|SSSSSS@{}}
 & {$G^\prime(\gamma\rightarrow 0)$} & {$\gamma_0$} & {$\gamma_c$} & {$n$} & {$B$} & {$E_c$} & {$E_c$} & {$D$} & {$A$}\\
 &	{\si{\pascal}} & {\%} & {\%} & & & {\si{\kilo\joule\per\mole}}& {$k_\mathrm{B}T$} & {$\ell_B$}&\\\hline&&&&&\\[-10pt]
-\ce{PIm+Br-}	& 13	&	1.1	&	810	&	860	&	930	&	210	&	84	&	13	&	460\\
-\ce{PIm+I-}		& 78	&	1.8	&	18	&	122	&	126	&	80	&	32	&	5	&	103\\
-\ce{PPyr+Cl-}	& 270 	&	2.8	&	12	&	50.6	&	64	&	46	&	19	&	3.4	&	62\\
-\ce{PPyr+Br-}	& 9800 	& 	0.3	&	2	&	1.15	&	2.8	&	5.05	&	2.02	&	0.7	&	6\\
-\ce{PPyr+I-}	& 8800	&	0.0	&	89	&	1.08	&	2.5	&	5	&	2	&	0.7	&	5.5\\
+\ce{PIm+Br-}	& 13	&	1.1	&	810	&	860	&	930	&	210	&	84	&	29	&	850\\
+\ce{PIm+I-}		& 78	&	1.8	&	18	&	122	&	126	&	80	&	32	&	10.6	&	189\\
+\ce{PPyr+Cl-}	& 270 	&	2.8	&	12	&	50.6	&	64	&	46	&	19	&	7.6	&	115\\
+\ce{PPyr+Br-}	& 9800 	& 	0.3	&	2	&	1.15	&	2.8	&	5.05	&	2.02	&	1.6	&	11\\
+\ce{PPyr+I-}	& 8800	&	0.0	&	89	&	1.08	&	2.5	&	5	&	2	&	1.5	&	10\\
 \end{tabular}
-\caption{Summary of rheological measurements and microscopic values deduced from the model. $E_c$, $D$ and $A$ are obtained supposing $\tau=0.46$.}
+\caption{Summary of rheological measurements and microscopic values deduced from the model. $E_c$, $D$ and $A$ are obtained supposing $\tau=0.31$.}
 \label{tab:results}
 \end{table}
 
@@ -251,7 +259,7 @@ Analysing Equation (\ref{eq:solveB}), we identify two physically relevant limit 
 
 Numerical solutions of Equation (\ref{eq:solveB}) are given in Table~\ref{tab:results}. For the same quality of solvent $B$ is monotonically related to the amount of counterion condensation. We thus confirm that our samples are sorted by decreasing counterion condensation (decreasing $B$). More quantitatively, the number $A$ of monomers between dissociated charges is
 \begin{equation}
-A = u^{1/2} \left(\frac{B}{\tau}\right)^{3/4} g_\mathrm{K}^{1/4}
+A = u^{1/2} \left(\frac{B}{\tau}\right)^{3/4} g_\mathrm{K}
 \label{eq:A}
 \end{equation}.
 
@@ -268,35 +276,28 @@ We know that $\Theta>\SI{100}{\celsius}$ so $0.2<\tau<1$. In the following we wi
 
 \subsubsection{Extension of the electrostatic blobs}
 
-The fully extended self-avoiding walk is a cylinder of length $R_0 = Nb/Bg_\mathrm{K}$, of diameter $D$, of volume $V = R_0 D^2$ and of area $\Sigma_0 = R_0 D = (R_0 V)^{1/2}$. Extending the cylinder to $R = (\gamma+1) R_0$ while keeping the volume $V$ constant thus creates an extra area 
+The fully extended self-avoiding walk is a cylinder of length $R_0 = Nb/(Bg_\mathrm{K})$, of diameter $D$, of volume $V = R_0 D^2$ and of area $\Sigma_0 = R_0 D = (R_0 V)^{1/2}$. Extending the cylinder to $R = (\gamma+1) R_0$ while keeping the volume $V$ constant thus creates an extra area 
 $
 \Delta\Sigma = \left(\left(\gamma +1\right)^{1/2} -1\right) \Sigma_0
 $
-that translates into a stretching energy due to the surface tension $k_\mathrm{B}T/\xi_T^2$:
+that translates into a stretching energy due to the surface tension $k_\mathrm{B}T/\xi_T^2$, via Equations~(\ref{eq:thermal}) and (\ref{eq:geDfromB}):
 \begin{equation}
-\frac{E_\mathrm{stretch}}{k_\mathrm{B}T} = \left(\left(\gamma +1\right)^{1/2} -1\right) N \left(\frac{\tau^3}{B g_\mathrm{K}^5}\right)^{1/2}.
+\frac{E_\mathrm{stretch}}{k_\mathrm{B}T} = \left(\left(\gamma +1\right)^{1/2} -1\right) \frac{N}{g_\mathrm{K}} \left(\frac{\tau^3}{B}\right)^{1/2}.
 \label{eq:stretch}
 \end{equation}
 
 If we consider that the head-to-body bonds break at $\gamma_c$, we can express the reduced temperature as
 \begin{equation}
-\tau = B^{1/3} g_\mathrm{K}^{5/3} \left(\frac{1}{(\gamma_c +1)^{1/2} -1}\frac{E_c}{N k_\mathrm{B}T}\right)^{2/3}
+\tau = B^{1/3} \left(\frac{1}{(\gamma_c +1)^{1/2} -1}\frac{g_\mathrm{K}}{N}\frac{E_c}{k_\mathrm{B}T}\right)^{2/3}
 \label{eq:tau}
 \end{equation}
-where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond is not water. One has to keep in mind that the chain is in poor solvent, thus electrostatic blobs have low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}. 
+where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond is not water. One has to keep in mind that the chain is in poor solvent, thus electrostatic blobs have low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}.
 
-Using Equations~(\ref{eq:geD}) and (\ref{eq:B}) we express the size $D$ of electrostatic blobs function of $B$ and $\tau$:
-\begin{equation}
-g_e = \left(\frac{B^3}{g_\mathrm{K}\tau}\right)^{1/2},\qquad 
-D = b\left(\frac{B}{g_\mathrm{K}^3\tau}\right)^{1/2}.
-\label{eq:DB}
-\end{equation}
+From Equation~(\ref{eq:geDfromB}) we know that $D$ increased with $B$. We thus expect stronger head-to-body bonds when $B$ is large and the low-polarity environment is extended ($D\gg\ell_\mathrm{B}$). A contrario, the weakest ionic links, closest to their strength in water, should be found in \ce{PPyr+I-} where $B$ is minimum ($D\approx\ell_\mathrm{B}$).
 
-We thus expect stronger head-to-body bonds when $B$ is large and the low-polarity environment is extended ($D\gg\ell_\mathrm{B}$). A contrario, the weakest ionic links, closest to their strength in water, should be found in \ce{PPyr+I-} where $B$ is minimum (hopefully $D<\ell_\mathrm{B}$).
+Applying Equation~(\ref{eq:tau}) to \ce{PPyr+I-} with $E_c = 2 k_\mathrm{B}T$ yields $\tau \approx 0.31\pm 0.07$, or a $\Theta$-temperature around \SI{160}{\celsius}. Using this value and Equation (\ref{eq:stretch}) we deduce the bounding energy for each composition, as reported in Table~\ref{tab:results}. Indeed, the bonding energy increases with increasing counterion condensation to reach 60\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. According to Equation (\ref{eq:geDfromB}), in this extreme case an electrostatic blob contains $\approx 10^3$ polymers which embed the head-to-body bonds in a low-polarity environment $\approx 30$ times larger than the Bjerrum length. Conversely, for \ce{PPyr+I-} and \ce{PPyr+Br-} the size of electrostatic blobs is comparable to $\ell_\mathrm{B}$, confirming an aqueous microenvironment. Quantitatively, the bonding energy of an ionic bond is inversely proportional to the relative dielectric constant $\epsilon_r$, therefore we need to suppose a local $\epsilon_r$ around 2 (typical of water-insoluble polymers) instead of 80 for water to recover the large bonding energy of \ce{PIm+Br-}.
 
-Applying Equation~(\ref{eq:tau}) to \ce{PPyr+I-} with $E_c = 2 k_\mathrm{B}T$ yields $\tau \approx 0.46\pm 0.1$. Using this value and Equation (\ref{eq:stretch}) we deduce the bounding energy for each composition, as reported in Table~\ref{tab:results}. Indeed, the bonding energy increases with increasing counterion condensation to reach 60\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. According to Equation (\ref{eq:DB}), in this extreme case an electrostatic blob contains $\approx 500$ polymers which embed the head-to-body bonds in a low-polarity environment 13 times larger than the Bjerrum length. Conversely, for \ce{PPyr+I-} and \ce{PPyr+Br-} electrostatic blobs are smaller than $\ell_\mathrm{B}$, confirming an aqueous microenvironment. Quantitatively, the bonding energy of an ionic bond is inversely proportional to the relative dielectric constant $\epsilon_r$, therefore we need to suppose a local $\epsilon_r$ around 2 (typical of water-insoluble polymers) instead of 80 for water to recover the large bonding energy of \ce{PIm+Br-}.
-
-Table~\ref{tab:results} also shows the values of $A$ deduced from Equation~(\ref{eq:A}) and the measured value of $\tau$. $A$ varies between $5.5$ for \ce{PPyr+I-}, corresponding to $13$ uncondensed counterions per polymer, to $460$ for \ce{PIm+Br-} indicating a single dissociated counterion every 7 polymers.
+Table~\ref{tab:results} also shows the values of $A$ deduced from Equation~(\ref{eq:A}) and the measured value of $\tau$. $A$ varies between $10$ for \ce{PPyr+I-}, corresponding to $7$ uncondensed counterions per polymer, to $850$ for \ce{PIm+Br-} indicating a single dissociated counterion every $12$ polymers.
 
 From purely rheological measurements, we have thus obtained microscopic information on the state of the gel: amount of charge condensation, head-to-body bounding energy and size of a procession.
 
