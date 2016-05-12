@@ -157,15 +157,18 @@ As we will discuss in the following, all rheological features of the hydrogels s
 
 The scaling theory of \citet{Rubinstein1996} describes the structure of a polyelectrolyte chain. In the following, we make the link between this theory and the chemical structure of our polymers. In absence of strain, the structure of a polyelectrolyte chain is organised at various scales, sketched on Figure~\ref{fig:phasediag}.
 
+\paragraph{Kuhn length}
 The smallest scale is the Kuhn length $b$ containing $g_\mathrm{K}$ monomers. For a freely joint chain of tetrahedral carbons $b\approx 367$ pm which corresponds to 3 tetrahedral carbons. Since a monomer counts 2 carbons along the chain $g_\mathrm{K}\approx 3/2$.
 
+\paragraph{Thermal length}
 In poor solvent, the reduced temperature $\tau = 1 -T/\Theta$ is smaller than 1 and the thermal length $\xi_T$ is larger than $b$. The thermal blob contains $g_T$ monomers and its density is set by the reduced temperature so that $(g_T/g_\mathrm{K})/\xi_T^3 = \tau/b^3$. Between $b$ and $\xi_T$ we have a persistent random walk $\xi_T = b (g_T/g_\mathrm{K})^{1/2}$. These conditions yields 
 \begin{equation}
 \xi_T = b/\tau,\qquad g_T = g_\mathrm{K}/\tau^2
 \label{eq:thermal}
 \end{equation}
 
-On can further define a third characteristic length $D$ at which the electrostatic energy balances the surface energy of the collapsed polymer. $D$ defines the size of the electrostatic blob and we name $g_e$ the number of monomers in it. Due to counterion condensation, not all monomers are charged. If there is a charge every $A$ monomers then there are $g_e/A$ charges in the electrostatic blob and the electrostatic energy write $E_e = (g_e/A)^2 e^2/(4\pi\epsilon)$, with $e$ the elementary charge and $\epsilon$ the dielectric constant of the solvent. The surface energy is proportional to the number of thermal blobs exposed on the surface $E_s = k_\mathrm{B}T (D/\xi_T)^2$. The balance of energies yields:
+\paragraph{Electrostatic length}
+One can further define a third characteristic length $D$ at which the electrostatic energy balances the surface energy of the collapsed polymer. $D$ defines the size of the electrostatic blob and we name $g_e$ the number of monomers in it. Due to counterion condensation, not all monomers are charged. If there is a charge every $A$ monomers then there are $g_e/A$ charges in the electrostatic blob and the electrostatic energy write $E_e = (g_e/A)^2 e^2/(4\pi\epsilon)$, with $e$ the elementary charge and $\epsilon$ the dielectric constant of the solvent. The surface energy is proportional to the number of thermal blobs exposed on the surface $E_s = k_\mathrm{B}T (D/\xi_T)^2$. The balance of energies yields:
 \begin{equation}\left(\frac{D}{\xi_T}\right)^2 = \left(\frac{g_e}{A}\right)^2 \frac{\ell_\mathrm{B}}{D},
 \label{eq:electrosurface}
 \end{equation}
@@ -184,9 +187,35 @@ B = \frac{g_e}{g_\mathrm{K}}\frac{b}{D} = \left(\frac{A^2}{u g_\mathrm{K}^2}\rig
 At constant solvent quality and polymer architecture, $B$ is thus monotonically related to $A$ and thus to the amount of counterion condensation. In the following we will use $B$ as our main variable and estimate it from rheological measurements. We conveniently combine Equations~(\ref{eq:geD}) and (\ref{eq:B}) to express $g_e$ and $D$ function of $B$:
 \begin{equation}
 g_e = \left(\frac{B^3}{\tau}\right)^{1/2} g_\mathrm{K},\qquad D = b \left(\frac{B}{\tau}\right)^{1/2}.
+\label{eq:geDfromlargeB}
+\end{equation}
+
+From Equations~(\ref{eq:thermal}) and (\ref{eq:geDfromlargeB}) we observe that for $B<1/\tau$ the size of the electrostatic blob should be smaller than the thermal length and the assumptions behind Equation~(\ref{eq:electrosurface}) break down. In the regime $B\ll 1/\tau$, most of the counterions are not condensed and poor solvent attraction competes directly against electrostatic repulsion. The size of the electrostatic blob is given by this balance of energies:
+\begin{equation}
+\left(\frac{b}{D}\right)^3\left(\frac{g_e}{g_K}\right)^2 \tau = \left(\frac{ge}{A}\right)^2 \frac{\ell_\mathrm{B}}{D}
+\label{eq:poorelec}
+\end{equation}
+yielding, with $D = b(g_e/g_\mathrm{K})^{1/2}$,
+\begin{equation}
+D = b \left(\frac{A^2\tau}{u g_\mathrm{K}^2}\right)^{1/2}, \qquad g_e = \frac{A^2\tau}{u g_\mathrm{K}},
+\end{equation}
+
+The extension parameter $B$ is expressed in this regime as
+\begin{equation}
+B = \frac{g_e}{g_\mathrm{K}}\frac{b}{D} = \left(\frac{g_e}{g_\mathrm{K}^2}\right)^{1/2}, \qquad D = bB, \qquad g_e = B^2 g_\mathrm{K}
+\label{eq:geDfromsmallB}
+\end{equation}
+
+We describe the crossover between weak and strong counterion condensation regimes by
+\begin{equation}
+D = bB (1+B\tau)^{-1/2}, \qquad
+A = u^{1/2} g_\mathrm{K} \frac{B}{\tau^{1/2}}(1+B\tau)^{-1/4}.
 \label{eq:geDfromB}
 \end{equation}
 
+
+
+\paragraph{Screening length}
 The next length scale is the screening length $r_\mathrm{src}$. Between $D$ and $r_\mathrm{scr}$ the electrostatic blobs are organised in a linear rod containing $g_\mathrm{scr}$ monomers. A rod is $B$ times shorter than the fully extended $g_\mathrm{scr}/g_\mathrm{K}$ Kuhn segments it contains such that
 \begin{equation}
 r_\mathrm{scr}= g_\mathrm{scr} b / (B g_\mathrm{K}).
@@ -210,6 +239,7 @@ g_\mathrm{scr} = \left(\frac{B^3 g_\mathrm{K}^3}{cb^3}\right)^{1/2} \left(1 + B 
 \label{eq:gscr}
 \end{equation}
 
+\paragraph{Correlation length}
 The last length scale is the correlation length $\xi$. Between $r_\mathrm{scr}$ and $\xi$ the chain forms a self avoiding walk of persistence length $r_\mathrm{scr}$. Above the correlation length the polyelectrolyte chain forms a random walk of correlation blobs containing $g=c\xi^3$ monomers.
 
 
@@ -259,12 +289,13 @@ with $B_s = c/(u c_s g_\mathrm{K})$ and $B_0 = b c^{1/3} N^{2/3} g_\mathrm{K}^{-
 
 Analysing Equation (\ref{eq:solveB}), we identify two physically relevant limit cases: (i) if $B \ll B_s$ screening is mainly due to uncondensed counterions and $B = B_0$; (ii) if $B \gg B_s$ screening is mainly due to phosphonate heads and $B = \left(B_0^3/B_s\right)^{1/2} > B_0$.
 
-Numerical solutions of Equation (\ref{eq:solveB}) are given in Table~\ref{tab:results}. For the same quality of solvent $B$ is monotonically related to the amount of counterion condensation. Since our samples are sorted by increasing $B$ we confirm that they are sorted by decreasing counterion condensation. To be more quantitative, we extract the number $A$ of monomers between dissociated charges from Equation~(\ref{eq:B}):
-\begin{equation}
-A = u^{1/2} \left(\frac{B}{\tau}\right)^{3/4} g_\mathrm{K}
-\label{eq:A}
-\end{equation}.
-
+Numerical solutions of Equation (\ref{eq:solveB}) are given in Table~\ref{tab:results}. For the same quality of solvent $B$ is monotonically related to the amount of counterion condensation. Since our samples are sorted by increasing $B$ we confirm that they are sorted by decreasing counterion condensation. To be more quantitative, we extract the number $A$ of monomers between dissociated charges from Equation~(\ref{eq:geDfromB})%:
+%\begin{equation}
+%A = u^{1/2} \left(\frac{B}{\tau}\right)^{3/4} g_\mathrm{K}
+%\label{eq:A}
+%\end{equation}
+.
+%
 We know that $\Theta>\SI{100}{\celsius}$ so $0.2<\tau<1$. In the following we will deduce a more precise measure of $\tau$ and thus values of $A$.
 
 
@@ -284,22 +315,22 @@ $
 $
 that translates into a stretching energy due to the surface tension $k_\mathrm{B}T/\xi_T^2$, via Equations~(\ref{eq:thermal}) and (\ref{eq:geDfromB}):
 \begin{equation}
-\frac{E_\mathrm{stretch}}{k_\mathrm{B}T} = \left(\left(\gamma +1\right)^{1/2} -1\right) \frac{N}{g_\mathrm{K}} \left(\frac{\tau^3}{B}\right)^{1/2}.
+\frac{E_\mathrm{stretch}}{k_\mathrm{B}T} = \left(\left(\gamma +1\right)^{1/2} -1\right) \frac{N}{g_\mathrm{K}} (1+B\tau)^{-1/2} \tau^2.
 \label{eq:stretch}
 \end{equation}
 
-If we consider that the head-to-body bonds break at $\gamma_c$, we can express the reduced temperature as
+If we consider that the head-to-body bonds break at $\gamma_c$, the reduced temperature is solution of
 \begin{equation}
-\tau = B^{1/3} \left(\frac{1}{(\gamma_c +1)^{1/2} -1}\frac{g_\mathrm{K}}{N}\frac{E_c}{k_\mathrm{B}T}\right)^{2/3}
+\left(\left((\gamma_c +1)^{1/2} -1\right)\frac{k_\mathrm{B}T}{E_c}\frac{N}{g_\mathrm{K}}\right)^2 \tau^4 - B\tau -1 = 0
 \label{eq:tau}
 \end{equation}
 where $E_c$ is the energy of the head-to-body bond that consists in two ionic bonds. In water the bonding energy between two ions is typically \SI{5}{\kilo\joule\per\mole}\cite{Schneider1992}, thus $E_c\approx 2 k_\mathrm{B}T$. However the medium surrounding the ionic bond cannot in general be described as pure water. As the chain is in poor solvent, electrostatic blobs have a low water content. Such a low polarity microenvironement is well known to enhance otherwise weak electrostatic interactions in protein folding or engineered self-assembly\cite{Rehm2010}.
 
 From Equation~(\ref{eq:geDfromB}) we know that $D$ increased with $B$. We thus expect stronger head-to-body bonds when $B$ is large and the low-polarity environment is extended ($D\gg\ell_\mathrm{B}$). A contrario, the weakest ionic links, closest to their strength in water, should be found in \ce{PPyr+I-} where $B$ is minimum ($D\approx\ell_\mathrm{B}$).
 
-Applying Equation~(\ref{eq:tau}) to \ce{PPyr+I-} with $E_c = 2 k_\mathrm{B}T$ yields $\tau \approx 0.31\pm 0.07$, or a $\Theta$-temperature around \SI{160}{\celsius}. Using this value and Equation (\ref{eq:stretch}) we deduce the bounding energy for each composition, as reported in Table~\ref{tab:results}. Indeed, the bonding energy increases with increasing counterion condensation to reach 60\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. According to Equation (\ref{eq:geDfromB}), in this extreme case an electrostatic blob contains $\approx 10^3$ polymers which embed the head-to-body bonds in a low-polarity environment $\approx 30$ times larger than the Bjerrum length. Conversely, for \ce{PPyr+I-} and \ce{PPyr+Br-} the size of electrostatic blobs is comparable to $\ell_\mathrm{B}$, confirming an aqueous microenvironment. Quantitatively, the bonding energy of an ionic bond is inversely proportional to the relative dielectric constant $\epsilon_r$, therefore we need to suppose a local $\epsilon_r$ around 2 (typical of water-insoluble polymers) instead of 80 for water to recover the large bonding energy of \ce{PIm+Br-}.
+Applying Equation~(\ref{eq:tau}) to \ce{PPyr+I-} with $E_c = 2 k_\mathrm{B}T$ yields $\tau \approx 0.39\pm 0.07$, or a $\Theta$-temperature around \SI{220}{\celsius}. Using this value and Equation (\ref{eq:stretch}) we deduce the bounding energy for each composition, as reported in Table~\ref{tab:results}. Indeed, the bonding energy increases with increasing counterion condensation to reach 85\% of the carbon-carbon single bond (\SI{350}{\kilo\joule\per\mole} or $140 k_\mathrm{B}T$) in the case of \ce{PIm+Br-}. According to Equation (\ref{eq:geDfromlargeB}), in this extreme case an electrostatic blob contains $\approx 10^3$ polymers which embed the head-to-body bonds in a low-polarity environment $\approx 25$ times larger than the Bjerrum length. Conversely, for \ce{PPyr+I-} and \ce{PPyr+Br-} the size of electrostatic blobs is comparable to $\ell_\mathrm{B}$, confirming an aqueous microenvironment. Quantitatively, the bonding energy of an ionic bond is inversely proportional to the relative dielectric constant $\epsilon_r$, therefore we need to suppose a local $\epsilon_r$ around 2 (typical of water-insoluble polymers) instead of 80 for water to recover the large bonding energy of \ce{PIm+Br-}.
 
-Table~\ref{tab:results} also shows the values of $A$ deduced from Equation~(\ref{eq:A}) and the measured value of $\tau$. $A$ varies between $10$ for \ce{PPyr+I-}, corresponding to $7$ uncondensed counterions per polymer, to $850$ for \ce{PIm+Br-} indicating a single dissociated counterion every $12$ polymers.
+Table~\ref{tab:results} also shows the values of $A$ deduced from Equation~(\ref{eq:geDfromB}) and the measured value of $\tau$. $A$ varies between $7$ for \ce{PPyr+I-}, corresponding to $10$ uncondensed counterions per polymer, to $700$ for \ce{PIm+Br-} indicating a single dissociated counterion every $10$ polymers.
 
 From purely rheological measurements, we have thus obtained microscopic information on the state of the gel: amount of charge condensation, head-to-body bounding energy and size of a procession.
 
