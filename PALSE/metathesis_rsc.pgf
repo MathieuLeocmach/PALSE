@@ -1,0 +1,48 @@
+\begin{figure}
+\newcommand\setpolymerdelim[2]{\def\delimleft{#1}\def\delimright{#2}}
+\def\makebraces[#1,#2]#3#4#5{%
+\edef\delimhalfdim{\the\dimexpr(#1+#2)/2}%
+\edef\delimvshift{\the\dimexpr(#1-#2)/2}%
+\chemmove{%
+\node[at=(#4),yshift=(\delimvshift)]
+{$\left\delimleft\vrule height\delimhalfdim depth\delimhalfdim
+width0pt\right._{\hspace{-1em}\rlap{$\scriptstyle#3$}}$};%
+\node[at=(#5),yshift=(\delimvshift)]
+{$\left.\vrule height\delimhalfdim depth\delimhalfdim
+width0pt\right\delimright$};}}
+\setpolymerdelim[]
+
+\definesubmol{head}{(-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]}
+\definesubmol{mono}{-[::-60](=O)-[::-60]O-[::60]--[::-60]}
+
+\begin{tikzpicture}[every node/.style={font=\footnotesize\setatomsep{1.5em}}]
+\node (PNuBr) {%
+\chemfig{[:-30]-[@{left,0.25}](%
+	!{mono}Nu^{+}-[0,2,,,draw=none]Br^{-}%
+	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+\makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}%
+};
+\node[right=\columnwidth of PNuBr.base west, anchor=base east] (PNuX) {%
+\chemfig{[:-30]-[@{left,0.25}](%
+	!{mono}Nu^{+}-[0,2,,,draw=none]X^{-}%
+	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+\makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}%
+};
+\draw[-stealth, thick] (PNuBr) -- (PNuX) node[midway, above, -]{\ce{NaX}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{H2O}};
+\node[anchor=south west] at (PNuBr.south east) {X: F, Cl or I};
+\node[anchor=north west] at (PNuBr.north west) {(a)};
+\node[anchor=north west, yshift=-\baselineskip] at (PNuBr.south west) {(b)};
+%\draw (PNuBr.north west) -- +(\columnwidth,0);
+%\begin{scope}[shift={(0.3\columnwidth, -8\baselineskip)}]
+\node at (0.33\columnwidth, -8\baselineskip) {PBr} [->, level distance=5em] 
+	child [grow=east] {node {\ce{PIm+Br-}} [level distance=5em]
+		child[grow=-45] {node {\ce{PIm+F-}}} 
+		child {node {\ce{PIm+Cl-}}} 
+		child[grow=45] {node {\ce{PIm+I-}}}} 
+	child [grow=west] {node {\ce{PPyr+Br-}} [level distance=5em]
+		child[grow=135] {node {\ce{PPyr+F-}}} 
+		child {node {\ce{PPyr+Cl-}}} 
+		child[grow=-135] {node {\ce{PPyr+I-}}}};
+%\end{scope}
+\end{tikzpicture}
+\end{figure}
