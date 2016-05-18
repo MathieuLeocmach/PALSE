@@ -1,17 +1,4 @@
 \begin{figure*}
-\newcommand\setpolymerdelim[2]{\def\delimleft{#1}\def\delimright{#2}}
-\def\makebraces[#1,#2]#3#4#5{%
-\edef\delimhalfdim{\the\dimexpr(#1+#2)/2}%
-\edef\delimvshift{\the\dimexpr(#1-#2)/2}%
-\chemmove{%
-\node[at=(#4),yshift=(\delimvshift)]
-{$\left\delimleft\vrule height\delimhalfdim depth\delimhalfdim
-width0pt\right._{\hspace{-1em}\rlap{$\scriptstyle#3$}}$};%
-\node[at=(#5),yshift=(\delimvshift)]
-{$\left.\vrule height\delimhalfdim depth\delimhalfdim
-width0pt\right\delimright$};}}
-\setpolymerdelim[]
-
 \definesubmol{head}{(-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]}
 \definesubmol{mono}{-[::-60](=O)-[::-60]O-[::60]--[::-60]}
 
@@ -21,20 +8,20 @@ width0pt\right\delimright$};}}
 \chemfig{[:-30]-[@{left,0.25}](%
 	!{mono}OH%
 	)-[::60]-[@{right,0.25}]!{head}PO_3Et_2}%
-\makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}%
 };
+\node[below right=-0.6em and 0 of POH.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \node[right=0.06\textwidth of POH] (PBr) {%
 \chemfig{[:-30]-[@{left,0.25}](%
 	!{mono}Br%
 	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
-\makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}%
 };
+\node[below right=-0.6em and 0 of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \node[right=\textwidth of init.base west, anchor=base east] (PNuBr) {%
 \chemfig{[:-30]-[@{left,0.25}](%
 	!{mono}Nu^{+}-[0,2,,,draw=none]Br^{-}%
 	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
-\makebraces[0.25em,1em]{\!\!\!N_0}{left}{right}%
 };
+\node[below right=-0.6em and 0 of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 
 \draw[-stealth, thick] (init.base east|-POH.west) -- (POH) node[midway, above, -]{\chemfig{[:60]=!{mono}OH}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
 \draw[-stealth, thick] (POH) -- (PBr) node[midway, above]{\ce{TMS-Br}} node[midway, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
