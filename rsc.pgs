@@ -29,6 +29,7 @@
 %%%Please don't disable any packages in the preamble, as this may cause the template to display incorrectly.%%%
 
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{siunitx}
 
 
