@@ -13,7 +13,9 @@
 	extra x tick labels = {},
 	extra x tick style  = { grid = major, major grid style={draw=black}, tick style={draw=none}},
 	area legend,
-	legend style ={cells={anchor=west},at={(1.02,1)}, anchor=north west},
+	legend columns=2,
+	legend style ={cells={anchor=west},at={(0.5,1.03)},
+anchor=south},
 	]
 	%name the curves
 	\addplot[name path=xi, draw=none] 
@@ -60,71 +62,4 @@
 	\node at (axis cs:640,40) {\ce{PIm+Br-}};
 	\end{scope}
 \end{loglogaxis}
-
-\let\pas\relax
-\newlength\pas
-\setlength{\pas}{1em}
-
-%Below Kuhn length
-\draw[every node/.style={draw,font=\tiny, rotate=-90, anchor=west, ellipse, inner sep=0}] (phasediag.south east) ++(2em,3em) -- ++(-45:\pas) node (head1){\ce{Nu+X-}} -- ++(45:\pas) -- ++(-45:\pas) node{\ce{Nu+X-}} -- ++(45:\pas) coordinate (extr);
-\draw[<->] (0,0.5\pas) +(extr) -- +(extr-|head1) node[midway, above]{$b$};
-\node[draw=gray,dotted, inner xsep=0pt, inner ysep=0.25\pas, thick,rectangle,fit=(head1.east) (extr)] (Kuhn){};
-
-%between Kuhn and thermal
-\draw (phasediag.south east) ++(2em,8em) -- ++(-45:\pas) -- ++(-150:\pas) -- ++(10:\pas) -- ++(-120:\pas) -- ++(-25:\pas) coordinate(bl) -- ++(0:\pas) coordinate(br) -- ++(150:\pas) -- ++(-05:\pas) -- ++(150:\pas) -- ++(-190:\pas) -- ++(50:\pas) -- ++(-50:\pas) -- ++(-25:\pas)  -- ++(130:\pas)  -- ++(90:\pas);
-\draw[gray, dotted] (Kuhn.north west) -- (bl) (Kuhn.north east) -- (br);
-\node[draw=gray, dashed, circle, minimum width= 2.17\pas] (thermalg) at ($(phasediag.south east) +(3.5\pas,6.5\pas)$){};
-
-%between thermal and electrostatic
-\draw[shift=(thermalg), xshift=5\pas] circle[radius=0.5\pas] 
-	node[draw=gray, dotted, circle, minimum width= 3\pas] (elec){}
-	foreach \x in {-120,-60,...,180}
-	{(\x:\pas) circle[radius=0.5\pas]} 
-	node[minimum height=\pas] (thermalp){};
-\draw[gray, dashed] (thermalg.north) -- +(1.5\pas,0) coordinate (thh) -- ($(thermalp.north)+(-\pas,0)$) -- (thermalp.north)
-	(thermalg.south) -- +(1.5\pas,0) coordinate (thb) -- ($(thermalp.south)+(-\pas,0)$) -- (thermalp.south);
-\draw[<->] (thh) -- (thb) node[midway, right]{$\xi_T$};
-
-%from electrostatic to screening
-\draw (head1-|elec) node[minimum width=\pas] (elecp){}
-	foreach \x in {0,1,...,7} 
-	{+(\x\pas,0) circle[radius=0.5\pas]}
-	node[minimum width=\pas] (elecp2){}
-	;
-\draw[gray, dotted] (elec.west) -- +(0,-2\pas) coordinate (elg)-- ($(elecp.west)+(0,2\pas)$)-- (elecp.west)
-	(elec.east) -- +(0,-2\pas) coordinate (eld)-- ($(elecp.east)+(0,2\pas)$)-- (elecp.east);
-\draw[<->] (elg) -- (eld) node[midway, below]{$D$};
-
-% from screening to correlation
-\begin{scope}[
-	decoration={markings,
-		mark=between positions 0.5\pas and 1 step \pas
-		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
-		},
-	every node/.style={circle, draw, inner sep=0, minimum width=\pas}, 
-	]
-\draw[postaction={decorate}] (elecp2.east|-elec) --++(-155:\pas) --++(-120:\pas) --++(-140:\pas) --++(180:\pas) --++(140:\pas)  --++(90:\pas) --++(50:\pas) --++(100:\pas);
-\end{scope}
-\draw[gray, dashed] (elecp.west) +(0,-\pas) coordinate (srcg) -- +(0,\pas) -- ($(mark-4.west)+(0,-\pas)$) -- (mark-4.west)
-	(elecp2.east) +(0,-\pas) coordinate (srcd) -- +(0,\pas) -- ($(mark-4.east)+(0,-\pas)$) -- (mark-4.east);
-\draw[<->] (srcg) -- (srcd) node[midway, below]{$r_\mathrm{scr}$};
-\node[draw=gray, dotted, circle, minimum width= 4\pas, anchor=south] at (mark-4.south) (corg) {};
-
-%above correlation length
-%between Kuhn and thermal
-\draw (phasediag.right of north east-|corg.west) ++(0.5\pas,0) -- ++(-45:\pas) -- ++(-150:\pas) -- ++(10:\pas) -- ++(-120:\pas) -- ++(-25:\pas) coordinate(xil) -- ++(0:\pas) coordinate(xir) -- ++(150:\pas) -- ++(-05:\pas) -- ++(150:\pas) -- ++(-190:\pas) -- ++(50:\pas) -- ++(-50:\pas) -- ++(-25:\pas)  -- ++(130:\pas)  -- ++(90:\pas);
-\draw[gray, dotted] (corg.west) -- +(0,2.5\pas) coordinate (xill)-- (xil) (corg.east) -- +(0,2.5\pas)  coordinate (xirr)-- (xir);
-\draw[<->] (xill) -- (xirr) node[midway, above]{$\xi$};
-
-
-
-% \begin{scope}[
-% 	decoration={markings,
-% 		mark=between positions 0 and 1 step \pas
-% 		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
-% 		},
-% 	every node/.style={circle, draw, inner sep=0, minimum width=\pas},
-% 	]
-% \draw[decorate] (phasediag.south east) ++(8\pas, 1.5\pas) -- +(0:\pas);
-% \end{scope}
 \end{tikzpicture}
