@@ -1,0 +1,61 @@
+\begin{figure}
+\begin{tikzpicture}
+\let\pas\relax
+\newlength\pas
+\setlength{\pas}{0.1\columnwidth}
+
+%Below Kuhn length
+\draw[every node/.style={draw, rotate=-90, anchor=west, ellipse, inner sep=0}] (0,0) -- ++(-45:\pas) node (head1){\ce{Nu+X-}} -- ++(45:\pas) -- ++(-45:\pas) node{\ce{Nu+X-}} -- ++(45:\pas) coordinate (extr);
+\draw[<->] (0,0.5\pas) +(extr) -- +(extr-|head1) node[midway, above]{$b$};
+\node[draw=gray,dotted, inner xsep=0pt, inner ysep=0.25\pas, thick,rectangle,fit=(head1.east) (extr)] (Kuhn){};
+
+%between Kuhn and thermal
+\draw (0.1\pas,4\pas+\baselineskip) -- ++(-45:\pas) -- ++(-150:\pas) -- ++(10:\pas) -- ++(-120:\pas) -- ++(-25:\pas) coordinate(bl) -- ++(0:\pas) coordinate(br) -- ++(150:\pas) -- ++(-05:\pas) -- ++(150:\pas) -- ++(-190:\pas) -- ++(50:\pas) -- ++(-50:\pas) -- ++(-25:\pas)  -- ++(130:\pas)  -- ++(90:\pas);
+\draw[gray, dotted] (Kuhn.north west) -- (bl) (Kuhn.north east) -- (br);
+\node[draw=gray, dashed, circle, minimum width= 2.17\pas] (thermalg) at ($(br)+(-0.75\pas,0.75\pas)$){};
+
+%between thermal and electrostatic
+\draw[shift=(thermalg), yshift=3.5\pas+\baselineskip] circle[radius=0.5\pas] 
+	node[draw=gray, dotted, circle, minimum width= 3\pas] (elec){}
+	\foreach \x in {-30,30,...,270}
+	{(\x:\pas) circle[radius=0.5\pas]} 
+	node[minimum width=\pas] (thermalp){}
+;
+\draw[gray, dashed] (thermalg.west) -- +(0,1.5\pas) coordinate (thh) -- ($(thermalp.west)+(0,-0.75\pas)$) -- (thermalp.west)
+	(thermalg.east) -- +(0,1.5\pas) coordinate (thb) -- ($(thermalp.east)+(0,-0.75\pas)$) -- (thermalp.east);
+\draw[<->] (thh) -- (thb) node[midway, above]{$\xi_T$};
+
+%from electrostatic to screening
+\draw[shift=(elec), yshift=3\pas+\baselineskip] node[minimum width=\pas] (elecp){}
+	++(-3\pas,0) node[minimum width=\pas] (elecpl){}
+	\foreach \x in {0,1,...,6} 
+	{+(\x\pas,0) circle[radius=0.5\pas]}
+	node[minimum width=\pas] (elecpr){}
+	;
+\draw[gray, dotted] (elec.west) -- +(0,1.75\pas) coordinate (elg)-- ($(elecp.west)+(0,-0.75\pas)$)-- (elecp.west)
+	(elec.east) -- +(0,1.75\pas) coordinate (eld)-- ($(elecp.east)+(0,-0.75\pas)$)-- (elecp.east);
+\draw[<->] (elg) -- (eld) node[midway, above]{$D$};
+
+% from screening to correlation
+\begin{scope}[
+	decoration={markings,
+		mark=between positions 0.5\pas and 1 step \pas
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.style={circle, draw, inner sep=0, minimum width=\pas}, 
+	]
+\draw[postaction={decorate}] (elecpr.west) ++(0,3.5\pas+\baselineskip) --++(-155:\pas) --++(-120:\pas) --++(-140:\pas) --++(180:\pas) --++(140:\pas)  --++(90:\pas) --++(50:\pas) --++(100:\pas);
+\end{scope}
+\draw[gray, dashed] (elecpl.west)  -- +(0,0.75\pas) coordinate (srcg) -- ($(mark-4.west)+(0,-0.75\pas)$) -- (mark-4.west)
+	(elecpr.east) -- +(0,0.75\pas) coordinate (srcd) -- ($(mark-4.east)+(0,-0.75\pas)$) -- (mark-4.east);
+\draw[<->] (srcg) -- (srcd) node[midway, above]{$r_\mathrm{scr}$};
+\node[draw=gray, dotted, circle, minimum width= 4\pas, anchor=south] at (mark-4.south) (corg) {};
+
+%above correlation length
+\draw[decoration={zigzag, segment length=0.5\pas, amplitude=0.05\pas}, decorate] (corg) ++(-1.5\pas,5\pas+\baselineskip) -- ++(-45:\pas) -- ++(-150:\pas) -- ++(10:\pas) -- ++(-120:\pas) -- ++(-25:\pas) coordinate(xil) -- ++(0:\pas) coordinate(xir) -- ++(150:\pas) -- ++(-05:\pas) -- ++(150:\pas) -- ++(-190:\pas) -- ++(50:\pas) -- ++(-50:\pas) -- ++(-25:\pas)  -- ++(130:\pas)  -- ++(90:\pas);
+\draw[gray, dotted] (corg.west) -- +(0,2.25\pas) coordinate (xill)-- (xil) (corg.east) -- +(0,2.25\pas)  coordinate (xirr)-- (xir);
+\draw[<->] (xill) -- (xirr) node[midway, above]{$\xi$};
+
+%\draw (head1.east) --+(0,\textheight);
+\end{tikzpicture}
+\end{figure}
