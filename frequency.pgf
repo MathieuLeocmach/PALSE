@@ -1,45 +1,60 @@
 \begin{tikzpicture}
+\pgfplotscreateplotcyclelist{moduli}{
+	black, mark=*\\%
+	black, mark=square\\%
+}
 \begin{groupplot}[
-	group style={
-			group name=g, group size=3 by 1,
+		group style={
+			group name=g, group size=3 by 2,
 			horizontal sep=1em,
+			vertical sep=0.5em,
 			y descriptions at=edge left,
+			x descriptions at=edge bottom,
 			},
 		scale only axis,
 		width=0.33\textwidth-2em,%
+		height=7.5\baselineskip,
 		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
 		xlabel={$f$ (\si{\hertz})},
 		xmode=log, ymode=log,
 		ymin=0.4, ymax=2e4,
 		xmin=0.01, xmax=10,
 		xtickten={-2, -1, ...,0},
+		cycle list name=moduli,
+		title style={at={(1,0.6)},left,font=\footnotesize},
 		%height=9\baselineskip,%
 		%ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
 		]
-		\nextgroupplot
-			\addplot[mark=square*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
-			\addplot[mark=square, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
-			\addplot[mark=triangle*] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
-			\addplot[mark=triangle] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
-			\addplot[mark=*, lightgray] table[x=frequency, y=G']{PPyCl0CL70unit_80gperL.freq};
-			\addplot[mark=o, lightgray] table[x=frequency, y=G'']{PPyCl0CL70unit_80gperL.freq};
+		\nextgroupplot[group/empty plot]
+		\nextgroupplot[title=\ce{PIm+Br-},%
+			ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+			yticklabel={\axisdefaultticklabellog}
+			]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{ImBr_70_PO3_8pc_ter.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{ImBr_70_PO3_8pc_ter.freq};
+		
+		\nextgroupplot[title=\ce{PIm+I-}]
+			\addplot table[x=frequency, y=G']{PImI0CL70unit_80gperL.freq};
+			\addplot table[x=frequency, y=G'']{PImI0CL70unit_80gperL.freq};
 
-		\nextgroupplot%[xmin=1e-3, xmax=1e2,xtickten={-3, -2, ...,1}]
-			\addplot[mark=triangle*] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
-			\addplot[mark=triangle] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
-			\addplot[mark=triangle*, mark options={rotate=180}] table[x=frequency, y=G']{PImI0CL70unit_80gperL.freq};
-			\addplot[mark=triangle, mark options={rotate=180}] table[x=frequency, y=G'']{PImI0CL70unit_80gperL.freq};
+		\nextgroupplot[title=\ce{PPyr+Cl-}]
+			\addplot table[x=frequency, y=G']{PPyCl0CL70unit_80gperL.freq};
+			\addplot table[x=frequency, y=G'']{PPyCl0CL70unit_80gperL.freq};
 
-		\nextgroupplot[xtickten={-2, -1, ...,1},]
-			\addplot[mark=square*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
-			\addplot[mark=square, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
-			\addplot[mark=diamond*, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G']{ImBr_70_PO3_8pc_ter.freq};
-			\addplot[mark=diamond, gray] table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{ImBr_70_PO3_8pc_ter.freq};
+		\nextgroupplot[title=\ce{PPyr+Br-}]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
+
+		\nextgroupplot[title=\ce{PPyr+I-}]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
 \end{groupplot}
 \begin{scope}[every node/.style={anchor=south east, text height=0.8em, text depth=0.2em}]
-	\node at (g c1r1.south east) {(a)};
-	\node at (g c2r1.south east) {(b)};
-	\node at (g c3r1.south east) {(c)};
+	\node at (g c2r1.south east) {(a)};
+	\node at (g c3r1.south east) {(b)};
+	\node at (g c1r2.south east) {(c)};
+	\node at (g c2r2.south east) {(d)};
+	\node at (g c3r2.south east) {(e)};
 \end{scope}
 \end{tikzpicture}
 %\hrule
