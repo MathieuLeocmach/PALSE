@@ -29,6 +29,7 @@
 	\draw[-stealth, thick] (init.south-|POH.north) -- (POH) node[midway, left=0, -]{\chemfig{[:-30]=[,,,,ilmorange]!{mono}OH}} node[midway, right=0, text width=0.13\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
 	\draw[-stealth, thick] (POH) -| (PBr) node[pos=0.25, above]{\ce{TMS-Br}} node[pos=0.25, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
 	\draw[-stealth, thick] (PBr) -- (PBr-|PNuBr.west) node[midway, above,align=center,-]{\chemfig[thick, gray]{[2]*5(-N(-)-=N-=)}} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
-	\node[anchor=south] at (POH.south) {\ce{POH}};
-	\node[anchor=south] at (PBr.south) {\ce{PBr}};
+	\node[anchor=south east] at (POH.south east) {\ce{POH}};
+	\node[anchor=south east] at (PBr.south east) {\ce{PBr}};
+	\node[anchor=south east] at (PNuBr.south east) {\ce{PIm+Br-}};
 \end{tikzpicture}

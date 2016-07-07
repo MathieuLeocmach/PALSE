@@ -203,90 +203,11 @@ red!40!yellow,
 \begin{frame}{Fine chemistry}
 	\vspace{\baselineskip}
 	\tikzsetnextfilename{polymerisation}%
-	\let\mrad\relax%
-	\newlength\mrad%
-	\setlength{\mrad}{1ex}%
-	% The face style, can be changed
-	\tikzset{face/.style={
-		shape=circle,minimum size=2\mrad,shading=radial,outer sep=0pt,
-	    inner color=white!50!yellow,outer color= yellow!70!orange
-		}}%
-	\begin{tikzpicture}
-		\foreach \i [evaluate=\i as \dist using \i*0.45] in {0,1,2}{
-			\begin{scope}[xshift=\dist\textwidth]
-			%face
-			\node[face,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black] (emoticon) {};
-			%% The eyes are fixed.
-			\draw[fill=white] 
-				(-0.5\mrad,0ex) ..controls (-0.25\mrad,0.1\mrad)and(0.25\mrad,0.1\mrad)..
-		        (0.5\mrad,0.0pt) ..controls (0.75\mrad,0.75\mrad)and(0.1\mrad,0.85\mrad)..
-		        (0pt,0.2\mrad) ..controls (-0.1\mrad,0.85\mrad)and(-0.75\mrad,0.75\mrad)..
-		        (-0.5\mrad,0pt)--cycle;
-			%% standard pupils
-			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=80] at (0.25\mrad,0.25\mrad) {};
-			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=100] at (-0.25\mrad,0.25\mrad) {};
-			%% mouth
-			\draw[thick,line cap=round] (-0.5\mrad,-0.5\mrad)
-			     ..controls (-0.25\mrad,-0.75\mrad)and(0.25\mrad,-0.75\mrad)..(0.5\mrad,-0.5\mrad);
-			%% horns
-			\draw ( emoticon.80)..controls ( 0.3\mrad,1.2\mrad)..(0.5\mrad,1.25\mrad)
-			      ..controls ( 0.4\mrad,1.15\mrad)..(emoticon.70);
-			\draw (emoticon.100)..controls (-0.3\mrad,1.2\mrad)..(-0.5\mrad,1.25\mrad)
-			      ..controls (-0.4\mrad,1.15\mrad)..(emoticon.110);
-			%body segments
-			\ifthenelse{\i=0}{}{
-			\foreach \x in {0,2,...,10}{
-				\node[face,inner color=white!50!ilmorange,outer color= ilmorange!90!black, left=\x\mrad of emoticon] (monomer){};
-				%legs
-				\ifthenelse{\i=1}{}{
-					\draw[line width=0.25\mrad, gray] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);}
-			};}
-			\ifthenelse{\i=1}{
-				\draw[|-|] ($(monomer.west)+(0,-1.5\mrad)$) -- ($(emoticon.west)+(0,-1.5\mrad)$) node[midway,below, font=\scriptsize] {$N_0$};
-			}{}
-			\end{scope}
-			};
-			%arrows
-			\draw[-stealth, thick] ++(3\mrad,0) -- +(6\mrad,0) node[midway, above=0.2\mrad, face,inner color=white!50!ilmorange,outer color= ilmorange!90!black]{} node[midway, below, font=\scriptsize]{ATRP};
-			\draw[-stealth, thick] ++(0.45\textwidth,0) ++(3\mrad,0) -- +(6\mrad,0) coordinate[midway, above=0.2\mrad] (leg) node[midway, below, font=\scriptsize,text width=10\mrad,align=center]{post-functionalization};
-			\draw[line width=0.25\mrad, gray] (leg) to[bend right] +(0,1\mrad);
-		\end{tikzpicture}
+	\input{fig_presentation/polymerisation.pgf}
 
-\bigskip
-\definesubmol{head}{(-[::-105,,,,ilmcolor])(-[::-15,,,,ilmcolor])-[::60,,,,ilmcolor](=[::60,,,,ilmcolor]\textcolor{ilmcolor}{O})-[::-60,,,,ilmcolor]\textcolor{ilmcolor}{O}-[::-60,,,,ilmcolor]-[::60,,,,ilmcolor]-[::60,,,,ilmcolor]}
-\definesubmol{mono}{-[::-60,,,,ilmorange](=[,,,,ilmorange]\textcolor{ilmorange}{O})-[::-60,,,,ilmorange]\textcolor{ilmorange}{O}-[::60,,,,ilmorange]-[,,,,ilmorange]-[::-60,,,,ilmorange]}
-\tikzsetnextfilename{polymerisation_PImBr}
-\begin{tikzpicture}[every node/.style={font=\tiny\setatomsep{1.5em}}]
-	\node (init) {\chemfig{Br-[:-30]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}};
-	
-	\node[below left=5\baselineskip and 0 of init.east] (POH) {%
-	\chemfig{[:-30]-[@{left,0.25}](%
-		!{mono}OH%
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}%
-	};
-	\node[below right=-0.6em and -0.25em of POH.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
-	\node[below right=-0.6em and -0.25em of POH.base west] {};
-	
-	\node[right=0.12\textwidth of init.base east, anchor=base west] (PBr) {%
-	\chemfig{[:-30]-[@{left,0.25}](%
-		!{mono}Br%
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
-	};
-	\node[below right=-0.6em and -0.25em of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
-	
-	\node[right=\textwidth of init.base west, anchor=base east] (PNuBr) {%
-	\chemfig{[:-30]-[@{left,0.25}](%
-		!{mono}\textcolor{gray}{N}|^{+}*5(=[,,,,thick, gray]-[,,,,thick, gray]\textcolor{gray}{N}(-[,,,,thick, gray])-[,,,,thick, gray]=[,,,,thick, gray]-[,,,,thick, gray])(-[0,2,,,draw=none]Br^{-})
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
-	};
-	\node[below right=-0.6em and -0.25em of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
-	
-	\draw[-stealth, thick] (init.south-|POH.north) -- (POH) node[midway, left=0, -]{\chemfig{[:-30]=[,,,,ilmorange]!{mono}OH}} node[midway, right=0, text width=0.13\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
-	\draw[-stealth, thick] (POH) -| (PBr) node[pos=0.25, above]{\ce{TMS-Br}} node[pos=0.25, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
-	\draw[-stealth, thick] (PBr) -- (PBr-|PNuBr.west) node[midway, above,align=center,-]{\chemfig[thick, gray]{[2]*5(-N(-)-=N-=)}} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
-	\node[anchor=south] at (POH.south) {\ce{POH}};
-	\node[anchor=south] at (PBr.south) {\ce{PBr}};
-\end{tikzpicture}
+	\bigskip
+	\tikzsetnextfilename{polymerisation_PImBr}%
+	\input{fig_presentation/polymerisation_PImBr.pgf}
 \end{frame}
 
 \end{document}
