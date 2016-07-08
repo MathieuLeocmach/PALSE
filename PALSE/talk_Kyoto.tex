@@ -211,14 +211,8 @@ red!40!yellow,
 \end{frame}
 
 \begin{frame}{Physical polyelectrolytes hydrogel}
-\let\mrad\relax
-\newlength\mrad
-\setlength{\mrad}{0.45em}
-\tikzsetnextfilename{polyelectrolytes}%
-\begin{tikzpicture}
-\draw[every node/.style={circle,draw,font=\tiny, inner sep=0,minimum height=0.5em}] (0,0) --(30:\mrad) node[above right,ilmcolor]{-} (0,0)--(-30:\mrad) node[below right,ilmcolor]{-} (0,0)--++(-180:\mrad)\foreach \x [evaluate=\x as \r using 1/(rnd+0.1), evaluate=\x as \rr using 1/(rnd+0.1)] in {1,2,...,35}{--++(150:\mrad)node[above,ilmorange]{+} node[above=\r\mrad]{-}--++(-150:\mrad)node[below=0,ilmorange]{+} node[below=\rr\mrad]{-}};
-\end{tikzpicture}
-
+	\tikzsetnextfilename{polyelectrolytes}%
+\input{fig_presentation/polyelectrolytes.pgf}
 \begin{columns}
 \column{0.5\textwidth}
 \structure{Reversible gel}
@@ -232,8 +226,14 @@ red!40!yellow,
 	\item non ionic head
 \end{itemize}
 $\Rightarrow$ Head-to-body ionic bonds
+
 \column{0.5\textwidth}
+\hfill Herschel-Buckley law\\
+\hfill $\sigma =\sigma_c + A \dot{\gamma}^n$
+\tikzsetnextfilename{flowcurves}%
+\input{fig_presentation/flowcurves.pgf}
 \end{columns}
+\vspace{-\baselineskip}\textit{\scriptsize Srour et al. Macromol. Rapid Comm., 36, 55 (2015)}
 \end{frame}
 
 \end{document}
