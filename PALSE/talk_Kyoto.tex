@@ -210,23 +210,25 @@ red!40!yellow,
 	\input{fig_presentation/polymerisation_PImBr.pgf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Physical polyelectrolytes hydrogel}
 \let\mrad\relax
 \newlength\mrad
 \setlength{\mrad}{0.45em}
+\tikzsetnextfilename{polyelectrolytes}%
 \begin{tikzpicture}
 \draw[every node/.style={circle,draw,font=\tiny, inner sep=0,minimum height=0.5em}] (0,0) --(30:\mrad) node[above right,ilmcolor]{-} (0,0)--(-30:\mrad) node[below right,ilmcolor]{-} (0,0)--++(-180:\mrad)\foreach \x [evaluate=\x as \r using 1/(rnd+0.1), evaluate=\x as \rr using 1/(rnd+0.1)] in {1,2,...,35}{--++(150:\mrad)node[above,ilmorange]{+} node[above=\r\mrad]{-}--++(-150:\mrad)node[below=0,ilmorange]{+} node[below=\rr\mrad]{-}};
 \end{tikzpicture}
 
-\begin{columns}{Polyelectrolytes hydrogel}
+\begin{columns}
 \column{0.5\textwidth}
-\structure{Gel} in very pure water
+\structure{Reversible gel}
 \begin{itemize}
+	\item in deionised, neutral water
 	\item yield stress fuild
 \end{itemize}
 \structure{Solution} if
 \begin{itemize}
-	\item ionic stregth, pH
+	\item ionic strength, pH
 	\item non ionic head
 \end{itemize}
 $\Rightarrow$ Head-to-body ionic bonds
