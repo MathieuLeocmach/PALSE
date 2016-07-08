@@ -1,5 +1,5 @@
 \definesubmol{head}{(-[::-105,,,,ilmcolor])(-[::-15,,,,ilmcolor])-[::60,,,,ilmcolor](=[::60,,,,ilmcolor]\textcolor{ilmcolor}{O})-[::-60,,,,ilmcolor]\textcolor{ilmcolor}{O}-[::-60,,,,ilmcolor]-[::60,,,,ilmcolor]-[::60,,,,ilmcolor]}
-\definesubmol{mono}{-[::-60,,,,ilmorange](=[,,,,ilmorange]\textcolor{ilmorange}{O})-[::-60,,,,ilmorange]\textcolor{ilmorange}{O}-[::60,,,,ilmorange]-[,,,,ilmorange]-[::-60,,,,ilmorange]}
+\definesubmol{mono}{-[::-60,,,,gray](=[,,,,gray]\textcolor{gray}{O})-[::-60,,,,gray]\textcolor{gray}{O}-[::60,,,,gray]-[,,,,gray]-[::-60,,,,gray]}
 \tikzsetnextfilename{polymerisation_PImBr}
 \begin{tikzpicture}[every node/.style={font=\tiny\setatomsep{1.5em}}]
 	\node (init) {\chemfig{Br-[:-30]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}};
@@ -7,7 +7,7 @@
 	\node[below left=5\baselineskip and 0 of init.east] (POH) {%
 	\chemfig{[:-30]-[@{left,0.25}](%
 		!{mono}OH%
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}%
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}%
 	};
 	\node[below right=-0.6em and -0.25em of POH.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 	\node[below right=-0.6em and -0.25em of POH.base west] {};
@@ -15,20 +15,20 @@
 	\node[right=0.1\textwidth of init.base east, anchor=base west] (PBr) {%
 	\chemfig{[:-30]-[@{left,0.25}](%
 		!{mono}Br%
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
 	};
 	\node[below right=-0.6em and -0.25em of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 	
 	\node[right=\textwidth of init.base-|POH.west, anchor=base east] (PNuBr) {%
 	\chemfig{[:-30]-[@{left,0.25}](%
-		!{mono}\textcolor{gray}{N}|^{+}*5(=[,,,,thick, gray]-[,,,,thick, gray]\textcolor{gray}{N}(-[,,,,thick, gray])-[,,,,thick, gray]=[,,,,thick, gray]-[,,,,thick, gray])(-[0,2,,,draw=none]Br^{-})
-		)-[::60,,,,ilmorange]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+		!{mono}\textcolor{ilmorange}{N}|^{\color{ilmorange}+}*5(=[,,,,thick, ilmorange]-[,,,,thick, ilmorange]\textcolor{ilmorange}{N}(-[,,,,thick, ilmorange])-[,,,,thick, ilmorange]=[,,,,thick, ilmorange]-[,,,,thick, ilmorange])(-[0,2,,,draw=none]Br^{-})
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
 	};
 	\node[below right=-0.6em and -0.25em of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 	
-	\draw[-stealth, thick] (init.south-|POH.north) -- (POH) node[midway, left=0, -]{\chemfig{[:-30]=[,,,,ilmorange]!{mono}OH}} node[midway, right=0, text width=0.13\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
+	\draw[-stealth, thick] (init.south-|POH.north) -- (POH) node[midway, left=0, -]{\chemfig{[:-30]=[,,,,gray]!{mono}OH}} node[midway, right=0, text width=0.13\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
 	\draw[-stealth, thick] (POH) -| (PBr) node[pos=0.25, above]{\ce{TMS-Br}} node[pos=0.25, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
-	\draw[-stealth, thick] (PBr) -- (PBr-|PNuBr.west) node[midway, above,align=center,-]{\chemfig[thick, gray]{[2]*5(-N(-)-=N-=)}} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
+	\draw[-stealth, thick] (PBr) -- (PBr-|PNuBr.west) node[midway, above,align=center,-]{\chemfig[thick, ilmorange]{[2]*5(-N(-)-=N-=)}} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
 	\node[anchor=south east] at (POH.south east) {\ce{POH}};
 	\node[anchor=south east] at (PBr.south east) {\ce{PBr}};
 	\node[anchor=south east] at (PNuBr.south east) {\ce{PIm+Br-}};

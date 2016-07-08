@@ -32,10 +32,10 @@
 			%body segments
 			\ifthenelse{\i=0}{}{
 			\foreach \x in {0,2,...,10}{
-				\node[face,inner color=white!50!ilmorange,outer color= ilmorange!90!black, left=\x\mrad of emoticon] (monomer){};
+				\node[face,inner color=white!50!gray,outer color= gray!90!black, left=\x\mrad of emoticon] (monomer){};
 				%legs
 				\ifthenelse{\i=1}{}{
-					\draw[line width=0.25\mrad, gray] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);}
+					\draw[line width=0.25\mrad, ilmorange] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);}
 			};}
 			\ifthenelse{\i=1}{
 				\draw[|-|] ($(monomer.west)+(0,-1.5\mrad)$) -- ($(emoticon.west)+(0,-1.5\mrad)$) node[midway,below, font=\scriptsize] {$N_0$};
@@ -43,7 +43,7 @@
 			\end{scope}
 			};
 			%arrows
-			\draw[-stealth, thick] ++(3\mrad,0) -- +(6\mrad,0) node[midway, above=0.2\mrad, face,inner color=white!50!ilmorange,outer color= ilmorange!90!black]{} node[midway, below, font=\scriptsize]{ATRP};
+			\draw[-stealth, thick] ++(3\mrad,0) -- +(6\mrad,0) node[midway, above=0.2\mrad, face,inner color=white!50!gray,outer color= gray!90!black]{} node[midway, below, font=\scriptsize]{ATRP};
 			\draw[-stealth, thick] ++(0.45\textwidth,0) ++(3\mrad,0) -- +(6\mrad,0) coordinate[midway, above=0.2\mrad] (leg) node[midway, below, font=\scriptsize,text width=10\mrad,align=center]{post-functionalization};
-			\draw[line width=0.25\mrad, gray] (leg) to[bend right] +(0,1\mrad);
+			\draw[line width=0.25\mrad, ilmorange] (leg) to[bend right] +(0,1\mrad);
 		\end{tikzpicture}
