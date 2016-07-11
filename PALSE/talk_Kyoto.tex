@@ -268,4 +268,31 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\input{fig_presentation/postfunc_chem.pgf}
 \end{frame}
 
+\begin{frame}\frametitle{Counterion condensation}
+\begin{itemize}
+\item Direct Hoffmeister series $\ce{I-}<\ce{Br-}<\ce{Cl-}<\ce{F-}$
+\item \ce{\pi+-\pi+} interactions {\tiny\setatomsep{1.5em}$\raisebox{-0.5em}{\chemfig{[2]*5(--N(-)---)}}>\raisebox{-0.5em}{\chemfig{[2]*5(-N(-)-=N-=)}}$}
+\end{itemize}
+\begin{tikzpicture}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\node at (0.33\columnwidth, -8\baselineskip) {PBr} [->, level distance=5em] 
+	child [grow=east] {node(PImBr) {\ce{PIm+Br-}} [level distance=5em]
+		child[grow=-45] {node(PImF) {\ce{PIm+F-}}} 
+		child {node(PImCl) {\ce{PIm+Cl-}}} 
+		child[grow=45] {node(PImI) {\ce{PIm+I-}}}} 
+	child [grow=west] {node(PPyrBr) {\ce{PPyr+Br-}} [level distance=5em]
+		child[grow=-135] {node(PPyrF) {\ce{PPyr+F-}}} 
+		child {node(PPyrCl) {\ce{PPyr+Cl-}}} 
+		child[grow=135] {node(PPyrI) {\ce{PPyr+I-}}}};
+\begin{pgfonlayer}{background}
+	\draw[ilmorange, line width=0.3em, ->] (PImI) to[bend right] (PImBr.north) ..controls (PImBr.center) and (PImCl.center) .. (PImCl.base) to[bend left] (PImF);
+	\draw[ilmorange, line width=0.3em, ->] (PPyrI) to[bend left] (PPyrBr.north) ..controls (PPyrBr.center) and (PPyrCl.center) .. (PPyrCl.base) to[bend right] (PPyrF);
+\end{pgfonlayer}
+	\foreach \x in {PImF,PImCl,PPyrF}{
+	\draw[ilmcolor] (\x.north west) -- (\x.base east) (\x.north east) -- (\x.base west) ;
+	}
+\end{tikzpicture}
+
 \end{document}
