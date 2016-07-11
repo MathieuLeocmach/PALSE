@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+	\pgfplotscreateplotcyclelist{moduli}{
+		black, mark=*\\%
+		black, mark=square\\%
+	}
+	\begin{loglogaxis}[
+		ylabel={moduli (\si{\pascal})},
+		xlabel={frequency (\si{\hertz})},
+		cycle list name=moduli,
+		ytickten={0, 1}, yticklabels={1,10},
+		]
+		\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{ImBr_70_PO3_8pc_ter.freq} node[midway, above left]{$G^\prime$};
+		\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{ImBr_70_PO3_8pc_ter.freq}  node[midway, below right]{$G^{\prime\prime}$};
+		\node[anchor=north west, font=\footnotesize] at (rel axis cs:0,1){8\% wt};
+	\end{loglogaxis}
+\end{tikzpicture}
