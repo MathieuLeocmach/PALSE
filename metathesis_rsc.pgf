@@ -27,9 +27,9 @@
 		child {node {\ce{PIm+Cl-}}} 
 		child[grow=45] {node {\ce{PIm+I-}}}} 
 	child [grow=west] {node {\ce{PPyr+Br-}} [level distance=5em]
-		child[grow=135] {node {\ce{PPyr+F-}}} 
+		child[grow=-135] {node {\ce{PPyr+F-}}} 
 		child {node {\ce{PPyr+Cl-}}} 
-		child[grow=-135] {node {\ce{PPyr+I-}}}};
+		child[grow=135] {node {\ce{PPyr+I-}}}};
 %\end{scope}
 \end{tikzpicture}
 \end{figure}
