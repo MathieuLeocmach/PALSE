@@ -1,6 +1,5 @@
 \definesubmol{head}{(-[::-105,,,,ilmcolor])(-[::-15,,,,ilmcolor])-[::60,,,,ilmcolor](=[::60,,,,ilmcolor]\textcolor{ilmcolor}{O})-[::-60,,,,ilmcolor]\textcolor{ilmcolor}{O}-[::-60,,,,ilmcolor]-[::60,,,,ilmcolor]-[::60,,,,ilmcolor]}
 \definesubmol{mono}{-[::-60,,,,gray](=[,,,,gray]\textcolor{gray}{O})-[::-60,,,,gray]\textcolor{gray}{O}-[::60,,,,gray]-[,,,,gray]-[::-60,,,,gray]}
-\tikzsetnextfilename{polymerisation_PImBr}
 \begin{tikzpicture}[every node/.style={font=\tiny\setatomsep{1.5em}}]
 	\node (init) {\chemfig{Br-[:-30]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3}Et_2}};
 	
