@@ -1,0 +1,43 @@
+\definesubmol{head}{(-[::-105,,,,ilmcolor])(-[::-15,,,,ilmcolor])-[::60,,,,ilmcolor](=[::60,,,,ilmcolor]\textcolor{ilmcolor}{O})-[::-60,,,,ilmcolor]\textcolor{ilmcolor}{O}-[::-60,,,,ilmcolor]-[::60,,,,ilmcolor]-[::60,,,,ilmcolor]}
+\definesubmol{mono}{-[::-60,,,,gray](=[,,,,gray]\textcolor{gray}{O})-[::-60,,,,gray]\textcolor{gray}{O}-[::60,,,,gray]-[,,,,gray]-[::-60,,,,gray]}
+\begin{tikzpicture}[every node/.style={font=\tiny\setatomsep{1.5em}}]
+	
+	\node (PBr) {%
+	\chemfig{[:-30]-[@{left,0.25}](%
+		!{mono}Br%
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+	};
+	\node[below right=-0.6em and -0.25em of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+	
+	\node[right=0.05\textwidth of PBr, yshift=3\baselineskip] (PImBr) {%
+	\chemfig{[:-30]-[@{left,0.25}](%
+		!{mono}\textcolor{ilmorange}{N}|^{\color{ilmorange}+}*5(=[,,,,thick, ilmorange]-[,,,,thick, ilmorange]\textcolor{ilmorange}{N}(-[,,,,thick, ilmorange])-[,,,,thick, ilmorange]=[,,,,thick, ilmorange]-[,,,,thick, ilmorange])(-[0,2,,,draw=none]Br^{-})
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+	};
+	\node[below right=-0.6em and -0.25em of PImBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+
+	\node[right=0.05\textwidth of PBr, yshift=-3\baselineskip] (PPyrBr) {%
+	\chemfig{[:-30]-[@{left,0.25}](%
+		!{mono}\textcolor{ilmorange}{N}|^{\color{ilmorange}+}*5([5](-[,,,,thick, ilmorange])-[,,,,thick, ilmorange]-[,,,,thick, ilmorange]-[,,,,thick, ilmorange]-[,,,,thick, ilmorange]-[,,,,thick, ilmorange])(-[:-30,2,,,draw=none]Br^{-})
+		)-[::60,,,,gray]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+	};
+	\node[below right=-0.6em and -0.25em of PPyrBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+
+	\node[right=\columnwidth of PBr.base west, anchor=base east] (PNuX) {%
+\chemfig{[:-30]-[@{left,0.25}](%
+	!{mono}\textcolor{ilmorange}{Nu^{+}}-[0,2,,,draw=none]\textcolor{blue!80!black}{X^{-}}%
+	)-[::60]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+};
+
+	\draw[decoration=brace, decorate] (PImBr.north east) -- (PPyrBr.south east-|PImBr.east) node[midway] (PNuBr){};
+	
+	
+	\draw[-stealth, thick] (PBr) |- (PImBr.west) node[pos=0.75, above,align=center,-]{\chemfig[thick, ilmorange]{[2]*5(-N(-)-=N-=)}} node[pos=0.75, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};
+	\draw[-stealth, thick] (PBr) |- (PPyrBr.west) node[pos=0.75, above,align=center,-]{\chemfig[thick, ilmorange]{[2]*5(--N(-)---)}} node[pos=0.75, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};
+	\draw[-stealth, thick] (PNuBr) -- (PNuX.west|-PNuBr) node[midway, above, -]{Na\textcolor{blue!80!black}{X}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{H2O}};
+	\node[anchor=north] at (PBr.center) {\ce{PBr}};
+	\node[anchor=south east] at (PImBr.south east) {\ce{PIm+Br-}};
+	\node[anchor=south east] at (PPyrBr.south east) {\ce{PPyr+Br-}};
+	\node[anchor=south east] at (PNuX.south east) {\ce{PNu+X-}};
+	\node[anchor=north east, blue!80!black] at (PNuX.north west) {X: F, Cl or I};
+\end{tikzpicture}

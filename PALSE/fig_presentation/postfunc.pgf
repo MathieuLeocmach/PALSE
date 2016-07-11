@@ -1,0 +1,55 @@
+\let\mrad\relax%
+	\newlength\mrad%
+	\setlength{\mrad}{1ex}%
+	% The face style, can be changed
+	\tikzset{face/.style={
+		shape=circle,minimum size=2\mrad,shading=radial,outer sep=0pt,
+	    inner color=white!50!yellow,outer color= yellow!70!orange
+		}}%
+	\begin{tikzpicture}
+		\foreach \i [evaluate=\i as \dist using (floor(\i/2))*0.425, evaluate=\i as \ys using 1.5*(\i-2*floor(\i/2))] in {1,2,3,4,5}{
+			\begin{scope}[xshift=\dist\textwidth, yshift=\ys\baselineskip]
+			
+			%face
+			\node[face,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black] (emoticon) {};
+			%% The eyes are fixed.
+			\draw[fill=white] 
+				(-0.5\mrad,0ex) ..controls (-0.25\mrad,0.1\mrad)and(0.25\mrad,0.1\mrad)..
+		        (0.5\mrad,0.0pt) ..controls (0.75\mrad,0.75\mrad)and(0.1\mrad,0.85\mrad)..
+		        (0pt,0.2\mrad) ..controls (-0.1\mrad,0.85\mrad)and(-0.75\mrad,0.75\mrad)..
+		        (-0.5\mrad,0pt)--cycle;
+			%% standard pupils
+			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=80] at (0.25\mrad,0.25\mrad) {};
+			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=100] at (-0.25\mrad,0.25\mrad) {};
+			%% mouth
+			\draw[thick,line cap=round] (-0.5\mrad,-0.5\mrad)
+			     ..controls (-0.25\mrad,-0.75\mrad)and(0.25\mrad,-0.75\mrad)..(0.5\mrad,-0.5\mrad);
+			%% horns
+			\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
+			%\draw ( emoticon.80)..controls ( 0.3\mrad,1.2\mrad)..(0.5\mrad,1.25\mrad)
+			      %..controls ( 0.4\mrad,1.15\mrad)..(emoticon.70);
+			%\draw (emoticon.100)..controls (-0.3\mrad,1.2\mrad)..(-0.5\mrad,1.25\mrad)
+			      %..controls (-0.4\mrad,1.15\mrad)..(emoticon.110);
+			%body segments
+			
+			\foreach \x in {0,2,...,8}{
+				\node[face,inner color=white!50!gray,outer color= gray!90!black, left=\x\mrad of emoticon] (monomer){};
+				%legs
+				\ifthenelse{\i=3}{
+					\draw[line width=0.25\mrad, ilmorange] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);}{}
+				\ifthenelse{\i=2}{
+					\node[circle, inner sep=0.3\mrad, fill=ilmorange] at (monomer.south){};}{}
+				\ifthenelse{\i=5}{
+					\draw[line width=0.25\mrad, blue!80!black] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);}{}
+				\ifthenelse{\i=4}{
+					\node[circle, inner sep=0.3\mrad, fill=blue!80!black] at (monomer.south){};}{}
+			};
+			\end{scope}
+			};
+			%arrows
+			%\draw[-stealth, thick] ++(3\mrad,0) -- +(6\mrad,0) node[midway, above=0.2\mrad, face,inner color=white!50!gray,outer color= gray!90!black]{} node[midway, below, font=\scriptsize]{ATRP};
+			\draw[-stealth, thick] ++(3\mrad,1.5\baselineskip) -- +(6\mrad,0) coordinate[midway, above=0.2\mrad] (leg) node[midway, below, font=\scriptsize,text width=10\mrad,align=center]{post-functionalization};
+			\draw[line width=0.25\mrad, ilmorange] (leg) to[bend right] +(0,1\mrad);
+			\draw[-stealth, thick] ++(3\mrad,0) -- +(6\mrad,0) node[midway, below=0.2\mrad, circle, inner sep=0.3\mrad, fill=ilmorange] (leg){};
+			\draw[-stealth, thick] ++(0.425\textwidth,0) ++(3\mrad,0.75\baselineskip) -- +(6\mrad,0) coordinate[midway, above=0.2\mrad] (leg) node[midway, above, font=\scriptsize]{counterion} node[midway, below, font=\scriptsize,text width=10\mrad,align=center]{exchange};
+		\end{tikzpicture}
