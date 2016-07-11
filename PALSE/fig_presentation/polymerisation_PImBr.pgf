@@ -32,4 +32,5 @@
 	\node[anchor=south east] at (POH.south east) {\ce{POH}};
 	\node[anchor=south east] at (PBr.south east) {\ce{PBr}};
 	\node[anchor=south east] at (PNuBr.south east) {\ce{PIm+Br-}};
+	\node[anchor=south east, font=\footnotesize] at (POH.south-|PNuBr.east) {$N_0=70$ from NMR};
 \end{tikzpicture}
