@@ -273,9 +273,13 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\input{fig_presentation/solubility.pgf}
 	\begin{itemize}
 		\item Too much condensation prevents dissolution
-		\item<2-> Direct Hoffmeister series $\ce{I-}<\ce{Br-}<\ce{Cl-}<\ce{F-}$
-		\item<3> \ce{\pi+-\pi+} interactions {\tiny\setatomsep{1.5em}$\raisebox{-0.5em}{\chemfig{[2]*5(--N(-)---)}}<\raisebox{-0.5em}{\chemfig{[2]*5(-N(-)-=N-=)}}$}
-		\item<3> \ce{PIm+Br-} < \ce{PIm+I-} < \ce{PPyr+Cl-} < \ce{PPyr+Br-} < \ce{PPyr+I-}
+		\item<2-> Direct Hoffmeister series $\ce{I-}\alert{<}\ce{Br-}\alert{<}\ce{Cl-}\alert{<}\ce{F-}$
+		\item<3> \ce{\pi+-\pi+} interactions \raisebox{-0.5em}{\tikzsetnextfilename{Pyr_lt_Im}%
+			\begin{tikzpicture}[every node/.style={inner ysep=0,font=\tiny\setatomsep{1.5em}}]
+			\node[left=0.5em] (Pyr){\chemfig{[0]*5(--N(-)---)}};
+			\node[right=0.5em] (Im){\chemfig{[2]*5(-N(-)-=N-=)}};
+			\node[font=\normalsize]{$\alert{<}$};
+			\end{tikzpicture}}
 	\end{itemize}
 \end{frame}
 
