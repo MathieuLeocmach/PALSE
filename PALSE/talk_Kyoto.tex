@@ -68,7 +68,7 @@
 % Allow the usage of graphics (.jpg, .png, etc.) in the document
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap,fit}
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
@@ -299,10 +299,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\tikzsetnextfilename{polyelectrolytes_condensed}%
 	\input{fig_presentation/polyelectrolytes_condensed.pgf}
 	\begin{itemize}
-		\item ``Enough'' uncondensed counterions
-		\begin{itemize}
-			\item electrostatic repulsion $\Rightarrow$ soluble
-		\end{itemize}
+		\item ``Enough'' free counterions $\Rightarrow$ repulsion $\Rightarrow$ soluble
 	\end{itemize}
 	\tikzsetnextfilename{polyelectrolytes}%
 	\input{fig_presentation/polyelectrolytes.pgf}
@@ -317,6 +314,27 @@ $\Rightarrow$ Head-to-body ionic bonds
 \begin{itemize}
 \item Procession length increases with counterion condensation
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Polyelectrolytes physics}
+	\structure{Can we measure counterion condensation from rheology?}
+	
+	\begin{itemize}
+		\item 1 dissociated counterion every \alert{$A$} monomers
+		\begin{itemize}\item large $A$, more condensed\end{itemize}
+		\item poor solvent: reduced temperature $\alert{\tau} = 1 -T/\Theta$
+		\begin{itemize}\item \ce{PIm+F-} non soluble at \SI{100}{\celsius} $\Rightarrow\tau>0.2$ \end{itemize}
+		\smallskip
+		\item extension parameter $\alert{B} = \frac{\text{extended length}}{\text{diameter}}$ of electrostatic blob
+		\smallskip
+		\item from scaling theory: $B \sim A^{4/3} \tau$\hfill \textit{\scriptsize Rubinstein Macromol. 1996}
+	\end{itemize}
+	
+	\tikzsetnextfilename{scales}%
+	\input{fig_presentation/scales.pgf}
+	\begin{center}
+	\structure{Can we measure $B$ from rheology?}
+	\end{center}
 \end{frame}
 
 \end{document}
