@@ -2,20 +2,19 @@
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
-\node {PBr} [->, level distance=5em] 
-	child [grow=east] {node(PImBr) {\ce{PIm+Br-}} [level distance=6em]
+\node {PBr} [->, level distance=8em, font=\footnotesize] 
+	child [grow=-15] {node(PImBr) {\ce{PIm+Br-}} [level distance=5em]
 		child[grow=-30] {node(PImF) {\ce{PIm+F-}}} 
-		child {node(PImCl) {\ce{PIm+Cl-}}} 
-		child[grow=30] {node(PImI) {\ce{PIm+I-}}}} 
-	child [grow=west] {node(PPyrBr) {\ce{PPyr+Br-}} [level distance=6em]
-		child[grow=-150] {node(PPyrF) {\ce{PPyr+F-}}} 
-		child {node(PPyrCl) {\ce{PPyr+Cl-}}} 
-		child[grow=150] {node(PPyrI) {\ce{PPyr+I-}}}};
+		child[grow=east] {node(PImCl) {\ce{PIm+Cl-}}} 
+		child[grow=west] {node(PImI) {\ce{PIm+I-}}}} 
+	child [grow=-165] {node(PPyrBr) {\ce{PPyr+Br-}} [level distance=5em]
+		child[grow=-30] {node(PPyrF) {\ce{PPyr+F-}}} 
+		child[grow=east] {node(PPyrCl) {\ce{PPyr+Cl-}}} 
+		child[grow=west] {node(PPyrI) {\ce{PPyr+I-}}}};
 \begin{pgfonlayer}{background}
-	\draw<2->[ilmorange, line width=0.3em, -stealth,rounded corners] (PImI.west) to[out=180] (PImBr.center) -- (PImCl.base) to[bend left] (PImF);
-	\draw<2->[ilmorange, line width=0.3em, -stealth,rounded corners] (PPyrI) to[out=0,in=100] (PPyrBr.center) -- (PPyrCl.base) to[bend right] (PPyrF);
-	\path[line width=0.3em,rounded corners] (PPyrBr.center) -- (PPyrCl.west) to[out=85, in=170] (PImI.west);
-	\draw<3>[ilmcolor, line width=0.3em, -stealth,rounded corners,dashed] (PPyrI) to[out=0,in=100] (PPyrBr.center) -- (PPyrCl.west) to[out=85, in=170] (PImI.west) to[out=180, in=80] (PImBr);
+	\draw<2>[ilmorange, line width=0.3em, -stealth,rounded corners] (PImI.base) -- (PImBr.base) -- (PImCl.base) -- (PImF);
+	\draw<2>[ilmorange, line width=0.3em, -stealth,rounded corners] (PPyrI.base) -- (PPyrBr.base) -- (PPyrCl.base) -- (PPyrF);
+	\draw<3>[ilmorange, line width=0.3em, -stealth,rounded corners] (PPyrI.base) -- (PPyrBr.base) -- (PPyrCl.base) -- (PImI.base) -- (PImBr.base);
 \end{pgfonlayer}
 	\foreach \x in {PImF,PImCl,PPyrF}{
 	\draw<1->[ilmcolor] (\x.north west) -- (\x.base east) (\x.north east) -- (\x.base west) ;
