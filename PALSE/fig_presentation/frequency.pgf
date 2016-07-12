@@ -1,0 +1,58 @@
+\begin{tikzpicture}
+\pgfplotscreateplotcyclelist{moduli}{
+	black, mark=*\\%
+	black, mark=square\\%
+}
+\begin{groupplot}[
+		group style={
+			group name=g, group size=3 by 2,
+			horizontal sep=1em,
+			vertical sep=0.5em,
+			y descriptions at=edge left,
+			x descriptions at=edge bottom,
+			},
+		scale only axis,
+		width=0.33\textwidth-2em,%
+		height=6\baselineskip,
+		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+		xlabel={$f$ (\si{\hertz})},
+		xmode=log, ymode=log,
+		ymin=0.4, ymax=2e4,
+		xmin=0.01, xmax=10,
+		xtickten={-2, -1, ...,0},
+		cycle list name=moduli,
+		title style={at={(1,0.9)},left,font=\footnotesize},
+		%height=9\baselineskip,%
+		%ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
+		]
+		\nextgroupplot[group/empty plot]
+		\nextgroupplot[title=\ce{PIm+Br-},%
+			ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+			yticklabel={\axisdefaultticklabellog}
+			]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{ImBr_70_PO3_8pc_ter.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{ImBr_70_PO3_8pc_ter.freq};
+			\node[ilmorange,right] at (rel axis cs:0,0.7) {$n = 800$};
+		
+		\nextgroupplot[title=\ce{PIm+I-}]
+			\addplot table[x=frequency, y=G']{PImI0CL70unit_80gperL.freq};
+			\addplot table[x=frequency, y=G'']{PImI0CL70unit_80gperL.freq};
+			\node[ilmorange,right] at (rel axis cs:0,0.7) {$n = 113$};
+
+		\nextgroupplot[title=\ce{PPyr+Cl-}]
+			\addplot table[x=frequency, y=G']{PPyCl0CL70unit_80gperL.freq};
+			\addplot table[x=frequency, y=G'']{PPyCl0CL70unit_80gperL.freq};
+			\node[ilmorange,right] at (rel axis cs:0,0.7) {$n = 47$};
+
+		\nextgroupplot[title=\ce{PPyr+Br-},title style={at={(1,0.6)}}]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyBr_70_0pc.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyBr_70_0pc.freq};
+			\node[ilmorange,right] at (rel axis cs:0,0.4) {$n = 1.1$};
+
+		\nextgroupplot[title=\ce{PPyr+I-},title style={at={(1,0.6)}},]
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G']{PPyI0CL70unit_80gperL_bis.freq};
+			\addplot table[x expr={\thisrow{angfrequency}/6.28}, y=G'']{PPyI0CL70unit_80gperL_bis.freq};
+			\node[ilmorange,right] at (rel axis cs:0,0.4) {$n = 1.0$};
+\end{groupplot}
+\node[right] at (g c1r2.outer west|-g c2r1) {$\displaystyle G = \frac{c}{\textcolor{ilmorange}{n}N_0}k_\mathrm{B}T$};
+\end{tikzpicture}
