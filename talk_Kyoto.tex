@@ -273,13 +273,22 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\input{fig_presentation/solubility.pgf}
 	\begin{itemize}
 		\item Too much condensation prevents dissolution
-		\item<2-> Direct Hoffmeister series $\ce{I-}\alert{<}\ce{Br-}\alert{<}\ce{Cl-}\alert{<}\ce{F-}$
-		\item<3> \ce{\pi+-\pi+} interactions \raisebox{-0.5em}{\tikzsetnextfilename{Pyr_lt_Im}%
+		\begin{itemize}
+			\item water poor solvent for polymer backbone
+			\item polyelectrolytes solubilized by electrostatic repulsion
+		\end{itemize}
+		\item<2-> Direct Hoffmeister series $\ce{I-}\alert{<}\ce{Br-}\alert{<}\ce{Cl-}\alert{<}\ce{F-}$\\
+	\hfill\textit{\scriptsize Hofmeister 1888; Zhang Annu Rev Phys Chem 2010; Schwierz Langmuir 2010}
+		\item<3-> \ce{\pi+-\pi+} interactions trap counterions\raisebox{-0.5em}{%
 			\begin{tikzpicture}[every node/.style={inner ysep=0,font=\tiny\setatomsep{1.5em}}]
 			\node[left=0.5em] (Pyr){\chemfig{[0]*5(--N(-)---)}};
 			\node[right=0.5em] (Im){\chemfig{[2]*5(-N(-)-=N-=)}};
 			\node[font=\normalsize]{$\alert{<}$};
-			\end{tikzpicture}}
+			\end{tikzpicture}}\\
+			\hfill\textit{\scriptsize
+			Geronimo PCCP 2011;
+			Matthews PCCP 2014;
+			Gao J Mol Graph Model 2015}
 	\end{itemize}
 \end{frame}
 
