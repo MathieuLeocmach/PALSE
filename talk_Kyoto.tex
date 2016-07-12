@@ -268,7 +268,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\input{fig_presentation/postfunc_chem.pgf}
 \end{frame}
 
-\begin{frame}{Counterion condensation}
+\begin{frame}<1>[label=condensationranking]{Counterion condensation}
 	\tikzsetnextfilename{solubility}%
 	\input{fig_presentation/solubility.pgf}
 	\begin{itemize}
@@ -291,6 +291,25 @@ $\Rightarrow$ Head-to-body ionic bonds
 			Gao J Mol Graph Model 2015}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Condensation and solubility}
+	\begin{itemize}
+		\item All counterions condensed $\Rightarrow$ neutral $\Rightarrow$ not soluble
+	\end{itemize}
+	\tikzsetnextfilename{polyelectrolytes_condensed}%
+	\input{fig_presentation/polyelectrolytes_condensed.pgf}
+	\begin{itemize}
+		\item ``Enough'' uncondensed counterions
+		\begin{itemize}
+			\item electrostatic repulsion $\Rightarrow$ soluble
+		\end{itemize}
+	\end{itemize}
+	\tikzsetnextfilename{polyelectrolytes}%
+	\input{fig_presentation/polyelectrolytes.pgf}
+\end{frame}
+
+\againframe<2-3>{condensationranking}
+
 
 \begin{frame}{\# chains between cross links}%
 \tikzsetnextfilename{frequency}%

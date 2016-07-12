@@ -3,5 +3,5 @@
 \newlength\mrad%
 \setlength{\mrad}{0.45em}%
 \draw[every node/.style={circle,draw,font=\tiny, inner sep=0,minimum height=0.5em}] (0,0) --(30:\mrad) node[above right,ilmcolor](antenne){-} (0,0)--(-30:\mrad) node[below right,ilmcolor]{-} (0,0)--++(-180:\mrad)\foreach \x [evaluate=\x as \r using 1/(rnd+0.1), evaluate=\x as \rr using 1/(rnd+0.1)] in {1,2,...,35}{--++(150:\mrad)node[above,ilmorange]{+} node[above=\r\mrad]{-}--++(-150:\mrad)node[below=0,ilmorange]{+} node[below=\rr\mrad]{-}};
-\node[font=\footnotesize, anchor=south west, inner ysep=0,rotate=90] at ($(antenne.east)+(0,\mrad)$){$N_0=70$};
+%\node[font=\footnotesize, anchor=south west, inner ysep=0,rotate=90] at ($(antenne.east)+(0,\mrad)$){$N_0=70$};
 \end{tikzpicture}%

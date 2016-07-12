@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+\let\mrad\relax%
+\newlength\mrad%
+\setlength{\mrad}{0.45em}%
+\draw[every node/.style={circle,draw,font=\tiny, inner sep=0,minimum height=0.5em}] (0,0) --(30:\mrad) node[above right,ilmcolor](antenne){-} (0,0)--(-30:\mrad) node[below right,ilmcolor]{-} (0,0)--++(-180:\mrad)\foreach \x in {1,2,...,35}{--++(150:\mrad)node[above,ilmorange]{+} node[above=0.5em]{-}--++(-150:\mrad)node[below=0,ilmorange]{+} node[below=0.5em]{-}};
+\end{tikzpicture}%
