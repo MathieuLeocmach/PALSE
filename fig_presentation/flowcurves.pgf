@@ -10,19 +10,7 @@
 \let\drawcaterpillar\relax
 \newcommand\drawcaterpillar{
 			%face
-			\node[face,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black] (emoticon) {};
-			%% The eyes are fixed.
-			\draw[fill=white] 
-				(-0.5\mrad,0ex) ..controls (-0.25\mrad,0.1\mrad)and(0.25\mrad,0.1\mrad)..
-		        (0.5\mrad,0.0pt) ..controls (0.75\mrad,0.75\mrad)and(0.1\mrad,0.85\mrad)..
-		        (0pt,0.2\mrad) ..controls (-0.1\mrad,0.85\mrad)and(-0.75\mrad,0.75\mrad)..
-		        (-0.5\mrad,0pt)--cycle;
-			%% standard pupils
-			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=80] at (0.25\mrad,0.25\mrad) {};
-			\node[fill, ellipse,inner xsep=0.075\mrad, inner ysep=0.0375\mrad, rotate=100] at (-0.25\mrad,0.25\mrad) {};
-			%% mouth
-			\draw[thick,line cap=round] (-0.5\mrad,-0.5\mrad)
-			     ..controls (-0.25\mrad,-0.75\mrad)and(0.25\mrad,-0.75\mrad)..(0.5\mrad,-0.5\mrad);
+			\node[inner sep=0] (emoticon) {\input{fig_presentation/head.pgf}};
 			
 %body segments
 			\foreach \x in {0,2,...,4}{
