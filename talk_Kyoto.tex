@@ -74,6 +74,7 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=1.9}
+\usepgfplotslibrary{fillbetween}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{external}
 \makeatletter
@@ -438,7 +439,25 @@ $\Rightarrow$ Head-to-body ionic bonds
 			\item \ce{PPyr+I-}: $G\approx\SI{10}{\kilo\pascal}$, fluidizes at $\gamma_c\approx 2\%$
 			\item \ce{PIm+Br-}: $G\approx\SI{10}{\pascal}$, fluidizes at $\gamma_c\approx 800\%$
 		\end{itemize}
+		\item highly tunable hydrogels from short, linear polymer chains
+		\begin{itemize}
+			\item no additive
+			\item yield stress fluids
+		\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Processionary phase diagram}
+	\begin{columns}
+	\column{0.65\textwidth}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{phase_diag}%
+	\input{fig_presentation/phase_diag.pgf}
+	\column{0.35\textwidth}
+	\begin{flushright}\includegraphics[height=14\baselineskip]{presentation/Thaumetopea_pityocampa_01.jpg}\\
+	\vspace{-1.5em}\colorbox{lightgray}{\scriptsize Wikimedia commons}
+	\end{flushright}
+	\end{columns}
 \end{frame}
 
 \end{document}
