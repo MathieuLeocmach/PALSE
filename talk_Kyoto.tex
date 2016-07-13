@@ -309,11 +309,11 @@ $\Rightarrow$ Head-to-body ionic bonds
 
 
 \begin{frame}{\# chains between cross links}%
-\tikzsetnextfilename{frequency}%
-\input{fig_presentation/frequency.pgf}
-\begin{itemize}
-\item Procession length increases with counterion condensation
-\end{itemize}
+	\tikzsetnextfilename{frequency}%
+	\input{fig_presentation/frequency.pgf}
+	\begin{itemize}
+	\item Procession length increases with counterion condensation
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Polyelectrolytes physics}
@@ -333,12 +333,58 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\begin{itemize}
 		\item extension parameter $\alert{B} = \frac{\text{extended length}}{\text{diameter}}$ of electrostatic blob
 		\smallskip
-		\item $B \sim A^{4/3} \tau$
+		\item scales $\geq D$ depend only on $B \sim A^{4/3} \tau$
 	\end{itemize}
 	
 	\begin{center}
 	\structure{Can we measure $B$ from rheology?}
 	\end{center}
 \end{frame}
+
+\begin{frame}<1>[label=endlinear]{Stretching a polyelectrolyte chain}
+	\vspace{\baselineskip}
+	\begin{itemize}
+		\item Unfold largest scales first\hfill \textit{\scriptsize Pincus Macromol. 1976}
+	\end{itemize}
+	
+	\tikzsetnextfilename{scales_stretch}%
+	\begin{tikzpicture}
+	\node[inner sep=0](scales){\input{fig_presentation/scales.pgf}};
+	\draw[->, ultra thick, ilmcolor] (scales.south east) ++(0,-0.3em) -- +(-0.33\textwidth,0) node[midway, below] {linear};
+	\draw[->, ultra thick,ilmorange] (scales.south) ++(0,-0.3em) -- +(-0.35\textwidth,0) node[midway, below] {non linear};
+	\end{tikzpicture}
+	
+	\pause
+	\begin{itemize}
+		\item narrow linear regime $\Rightarrow R_0\approx r_\mathrm{scr} \Rightarrow \left(\frac{B}{B_0}\right)^3 = 1 + \frac{B}{B_s}$
+		\begin{itemize}
+			\item \alert{$B_s$} screening from \ce{-PO_3^{2-}} heads\tikzsetnextfilename{head}
+				\begin{tikzpicture}
+					\let\mrad\relax%
+					\newlength\mrad%
+					\setlength{\mrad}{1ex}%
+					%face
+					\input{fig_presentation/head.pgf}
+					%% horns
+					\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
+				\end{tikzpicture}
+			\item if $B \ll B_s$ screening from uncondensed counterions \[B = B_0 \sim bc \left(\frac{k_\mathrm{B}T}{G}\right)^{2/3}\]
+			\item if $B \gg B_s$ screening from heads: $B = \left(B_0^3/B_s\right)^{1/2} > B_0$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}<1>[label=strainsweep]{Strain sweep}
+	\vspace{0.5\baselineskip}
+	\tikzsetnextfilename{strain}%
+	\input{fig_presentation/strain.pgf}
+	\begin{itemize}
+	\item narrow linear regime $\gamma_0\ll 1$
+	\item<2> extension parameter increases with condensation
+\end{itemize}
+\end{frame}
+
+\againframe<2>{endlinear}
+\againframe<2>{strainsweep}
 
 \end{document}
