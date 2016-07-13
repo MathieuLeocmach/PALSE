@@ -10,7 +10,7 @@
 		\foreach \i [evaluate=\i as \dist using \i*0.45] in {0,1,2}{
 			\begin{scope}[xshift=\dist\textwidth]
 			%face
-			\node[inner sep=0] (emoticon) {\input{fig_presentation/head.pgf}};
+			\input{fig_presentation/head.pgf};
 			%% horns
 			\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
 			%\draw ( emoticon.80)..controls ( 0.3\mrad,1.2\mrad)..(0.5\mrad,1.25\mrad)
