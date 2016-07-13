@@ -1,4 +1,4 @@
-\begin{tikzpicture}[face/.style={
+\begin{scope}[face/.style={
 		shape=circle,minimum size=2\mrad,shading=radial,outer sep=0pt,
 	    inner color=white!50!yellow,outer color= yellow!70!orange
 		}]
@@ -15,4 +15,4 @@
 			%% mouth
 			\draw[thick,line cap=round] (-0.5\mrad,-0.5\mrad)
 			     ..controls (-0.25\mrad,-0.75\mrad)and(0.25\mrad,-0.75\mrad)..(0.5\mrad,-0.5\mrad);
-\end{tikzpicture}
+\end{scope}

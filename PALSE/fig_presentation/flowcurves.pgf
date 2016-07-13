@@ -10,7 +10,7 @@
 \let\drawcaterpillar\relax
 \newcommand\drawcaterpillar{
 			%face
-			\node[inner sep=0] (emoticon) {\input{fig_presentation/head.pgf}};
+			\input{fig_presentation/head.pgf}
 			
 %body segments
 			\foreach \x in {0,2,...,4}{
