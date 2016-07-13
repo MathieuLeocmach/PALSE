@@ -1,0 +1,79 @@
+\begin{tikzpicture}
+\pgfplotscreateplotcyclelist{moduli}{
+	black, mark=*\\%
+	black, mark=square\\%
+}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=3 by 2,
+			horizontal sep=1em,
+			vertical sep=0.5em,
+			y descriptions at=edge left,
+			x descriptions at=edge bottom,
+			},
+		scale only axis,
+		width=0.33\textwidth-2em,%
+		height=6\baselineskip,
+		ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+		xlabel={$\gamma$},
+		xmode=log, ymode=log,
+		xmin=1e-3, xmax=9e1,
+		%tweak display of log, or the minus sign is too long
+		log number format basis/.code 2 args={#1\textsuperscript{\pgfmathint{#2}\pgfmathresult}},
+		ymin=0.4, ymax=2e4,
+		cycle list name=moduli,
+		title style={at={(1,0.9)},left,font=\footnotesize},
+		axis on top,
+		%height=9\baselineskip,%
+		%ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
+		]
+		\nextgroupplot[group/empty plot]
+		\nextgroupplot[title=\ce{PIm+Br-},%
+			ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
+			yticklabel={\axisdefaultticklabellog}
+			]
+			\fill[lightgray] (axis cs:0.011,1e-1) rectangle (axis cs:8.1, 1e5);
+			\addplot table[x=strain, y=G']{ImBr_70_PO3_8pc_bis.strain};
+			\addplot table[x=strain, y=G'']{ImBr_70_PO3_8pc_bis.strain};
+			\node<1>[ilmcolor,right,anchor=north east,rotate=90] at (rel axis cs:0,0.8) {linear};
+			\node<1>[ilmorange] at (rel axis cs:0.5,0.5) {plastic};
+			\node<1>[ilmcolor,right,anchor=south east,rotate=90] at (rel axis cs:1,0.8) {fluid};
+			\node<2>[ilmorange] at (rel axis cs:0.5,0.7) {$B = 830$};
+			\node<3>[ilmorange] at (rel axis cs:0.5,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 123$};
+			\node<4>[ilmorange] at (rel axis cs:0.5,0.7) {$A = 640$};
+
+		\nextgroupplot[title=\ce{PIm+I-}]
+			\fill[lightgray] (axis cs:0.0179,1e-1) rectangle (axis cs:0.184, 1e5);
+			\addplot table[x=strain, y=G']{PImI0CL70unit_80gperL.strain};
+			\addplot table[x=strain, y=G'']{PImI0CL70unit_80gperL.strain};
+			\node<2>[ilmorange] at (rel axis cs:0.5,0.7) {$B = 113$};
+			\node<3>[ilmorange] at (rel axis cs:0.5,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 47$};
+			\node<4>[ilmorange] at (rel axis cs:0.5,0.7) {$A = 140$};
+
+		\nextgroupplot[title=\ce{PPyr+Cl-}]
+			\fill[lightgray] (axis cs:0.0283,1e-1) rectangle (axis cs:0.12, 1e5);
+			\addplot table[x=strain, y=G']{PPyCl0CL70unit_80gperL.strain};
+			\addplot table[x=strain, y=G'']{PPyCl0CL70unit_80gperL.strain};
+			\node<2>[ilmorange, right] at (rel axis cs:0,0.7) {$B = 58$};
+			\node<3>[ilmorange,right] at (rel axis cs:0,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 27$};
+			\node<4>[ilmorange, right] at (rel axis cs:0,0.7) {$A = 90$};
+
+		\nextgroupplot[title=\ce{PPyr+Br-}]
+			\fill[lightgray] (axis cs:0.0035,1e-1) rectangle (axis cs:0.022, 1e5);
+			\addplot table[x=strain, y=G']{PPyBr_70_0pc.strain};
+			\addplot table[x=strain, y=G'']{PPyBr_70_0pc.strain};
+			\node<2>[ilmorange, right] at (rel axis cs:0,0.15) {$B = 2.6$};
+			\node<3>[ilmorange,right] at (rel axis cs:0,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.1$};
+			\node<4>[ilmorange, right] at (rel axis cs:0,0.15) {$A = 7.1$};
+
+		\nextgroupplot[title=\ce{PPyr+I-}]
+			\fill[lightgray] (axis cs:1e-3,1e-1) rectangle (axis cs:0.89, 1e5);
+			\addplot table[x=strain, y=G']{PPyI0CL70unit_80gperL_bis.strain};
+			\addplot table[x=strain, y=G'']{PPyI0CL70unit_80gperL_bis.strain};
+			\node<2>[ilmorange, right] at (rel axis cs:0,0.15) {$B = 2.4$};
+			\node<3>[ilmorange,right] at (rel axis cs:0,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.0$};
+			\node<4>[ilmorange, right] at (rel axis cs:0,0.15) {$A = 6.5$};
+			
+\end{groupplot}
+\end{tikzpicture}%
+%\hrule

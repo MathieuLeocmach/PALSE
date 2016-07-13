@@ -378,13 +378,51 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\vspace{0.5\baselineskip}
 	\tikzsetnextfilename{strain}%
 	\input{fig_presentation/strain.pgf}
+	
+	\vspace{-0.5\baselineskip}
+	\begin{overprint}%
+	\onslide<-2>%
 	\begin{itemize}
-	\item narrow linear regime $\gamma_0\ll 1$
-	\item<2> extension parameter increases with condensation
-\end{itemize}
+		\item narrow linear regime $\gamma_0\ll 1$
+		\item<2> extension parameter increases with condensation
+	\end{itemize}
+	\onslide<3->%
+	\begin{itemize}
+		\item bonding energy increases with $B$
+		\item<4> measure of counterion condensation $A$
+%		\begin{description}
+%			\item[\ce{PPyr+I-}] $10$ uncondensed counterions per polymer
+%			\item[\ce{PIm+Br-}] a single dissociated counterion every $9$ polymers
+%		\end{description}
+	\end{itemize}
+	\end{overprint}
 \end{frame}
 
 \againframe<2>{endlinear}
 \againframe<2>{strainsweep}
+
+\begin{frame}{Extension of the electrostatic blobs}
+\vspace{\baselineskip}
+
+\tikzsetnextfilename{stretch}%
+	\tikzsetnextfilename{stretch}%
+	\input{fig_presentation/stretch.pgf}
+	\[E_\mathrm{stretch} = \text{area increment}(\gamma,B) \times \text{surface tension}(\tau,B)\]
+	
+	\begin{itemize}
+		\item fluidisation = rupture $\Rightarrow E_\mathrm{stretch}(\gamma_c) = E_\text{head-body}$
+		\begin{itemize}
+			\item \structure{$\tau(E_\text{head-body}, B, \gamma_c)$}
+		\end{itemize}
+		\item ionic bond energy depends on local $\epsilon_r$%\\\hfill\textit{\scriptsize Rehm Chem Soc Rev. 2010}
+		\begin{itemize}
+			\item in water $E_\text{head-body}\approx 2k_\mathrm{B}T$
+			\item large $B\Rightarrow$ low $\epsilon_r$ $\Rightarrow$ high $E_\text{head-body}$
+		\end{itemize}
+		\item smallest $B$ is \ce{PPyr+I-} $\Rightarrow \textcolor{ilmcolor}{\tau = 0.4\pm0.07}, \Theta\approx\SI{220}{\celsius}$
+	\end{itemize}
+\end{frame}
+
+\againframe<3-4>{strainsweep}
 
 \end{document}
