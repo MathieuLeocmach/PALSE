@@ -28,6 +28,7 @@
 	!{mono}\textcolor{ilmorange}{Nu^{+}}-[0,2,,,draw=none]\textcolor{blue!80!black}{X^{-}}%
 	)-[::60]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
 };
+  \node[below right=-0.6em and -0.25em of PNuX.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 
 	\draw[decoration=brace, decorate] (PImBr.north east) -- (PPyrBr.south east-|PImBr.east) node[midway] (PNuBr){};
 	
