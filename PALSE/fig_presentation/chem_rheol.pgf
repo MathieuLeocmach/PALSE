@@ -1,0 +1,18 @@
+\definesubmol{head}{(-[::-105,,,,ilmcolor])(-[::-15,,,,ilmcolor])-[::60,,,,ilmcolor](=[::60,,,,ilmcolor]\textcolor{ilmcolor}{O})-[::-60,,,,ilmcolor]\textcolor{ilmcolor}{O}-[::-60,,,,ilmcolor]-[::60,,,,ilmcolor]-[::60,,,,ilmcolor]}
+\definesubmol{mono}{-[::-60,,,,gray](=[,,,,gray]\textcolor{gray}{O}(-[,1.5,,,densely dotted]\textcolor{cyan!60!black}{H}-[,1.25,,,cyan!60!black]\textcolor{cyan!60!black}{O}(-[1,1,,,draw=none]\textcolor{red}{\delta^{-}})-[::-40,1.25,,,cyan!60!black]\textcolor{cyan!60!black}{H}?-[0,1,,,draw=none]\textcolor{red}{\delta^{+}}))-[::-60,,,,gray]\textcolor{gray}{O}-[::60,,,,gray]-[,,,,gray]-[::-60,,,,gray]}
+\begin{tikzpicture}
+%axis and rheometer
+\draw[-stealth] (0,0) -- (\textwidth,0) node[below left]{\si{\metre}} node[above left=1em and 0] (rheo) {\includegraphics[width=0.15\textwidth]{presentation/rheo_ar1000.jpg}} \foreach \x in {-10,-9,...,-2}{node[pos=(\x+11)/10, label={[font=\footnotesize]-90:10\textsuperscript{\x}}] {|}};
+\begin{scope}[every node/.style={font=\tiny\setatomsep{1.5em}}]
+\node[above right=2em and 0] (PNuX) {%
+\chemfig{[:-30]-[@{left,0.25}](%
+	!{mono}\textcolor{ilmorange}{Nu^{+}}-[0,2,,,draw=none]\textcolor{blue!80!black}{X^{-}}?[,,densely dotted]%
+	)-[::60]-[@{right,0.25}]!{head}\textcolor{ilmcolor}{P}|\textcolor{ilmcolor}{O_3^{2-}}}%
+};
+  \node[below right=-0.6em and -0.25em of PNuX.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\end{scope}
+\draw[thick,-stealth] (rheo) to[bend right] (PNuX) node[ilmorange] at (0.5\textwidth,8em){understand};
+\draw[thick,-stealth] (PNuX) to[bend right] (rheo) node[ilmorange] at (0.5\textwidth,2em){design};
+\node[above=0 of rheo,ilmcolor] (rhl){rheology};
+\node[anchor=base,ilmcolor] at (PNuX.north|-rhl.base) {chemistry};
+\end{tikzpicture}
