@@ -31,8 +31,10 @@
 \draw[->, ultra thick] (stretched) -- +(4\pas,0);
 %axis an annotations
 \draw[|->] (0,2\pas) coordinate (orig) --+(\columnwidth-3em,0) node[below] {$R$} node[above] {$\gamma$};
-\draw[dotted] (eq) -- (eq|-orig) node[above left, inner xsep=0] {0}  node[below left, inner xsep=0] {$R_0$};
-\draw[dotted] (tendu) -- (tendu|-orig) node[above right] {$\gamma_0 \ll 1$}  node[below right] {$(1+\gamma_0)R_0$};
-\draw[dotted] (stretched) -- (stretched|-orig) node[above right] {$\gamma_c$}  node[below right] {$(1+\gamma_c)R_0$};
+\draw[dashed] (eq) -- (eq|-orig) node[above left, inner xsep=0] {0}  node[below left, inner xsep=0] {$R_0$};
+\draw[dashed, thick, ilmcolor] (tendu) -- (tendu|-orig) node[above right] {$\gamma_0 \ll 1$}  node[below right] {$(1+\gamma_0)R_0$};
+\draw[dashed, ilmorange] (stretched) -- (stretched|-orig) node[above right] {$\gamma_c$}  node[below right] {$(1+\gamma_c)R_0$};
+\node[anchor=south] at ($(tendu)!0.5!(tendu-|stretched)$) {plastic};
+\node[anchor=south] at ($(tendu)!1.5!(tendu-|stretched)$) {fluid};
 
 \end{tikzpicture}
