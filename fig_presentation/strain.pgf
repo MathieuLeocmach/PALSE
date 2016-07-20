@@ -32,46 +32,56 @@
 			ylabel={$G^\prime, G^{\prime\prime}$ (\si{\pascal})},
 			yticklabel={\axisdefaultticklabellog}
 			]
-			\fill[lightgray] (axis cs:0.011,1e-1) rectangle (axis cs:8.1, 1e5);
+			\draw[thick, ilmcolor] (axis cs:0.011,1e-1) -- (axis cs:0.011,1e5);
+			\draw[thick, ilmorange] (axis cs:8.1, 1e-1) -- (axis cs:8.1, 1e5);
+			%\fill[lightgray] (axis cs:0.011,1e-1) rectangle (axis cs:8.1, 1e5);
 			\addplot table[x=strain, y=G']{ImBr_70_PO3_8pc_bis.strain};
 			\addplot table[x=strain, y=G'']{ImBr_70_PO3_8pc_bis.strain};
-			\node<1>[ilmcolor,right,anchor=north east,rotate=90] at (rel axis cs:0,0.8) {linear};
-			\node<1>[ilmorange] at (rel axis cs:0.5,0.5) {plastic};
-			\node<1>[ilmcolor,right,anchor=south east,rotate=90] at (rel axis cs:1,0.8) {fluid};
-			\node<2>[ilmorange] at (rel axis cs:0.5,0.7) {$B = 830$};
+			\node<1>[right,anchor=north east,rotate=90] at (rel axis cs:0,0.8) {linear};
+			\node<1> at (rel axis cs:0.5,0.5) {plastic};
+			\node<1>[right,anchor=south east,rotate=90] at (rel axis cs:1,0.8) {fluid};
+			\node<2>[ilmcolor] at (rel axis cs:0.5,0.7) {$B = 830$};
 			\node<3>[ilmorange] at (rel axis cs:0.5,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 123$};
 			\node<4>[ilmorange] at (rel axis cs:0.5,0.7) {$A = 640$};
 
 		\nextgroupplot[title=\ce{PIm+I-}]
-			\fill[lightgray] (axis cs:0.0179,1e-1) rectangle (axis cs:0.184, 1e5);
+			\draw[thick, ilmcolor] (axis cs:0.0179,1e-1) -- (axis cs:0.0179,1e5);
+			\draw[thick, ilmorange] (axis cs:0.184, 1e-1) -- (axis cs:0.184, 1e5);
+			%\fill[lightgray] (axis cs:0.0179,1e-1) rectangle (axis cs:0.184, 1e5);
 			\addplot table[x=strain, y=G']{PImI0CL70unit_80gperL.strain};
 			\addplot table[x=strain, y=G'']{PImI0CL70unit_80gperL.strain};
-			\node<2>[ilmorange] at (rel axis cs:0.5,0.7) {$B = 113$};
-			\node<3>[ilmorange] at (rel axis cs:0.5,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 47$};
-			\node<4>[ilmorange] at (rel axis cs:0.5,0.7) {$A = 140$};
+			\node<2>[ilmcolor] at (rel axis cs:0.6,0.7) {$B = 113$};
+			\node<3>[ilmorange,left] at (rel axis cs:1,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 47$};
+			\node<4>[ilmorange,left] at (rel axis cs:1,0.7) {$A = 140$};
 
 		\nextgroupplot[title=\ce{PPyr+Cl-}]
-			\fill[lightgray] (axis cs:0.0283,1e-1) rectangle (axis cs:0.12, 1e5);
+			\draw[thick, ilmcolor] (axis cs:0.0283,1e-1) -- (axis cs:0.0283,1e5);
+			\draw[thick, ilmorange] (axis cs:0.12, 1e-1) -- (axis cs:0.12, 1e5);
+			%\fill[lightgray] (axis cs:0.0283,1e-1) rectangle (axis cs:0.12, 1e5);
 			\addplot table[x=strain, y=G']{PPyCl0CL70unit_80gperL.strain};
 			\addplot table[x=strain, y=G'']{PPyCl0CL70unit_80gperL.strain};
-			\node<2>[ilmorange, right] at (rel axis cs:0,0.7) {$B = 58$};
-			\node<3>[ilmorange,right] at (rel axis cs:0,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 27$};
-			\node<4>[ilmorange, right] at (rel axis cs:0,0.7) {$A = 90$};
+			\node<2>[ilmcolor, right] at (rel axis cs:0.25,0.7) {$B = 58$};
+			\node<3>[ilmorange,left] at (rel axis cs:1,0.7) {$\frac{E_c}{k_\mathrm{B}T} = 27$};
+			\node<4>[ilmorange, left] at (rel axis cs:1,0.7) {$A = 90$};
 
 		\nextgroupplot[title=\ce{PPyr+Br-}]
-			\fill[lightgray] (axis cs:0.0035,1e-1) rectangle (axis cs:0.022, 1e5);
+			\draw[thick, ilmcolor] (axis cs:0.0035,1e-1) -- (axis cs:0.0035,1e5);
+			\draw[thick, ilmorange] (axis cs:0.022, 1e-1) -- (axis cs:0.022, 1e5);
+			%\fill[lightgray] (axis cs:0.0035,1e-1) rectangle (axis cs:0.022, 1e5);
 			\addplot table[x=strain, y=G']{PPyBr_70_0pc.strain};
 			\addplot table[x=strain, y=G'']{PPyBr_70_0pc.strain};
-			\node<2>[ilmorange, right] at (rel axis cs:0,0.15) {$B = 2.6$};
-			\node<3>[ilmorange,right] at (rel axis cs:0,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.1$};
-			\node<4>[ilmorange, right] at (rel axis cs:0,0.15) {$A = 7.1$};
+			\node<2>[ilmcolor, right] at (rel axis cs:0.1,0.15) {$B = 2.6$};
+			\node<3>[ilmorange,right] at (rel axis cs:0.275,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.1$};
+			\node<4>[ilmorange, right] at (rel axis cs:0.275,0.10) {$A = 7.1$};
 
 		\nextgroupplot[title=\ce{PPyr+I-}]
-			\fill[lightgray] (axis cs:1e-3,1e-1) rectangle (axis cs:0.89, 1e5);
+			%\draw[thick, ilmcolor] (axis cs:0.0035,1e-1) -- (axis cs:0.0035,1e5);
+			\draw[thick, ilmorange] (axis cs:0.89, 1e-1) -- (axis cs:0.89, 1e5);
+			%\fill[lightgray] (axis cs:1e-3,1e-1) rectangle (axis cs:0.89, 1e5);
 			\addplot table[x=strain, y=G']{PPyI0CL70unit_80gperL_bis.strain};
 			\addplot table[x=strain, y=G'']{PPyI0CL70unit_80gperL_bis.strain};
-			\node<2>[ilmorange, right] at (rel axis cs:0,0.15) {$B = 2.4$};
-			\node<3>[ilmorange,right] at (rel axis cs:0,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.0$};
+			\node<2>[ilmcolor, right] at (rel axis cs:0,0.15) {$B = 2.4$};
+			\node<3>[ilmorange,right] at (rel axis cs:0.2,0.15) {$\frac{E_c}{k_\mathrm{B}T} = 2.0$};
 			\node<4>[ilmorange, right] at (rel axis cs:0,0.15) {$A = 6.5$};
 			
 \end{groupplot}
