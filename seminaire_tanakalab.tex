@@ -1,0 +1,489 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[super]{nth}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+%\usefonttheme{structuresmallcapsserif}
+%\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\mode<presentation>{\usetheme{ilm}}
+%\usecolortheme{rose}
+%\useinnertheme[shadow]{circles}
+%\usecolortheme{whale}
+%\useoutertheme{infolines}
+
+%\usecolortheme[named=Accent1]{structure}
+
+
+
+
+%\setbeamerfont{page number in head/foot}{size=\large}
+%\setbeamercolor{page number in head/foot}{fg=Main}
+%% page/total
+%%\setbeamertemplate{footline}[frame number]
+%% pas de total
+%\setbeamertemplate{footline}{%
+%    	\hfill%
+%	\usebeamercolor[fg]{page number in head/foot}%
+%	\usebeamerfont{page number in head/foot}%
+%	\insertframenumber\kern1em\vskip2pt%
+%}
+%
+%\setbeamersize{text margin left=1em}
+%\setbeamersize{text margin right=1em}
+
+\usepackage[overlay,absolute]{textpos}
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{10mm}{10mm} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage{times}
+%\usepackage[oldstylenums]{kpfonts}
+
+%\include{macros}
+\usepackage{ifthen}
+
+
+%proper math and math symbols
+\usepackage{amsmath,mathtools}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage[separate-uncertainty = true]{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap,fit}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{external}
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\let\orig@tikzsetnextfilename=\tikzsetnextfilename
+\renewcommand\tikzsetnextfilename[1]{\orig@tikzsetnextfilename{#1-\overlaynumber}}
+\makeatother
+
+\tikzset{every picture/.style={beamer externalizing}}
+\tikzexternalize
+\tikzsetexternalprefix{fig_presentation/}
+%\tikzset{external/optimize=false}
+%\tikzset{external/force remake}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+%chemistry
+\usepackage[version=3]{mhchem}
+\usepackage{chemfig}
+\usepackage{setspace}
+
+
+%beamer related package
+
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} %
+}}%
+
+
+%bibliography
+\usepackage[style=authoryear-comp, language=british,eprint=false, url=false, doi=false, sortcites=true, sorting=none, isbn=false, firstinits=true,maxcitenames=6]{biblatex}
+%minimal citations
+\AtEveryCitekey{%
+	\clearfield{title}
+	\clearfield{pages}
+	\clearfield{volume}
+	\clearfield{number}
+	\clearfield{month}}
+\newcommand{\myfullcite}[1]{{\scriptsize\fullcite{#1}}}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+%\bibliography{biblio}
+
+
+\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+\institute[iLM]{Univ Lyon, Université Claude Bernard Lyon 1, CNRS, Institut Lumière Matière}
+\title[processionary gel]{Ion pairing controls rheological properties of ``processionary'' polyelectrolyte hydrogels}
+\author[M. Leocmach]{Mathieu Leocmach \hfill{\usebeamerfont{normal text}\texttt{\usebeamercolor[fg]{normal text}\footnotesize @LamSonLeoc\includegraphics[height=1em]{Twitter_Bird}}}\vspace{-\baselineskip}}
+\date{%10 August 2016
+}
+\titlegraphic{\vspace{-\baselineskip}
+	\begin{tabu}{X[c]X[c]X[c]X[c]}
+		\multicolumn{2}{c}{\usebeamerfont{institute}\usebeamercolor[fg]{institute}ENS de Lyon, Laboratoire de Chimie}&
+		\multicolumn{2}{c}{\usebeamerfont{institute}\usebeamercolor[fg]{institute}ENS de Lyon, Laboratoire de Physique}\\\cmidrule(r){1-2}\cmidrule(l){3-4}
+		\includegraphics[height=3\baselineskip]{presentation/Hassan}&
+		\includegraphics[height=3\baselineskip]{presentation/Cyrille}&
+		\includegraphics[height=3\baselineskip]{presentation/Nicolas_Taberlet}&
+		\includegraphics[height=3\baselineskip]{../Yaourt/Seb}\\
+		Hassan & Cyrille & Nicolas & S\'{e}bastien\\
+		Srour & Monnereau & Taberlet & Manneville\\\cmidrule(r){1-2}
+		\multicolumn{2}{c}{Martien Duvall Deffo Ayagou}&\\
+		\multicolumn{2}{c}{Thi Thanh-Tam Nguyen}&\raisebox{-0.1em}[0pt][0pt]{\includegraphics[height=2\baselineskip]{presentation/invest-avenir.jpg}}&\raisebox{-0.1em}[0pt][0pt]{\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{../Yaourt/NEW-Logo-ERC-OUTLINE}}\\
+	\end{tabu}
+	
+\bigskip
+Martien Duvall Deffo Ayagou, Thi Thanh-Tam Nguyen%, Chantal Andraud
+	
+	%\vfill
+	%\includegraphics[height=2\baselineskip]{logo_ens-lyon}\quad
+	%\includegraphics[height=2\baselineskip]{logo_ums_grand}\quad
+	%\includegraphics[height=2\baselineskip]{../../Yaourt/CNRSfilaire-Q}\quad
+	%\includegraphics[height=2\baselineskip]{CRPP}\quad
+	%\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}
+	}
+
+
+\newlength{\mylength}
+
+%\includeonly{creep_beamer}
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+{red!40!black,mark=o},
+{red!60!black,mark=triangle, every mark/.append style={rotate=180}},
+{red!80!black,mark=square},
+{red,mark=triangle},
+{red!80!yellow, mark=diamond},
+red!60!yellow,
+red!40!yellow,
+}
+
+\AtBeginSection[]{
+	\addtocounter{framenumber}{-1}
+	\begin{frame}[plain]
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{frame}{\pgfuseimage{cnrs-logo}\hspace*{0.3cm}\pgfuseimage{ucbl-logo}\pgfuseimage{univlyon-logo}}%[plain]
+	\titlepage
+\end{frame}
+
+\setcounter{framenumber}{0}
+
+\begin{frame}{What chemists/physicists think I do}
+	\begin{columns}[t]
+	\column{0.5\textwidth}
+	\begin{flushleft}\structure{chemistry}
+	
+	``This counterion is more chaotropic''
+	
+	\vspace{\baselineskip}
+	\includegraphics[width=\textwidth]{presentation/sorciere}
+	\end{flushleft}
+	\column{0.5\textwidth}
+	\begin{flushright}\structure{rheology}
+	
+	``We impose a constant shear stress''
+	\end{flushright}
+	\hspace{0.25\textwidth}\includegraphics[height=10\baselineskip]{presentation/rascar}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Physical chemistry positive feedback}
+\tikzsetnextfilename{chem_rheol}%
+	\input{fig_presentation/chem_rheol.pgf}
+\end{frame}
+
+\begin{frame}{Fine chemistry}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{polymerisation}%
+	\input{fig_presentation/polymerisation.pgf}
+
+	\bigskip
+	\tikzsetnextfilename{polymerisation_PImBr}%
+	\input{fig_presentation/polymerisation_PImBr.pgf}
+\end{frame}
+
+\begin{frame}{Physical polyelectrolytes hydrogel}
+	\tikzsetnextfilename{polyelectrolytes}%
+\input{fig_presentation/polyelectrolytes.pgf}
+\begin{columns}
+\column{0.5\textwidth}
+\structure{Reversible gel}
+\begin{itemize}
+	\item in deionised, neutral water
+	\item yield stress fluid
+\end{itemize}
+\structure{Solution} if
+\begin{itemize}
+	\item ionic strength, pH
+	\item non ionic head
+\end{itemize}
+$\Rightarrow$ Head-to-body ionic bonds
+
+\column{0.5\textwidth}
+\hfill Herschel-Bulkley law\\
+\hfill $\sigma =\sigma_c + A \dot{\gamma}^n$
+\tikzsetnextfilename{flowcurves}%
+\input{fig_presentation/flowcurves.pgf}
+\end{columns}
+\vspace{-\baselineskip}\textit{\scriptsize Srour et al. Macromol. Rapid Comm., 36, 55 (2015)}
+\end{frame}
+
+\begin{frame}{Linear rheology: A physicist problem}
+	\begin{columns}
+	\column{0.5\textwidth}
+	\tikzsetnextfilename{linear_rheology_PImBr}%
+	\input{fig_presentation/linear_rheology_PImBr.pgf}
+	\[ G = \frac{c}{N}k_\mathrm{B}T \]
+	\begin{description}[$N$]
+	\item[$c$] monomer concentration
+	\item[$N$] \# monomers between CL
+	\end{description}
+	\column{0.45\textwidth}
+	\pause
+	\begin{itemize}
+	\item $N \approx 800 N_0$ !
+	\item 800 chains between CL
+	\end{itemize}
+	\begin{flushright}\includegraphics[height=14\baselineskip]{presentation/Thaumetopea_pityocampa_01.jpg}\\
+	\vspace{-1.5em}\colorbox{lightgray}{\scriptsize Wikimedia commons}
+	\end{flushright}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Tweaking repeated ions + counterions}
+	\vspace{1.5\baselineskip}
+	\tikzsetnextfilename{postfunc}%
+	\input{fig_presentation/postfunc.pgf}
+
+	\bigskip
+	\tikzsetnextfilename{postfunc_chem}%
+	\input{fig_presentation/postfunc_chem.pgf}
+	
+	\vspace{-3\baselineskip}\hfill \begin{minipage}{0.35\textwidth}``Can you put that in the rheometer?''\end{minipage}
+\end{frame}
+
+\begin{frame}<1>[label=condensationranking]{Counterion condensation}
+	\tikzsetnextfilename{solubility}%
+	\input{fig_presentation/solubility.pgf}
+	\begin{itemize}
+		\item Too much condensation prevents dissolution
+		\begin{itemize}
+			\item water poor solvent for polymer backbone
+			\item polyelectrolytes solubilized by electrostatic repulsion
+		\end{itemize}
+		\item<2-> Direct Hoffmeister series $\ce{I-}\alert{<}\ce{Br-}\alert{<}\ce{Cl-}\alert{<}\ce{F-}$\\
+	\hfill\textit{\scriptsize Hofmeister 1888; Zhang Annu Rev Phys Chem 2010; Schwierz Langmuir 2010}
+		\item<3-> \ce{\pi+-\pi+} interactions trap counterions\raisebox{-0.5em}{%
+			\begin{tikzpicture}[every node/.style={inner ysep=0,font=\tiny\setatomsep{1.5em}}]
+			\node[left=0.5em] (Pyr){\chemfig{[0]*5(--N(-)---)}};
+			\node[right=0.5em] (Im){\chemfig{[2]*5(-N(-)-=N-=)}};
+			\node[font=\normalsize]{$\alert{<}$};
+			\end{tikzpicture}}\\
+			\hfill\textit{\scriptsize
+			Geronimo PCCP 2011;
+			Matthews PCCP 2014;
+			Gao J Mol Graph Model 2015}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Condensation and solubility}
+	\begin{itemize}
+		\item All counterions condensed $\Rightarrow$ neutral $\Rightarrow$ not soluble
+	\end{itemize}
+	\tikzsetnextfilename{polyelectrolytes_condensed}%
+	\input{fig_presentation/polyelectrolytes_condensed.pgf}
+	\begin{itemize}
+		\item ``Enough'' free counterions $\Rightarrow$ repulsion $\Rightarrow$ soluble
+	\end{itemize}
+	\tikzsetnextfilename{polyelectrolytes}%
+	\input{fig_presentation/polyelectrolytes.pgf}
+\end{frame}
+
+\againframe<2-3>{condensationranking}
+
+
+\begin{frame}{\# chains between cross links}%
+	\tikzsetnextfilename{frequency}%
+	\input{fig_presentation/frequency.pgf}
+	\begin{itemize}
+	\item Procession length increases with counterion condensation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Polyelectrolytes physics}
+	\vspace{\baselineskip}
+	\structure{Can we measure counterion condensation from rheology?}
+	
+	\begin{itemize}
+		\item 1 dissociated counterion every \alert{$A$} monomers
+		\begin{itemize}\item large $A$, more condensed\end{itemize}
+		\item poor solvent: reduced temperature $\alert{\tau} = 1 -T/\Theta$
+		\begin{itemize}\item \ce{PIm+F-} non soluble at \SI{100}{\celsius} $\Rightarrow\tau>0.2$ \end{itemize}
+	\end{itemize}
+	\alert{Scaling theory}\hfill \textit{\scriptsize Rubinstein Macromol. 1996}
+	\tikzsetnextfilename{scales}%
+	\input{fig_presentation/scales.pgf}
+	
+	\begin{itemize}
+		\item extension parameter $\alert{B} = \frac{\text{extended length}}{\text{diameter}}$ of electrostatic blob
+		\smallskip
+		\item scales $\geq D$ depend only on $B \sim A^{4/3} \tau$
+	\end{itemize}
+	
+	\begin{center}
+	\structure{Can we measure $B$ from rheology?}
+	\end{center}
+\end{frame}
+
+\begin{frame}<1>[label=endlinear]{Stretching a polyelectrolyte chain}
+	\vspace{\baselineskip}
+	\begin{itemize}
+		\item Unfold largest scales first\hfill \textit{\scriptsize Pincus Macromol. 1976}
+	\end{itemize}
+	
+	\tikzsetnextfilename{scales_stretch}%
+	\begin{tikzpicture}
+	\node[inner sep=0](scales){\input{fig_presentation/scales.pgf}};
+	\draw[->, ultra thick, ilmcolor] (scales.south east) ++(0,-0.3em) -- +(-0.33\textwidth,0) node[midway, below] {linear};
+	\draw[->, ultra thick,ilmorange] (scales.south) ++(0,-0.3em) -- +(-0.35\textwidth,0) node[midway, below] {non linear};
+	\end{tikzpicture}
+	
+	\pause
+	\begin{itemize}
+		\item narrow linear regime $\Rightarrow R_0\approx r_\mathrm{scr} \Rightarrow \left(\frac{B}{B_0}\right)^3 = 1 + \frac{B}{B_s}$
+		\begin{itemize}
+			\item \alert{$B_s$} screening from \ce{-PO_3^{2-}} heads\tikzsetnextfilename{head}
+				\begin{tikzpicture}
+					\let\mrad\relax%
+					\newlength\mrad%
+					\setlength{\mrad}{1ex}%
+					%face
+					\input{fig_presentation/head.pgf}
+					%% horns
+					\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
+				\end{tikzpicture}
+			\item if $B \ll B_s$ screening from uncondensed counterions \[B = B_0 \sim bc \left(\frac{k_\mathrm{B}T}{G}\right)^{2/3}\]
+			\item if $B \gg B_s$ screening from heads: $B = \left(B_0^3/B_s\right)^{1/2} > B_0$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}<1>[label=strainsweep]{Strain sweep}
+	\vspace{0.5\baselineskip}
+	\tikzsetnextfilename{strain}%
+	\input{fig_presentation/strain.pgf}
+	
+	\vspace{-0.5\baselineskip}
+	\begin{overprint}%
+	\onslide<-2>%
+	\begin{itemize}
+		\item narrow linear regime $\gamma_0\ll 1$
+		\item<2> extension parameter increases with condensation
+	\end{itemize}
+	\onslide<3->%
+	\begin{itemize}
+		\item bonding energy increases with $B$
+		\item<4> measure of counterion condensation $A$
+	\end{itemize}
+	\end{overprint}
+\end{frame}
+
+\againframe<2>{endlinear}
+\againframe<2>{strainsweep}
+
+\begin{frame}{Extension of the electrostatic blobs}
+\vspace{\baselineskip}
+
+\tikzsetnextfilename{stretch}%
+	\tikzsetnextfilename{stretch}%
+	\input{fig_presentation/stretch.pgf}
+	\[E_\mathrm{stretch} = \text{area increment}(\gamma,B) \times \text{surface tension}(\tau,B)\]
+	
+	\begin{itemize}
+		\item fluidisation = rupture $\Rightarrow E_\mathrm{stretch}(\gamma_c) = E_\text{head-body}$
+		\begin{itemize}
+			\item \structure{$\tau(E_\text{head-body}, B, \gamma_c)$}
+		\end{itemize}
+		\item ionic bond energy depends on local $\epsilon_r$%\\\hfill\textit{\scriptsize Rehm Chem Soc Rev. 2010}
+		\begin{itemize}
+			\item in water $E_\text{head-body}\approx 2k_\mathrm{B}T$
+			\item large $B\Rightarrow$ low $\epsilon_r$ $\Rightarrow$ high $E_\text{head-body}$
+		\end{itemize}
+		\item smallest $B$ is \ce{PPyr+I-} $\Rightarrow \textcolor{ilmcolor}{\tau = 0.4\pm0.07}, \Theta\approx\SI{220}{\celsius}$
+	\end{itemize}
+\end{frame}
+
+\againframe<3-4>{strainsweep}
+
+\begin{frame}{Conclusion}
+	\begin{itemize}
+		\item measure of microscopic parameters from rheology
+		\begin{itemize}
+			\item counterion condensation
+			\item head-to-body bonding energy
+		\end{itemize}
+		\item post-functionalisation allows to change $A\times 100$
+		\begin{itemize}
+			\item \ce{PPyr+I-}: 10 free counterions per polymer
+			\item \ce{PIm+Br-}: 1 free counterion every 9 polymers
+		\end{itemize}
+		\item mechanical properties $\times 1000$
+		\begin{itemize}
+			\item \ce{PPyr+I-}: $G\approx\SI{10}{\kilo\pascal}$, fluidizes at $\gamma_c\approx 2\%$
+			\item \ce{PIm+Br-}: $G\approx\SI{10}{\pascal}$, fluidizes at $\gamma_c\approx 800\%$
+		\end{itemize}
+		\item highly tunable hydrogels from short, linear polymer chains
+		\begin{itemize}
+			\item no additive
+			\item yield stress fluids
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Processionary phase diagram}
+	\begin{columns}
+	\column{0.65\textwidth}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{phase_diag}%
+	\input{fig_presentation/phase_diag.pgf}
+	\column{0.35\textwidth}
+	\begin{flushright}\includegraphics[height=14\baselineskip]{presentation/Thaumetopea_pityocampa_01.jpg}\\
+	\vspace{-1.5em}\colorbox{lightgray}{\scriptsize Wikimedia commons}
+	\end{flushright}
+	\end{columns}
+\end{frame}
+
+\end{document}
