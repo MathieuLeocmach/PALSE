@@ -295,7 +295,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\vspace{-3\baselineskip}\hfill \begin{minipage}{0.35\textwidth}``Can you put that in the rheometer?''\end{minipage}
 \end{frame}
 
-\begin{frame}<1>[label=condensationranking]{Counterion condensation}
+\begin{frame}<1>[label=condensationranking]{Behaviour in water}
 	\tikzsetnextfilename{solubility}%
 	\input{fig_presentation/solubility.pgf}
 	\begin{itemize}
@@ -316,6 +316,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 			Geronimo PCCP 2011;
 			Matthews PCCP 2014;
 			Gao J Mol Graph Model 2015}
+		\item<3-> 5 gels ranked by counterion condensation
 	\end{itemize}
 \end{frame}
 
@@ -358,7 +359,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\input{fig_presentation/scales.pgf}
 	
 	\begin{itemize}
-		\item extension parameter $\alert{B} = \frac{\text{extended length}}{\text{diameter}}$ of electrostatic blob
+		\item compaction parameter $\alert{B} = \frac{\text{extended length}}{\text{diameter}}$ of electrostatic blob
 		\smallskip
 		\item scales $\geq D$ depend only on $B \sim A^{4/3} \tau$
 	\end{itemize}
@@ -411,12 +412,17 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\onslide<-2>%
 	\begin{itemize}
 		\item narrow linear regime $\gamma_0\ll 1$
-		\item<2> extension parameter increases with condensation
+		\item<2> compaction parameter increases with condensation
 	\end{itemize}
-	\onslide<3->%
+	\onslide<3>%
 	\begin{itemize}
-		\item bonding energy increases with $B$
-		\item<4> measure of counterion condensation $A$
+		\item bonding energy increases with compaction (condensation)
+		\item allows larger strains
+	\end{itemize}
+	\onslide<4>%
+	\begin{itemize}
+		\item $A \sim (B/\tau)^{3/4}$
+		\item measure of counterion condensation $A$
 	\end{itemize}
 	\end{overprint}
 \end{frame}
@@ -424,25 +430,29 @@ $\Rightarrow$ Head-to-body ionic bonds
 \againframe<2>{endlinear}
 \againframe<2>{strainsweep}
 
-\begin{frame}{Extension of the electrostatic blobs}
+\begin{frame}{Measure reduced temperature}
 \vspace{\baselineskip}
-
+\begin{itemize}
+		\item fluidisation = rupture: stretching breaks head-to-body
+\end{itemize}
 \tikzsetnextfilename{stretch}%
 	\tikzsetnextfilename{stretch}%
 	\input{fig_presentation/stretch.pgf}
-	\[E_\mathrm{stretch} = \text{area increment}(\gamma,B) \times \text{surface tension}(\tau,B)\]
+	\[E_\mathrm{stretch} = \text{area increment}(\gamma,B) \times \text{surface tension}(\textcolor{ilmcolor}{\tau},B)\]
 	
 	\begin{itemize}
-		\item fluidisation = rupture $\Rightarrow E_\mathrm{stretch}(\gamma_c) = E_\text{head-body}$
+		%\item \structure{$\tau(E_\text{head-body}, B, \gamma_c)$}
+		\item for \ce{PPyr+I-}
 		\begin{itemize}
-			\item \structure{$\tau(E_\text{head-body}, B, \gamma_c)$}
+			\item little compaction $B\approx 2.4$
+			\item ionic bond in water: $E_\text{head-body}\approx 2k_\mathrm{B}T$
+			\item $\textcolor{ilmcolor}{\tau = 0.4\pm0.07}\qquad \Theta\approx\SI{220}{\celsius}$
 		\end{itemize}
 		\item ionic bond energy depends on local $\epsilon_r$%\\\hfill\textit{\scriptsize Rehm Chem Soc Rev. 2010}
 		\begin{itemize}
-			\item in water $E_\text{head-body}\approx 2k_\mathrm{B}T$
-			\item large $B\Rightarrow$ low $\epsilon_r$ $\Rightarrow$ high $E_\text{head-body}$
+			\item large $B\Rightarrow$ large electrostatic blobs with low $\epsilon_r$
+			\item stronger head-to-body bonds
 		\end{itemize}
-		\item smallest $B$ is \ce{PPyr+I-} $\Rightarrow \textcolor{ilmcolor}{\tau = 0.4\pm0.07}, \Theta\approx\SI{220}{\celsius}$
 	\end{itemize}
 \end{frame}
 
@@ -450,11 +460,6 @@ $\Rightarrow$ Head-to-body ionic bonds
 
 \begin{frame}{Conclusion}
 	\begin{itemize}
-		\item measure of microscopic parameters from rheology
-		\begin{itemize}
-			\item counterion condensation
-			\item head-to-body bonding energy
-		\end{itemize}
 		\item post-functionalisation allows to change $A\times 100$
 		\begin{itemize}
 			\item \ce{PPyr+I-}: 10 free counterions per polymer
@@ -464,6 +469,11 @@ $\Rightarrow$ Head-to-body ionic bonds
 		\begin{itemize}
 			\item \ce{PPyr+I-}: $G\approx\SI{10}{\kilo\pascal}$, fluidizes at $\gamma_c\approx 2\%$
 			\item \ce{PIm+Br-}: $G\approx\SI{10}{\pascal}$, fluidizes at $\gamma_c\approx 800\%$
+		\end{itemize}
+		\item measure of microscopic parameters from rheology
+		\begin{itemize}
+			\item counterion condensation
+			\item head-to-body bonding energy
 		\end{itemize}
 		\item highly tunable hydrogels from short, linear polymer chains
 		\begin{itemize}
