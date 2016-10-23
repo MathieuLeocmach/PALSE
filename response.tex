@@ -7,6 +7,7 @@
 \usepackage{siunitx}
 \usepackage[version=3]{mhchem}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \newenvironment{quotationi}
 {\begin{quotation}\itshape}
@@ -145,9 +146,33 @@ The authors report on rheological characterization and theoretical interpretatio
 Although offering novel handles to generate molecular assemblies, and for this reason, is considered to be general interest, the suggestion for the particular structures being assembled could be further bolstered by scattering tools.
 \end{quotationi}
 
+In many instances we tried to perform DLS measurements on our samples and, indeed, signals were observed. However the obtained results were largely unreproducible (even for a given sample upon slight change of the concentration, not to mention when two different samples were used). An example is shown below.
+
+\includegraphics[width=\textwidth]{DLS.png}
+\textit{Figure: \textbf{a} DLS data and best fit \textbf{b} size distribution by diffusion intensity and \textbf{c} size distribution by number for PImBr (top row) and PPyBr (bottom row) in water at 10\% weight concentrations}
+
+As the Reviewer can see, dispersion was very high, and signal quality so low that cumulant fit analyses were absolutely irrelevant. In our opinion, there is nothing relevant in these data, this is why we finally chose not to include it in the SI. If the referee thinks that it might be worth adding some of these data to the article, we are ready to do it. However, we do know whether a reasonable interpretation could be provided from the data. We leave the referee judge; top is PImBr bottom PPyBr. Although a pattern seems to exist, it seems difficult to us to get its exact meaning, and to separate the artefact from the fact\ldots
+
 \begin{quotationi}
 In applying network theory to interpret the data, it appears that e.g. loose end corrections are not employed. What is the rational for that?
 \end{quotationi}
+
+To our understanding, loose end corrections describe a situation where pre-existing linear chains of size $M$ are randomly cross-linked with an average of $M_c$ monomers between cross links with $M_c\leq M/2$. The modulus then scales as
+\begin{equation}
+\frac{G}{k_\mathrm{B}T} = \frac{c}{M_c}  \left(1 - \frac{2M_c}{M}\right).
+\end{equation}
+For example if $M_c$ is only one third of $M$, then two third of the original linear chain are loose ends and do not contribute to the elasticity.
+
+This is rather different from our situation where the number of monomers between cross links is larger or equal to the number of monomers in the original chain. This situation stems from the reactivity of the heads: a cross link necessarily occurs at the head of a polymer, preventing one of the possible loose end, but leaving the possibility of many loose ends at the tails of each polymer.
+
+We can better compare our situation to a gel formed by branched polymers, for example bottle brush polymers. In this situation, Papagiannopoulos et al. (\href{http://doi.org/10.1021/bm060287d}{Biomacromolecules 2006} or \href{http://doi.org/10.1039/b714864j}{Faraday Discussions 2008}) have shown that the shear modulus scales as
+\begin{equation}
+\frac{G}{k_\mathrm{B}T} = \frac{c}{N_\mathrm{tot}}.
+\end{equation}
+where $N_\mathrm{tot}$ is the total number of monomers between cross-links, including side chains that are topological `loose ends'. 
+
+In other words, one can consider two possible definitions of ``cross link''. In Flory's definition, every branching point is a cross link, therefore a brush has many loose ends. In the more coarse-grained definition used by Papagiannopoulos et al., branching points leading to a loose end are not considered meaningful cross links, but every monomer of the side chains actually contribute to entropy and thus to elasticity.
+
 
 \begin{quotationi}
 In the introduction, the authors refer to interest in hydrogels in general is related to their application potential in biomedicine, but do not explicitly relate the particular conditions used to modulate properties also to such an application domain later in the manuscript. Are the various solution conditions studied compatible with such applications? Are the results sensitive to addition of a background electrolyte (e.g., similar to physiological ionic strength)?
