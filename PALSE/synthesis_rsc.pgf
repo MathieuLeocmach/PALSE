@@ -1,37 +1,37 @@
-\begin{figure*}
+%\begin{figure*}
 \definesubmol{head}{(-[::-105])(-[::-15])-[::60](=[::60]O)-[::-60]O-[::-60]-[::60]-[::60]}
 \definesubmol{mono}{-[::-60](=O)-[::-60]O-[::60]--[::-60]}
 
 \begin{tikzpicture}[every node/.style={font=\footnotesize\setatomsep{1.5em}}]
 \node (init) {\chemfig{Br-[:-30]!{head}PO_3Et_2}};
 \node[right=0.12\textwidth of init.base east, anchor=base west] (POH) {%
-\chemfig{[:-30]-[@{left,0.25}](%
+\chemfig{[:-30]Br-[,1.25](%
 	!{mono}OH%
-	)-[::60]-[@{right,0.25}]!{head}PO_3Et_2}%
+	)-[::60]-!{head}PO_3Et_2}%
 };
-\node[below right=-0.6em and 0 of POH.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\node[below right=-0.6em and 0.25em of POH.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \node[right=0.06\textwidth of POH] (PBr) {%
-\chemfig{[:-30]-[@{left,0.25}](%
+\chemfig{[:-30]Br-[,1.25](%
 	!{mono}Br%
-	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+	)-[::60]-!{head}PO_3^{2-}}%
 };
-\node[below right=-0.6em and 0 of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\node[below right=-0.6em and 0.25em of PBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \node[right=\textwidth of init.base west, anchor=base east] (PNuBr) {%
-\chemfig{[:-30]-[@{left,0.25}](%
+\chemfig{[:-30]Nu^{+}(-[:90,1,,,draw=none]Br^{-})-[,1.4](%
 	!{mono}Nu^{+}-[0,2,,,draw=none]Br^{-}%
-	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+	)-[::60]-!{head}PO_3^{2-}}%
 };
-\node[below right=-0.6em and 0 of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\node[below right=-0.6em and 0.75em of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 
 \draw[-stealth, thick] (init.base east|-POH.west) -- (POH) node[midway, above, -]{\chemfig{[:60]=!{mono}OH}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{CuBr}\linebreak 4-4'-bipyridine\linebreak \SI{85}{\celsius}};
 \draw[-stealth, thick] (POH) -- (PBr) node[midway, above]{\ce{TMS-Br}} node[midway, below, sloped, text width=0.2\textwidth, align=center]{\ce{CH2Cl2}\linebreak \SI{85}{\celsius}};
-\draw[-stealth, thick] (PBr) -- (PNuBr) node[midway, above,align=center]{or\\ Nu} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
+\draw[-stealth, thick] (PBr) -- (PNuBr) node[pos=0.425, above,align=center]{or\\ Nu} node[midway, below, text width=0.2\textwidth, align=center]{THF\linebreak \SI{85}{\celsius}};;
 \node[anchor=south] at (POH.south) {\ce{POH}};
 \node[anchor=south] at (PBr.south) {\ce{PBr}};
 
 %\draw (m.north east) -- (m.south east);
-\node[anchor=north west, xshift=1em] at (PBr.north east) (Pyr) {\chemfig{[2]*5(--N(-)---)}};
-\node[anchor=south east] at (PNuBr.west|-Pyr.south) (Im) {\chemfig{[2]*5(-N(-)-=N-=)}};
+\node[anchor=north west, xshift=0.5em] at (PBr.north east) (Pyr) {\chemfig{[2]*5(--N(-)---)}};
+\node[anchor=south east, xshift=-0.5em] at (PNuBr.west|-Pyr.south) (Im) {\chemfig{[2]*5(-N(-)-=N-=)}};
 \node[anchor=north] at (Pyr.north east) (Pyrlab){Pyr};
 \node[anchor=base east] at (Im.north|-Pyrlab.base) {Im};
 % \node[anchor=north] at (Im.south-|Pyr) {Im};
@@ -39,4 +39,4 @@
 % \node[below =of Pyr] {or};
 %\draw (init.north west) -- +(\textwidth,0);
 \end{tikzpicture}
-\end{figure*}
+%\end{figure*}

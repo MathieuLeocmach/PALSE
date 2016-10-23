@@ -4,17 +4,17 @@
 
 \begin{tikzpicture}[every node/.style={font=\footnotesize\setatomsep{1.5em}}]
 \node (PNuBr) {%
-\chemfig{[:-30]-[@{left,0.25}](%
+\chemfig{[:-30]Nu^{+}(-[:-150,1,,,draw=none]Br^{-})-[,1.4](%
 	!{mono}Nu^{+}-[0,2,,,draw=none]Br^{-}%
-	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+	)-[::60]-!{head}PO_3^{2-}}%
 };
-\node[below right=-0.6em and 0 of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\node[below right=-0.6em and 1.6em of PNuBr.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \node[right=\columnwidth of PNuBr.base west, anchor=base east] (PNuX) {%
-\chemfig{[:-30]-[@{left,0.25}](%
+\chemfig{[:-30]Nu^{+}(-[:-150,1.1,,,draw=none]X^{-})-[,1.4](%
 	!{mono}Nu^{+}-[0,2,,,draw=none]X^{-}%
-	)-[::60]-[@{right,0.25}]!{head}PO_3^{2-}}%
+	)-[::60]-!{head}PO_3^{2-}}%
 };
-\node[below right=-0.6em and 0 of PNuX.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
+\node[below right=-0.6em and 1.6em of PNuX.base west] {$\prescript{}{N_0}{\left[\vrule height 1em depth 0.25em width 0pt\hspace{1.75em}\right]}$};
 \draw[-stealth, thick] (PNuBr) -- (PNuX) node[midway, above, -]{\ce{NaX}} node[midway, below, text width=0.2\textwidth, align=center]{\ce{H2O}};
 \node[anchor=south west] at (PNuBr.south east) {X: F, Cl or I};
 \node[anchor=north west] at (PNuBr.north west) {(a)};
