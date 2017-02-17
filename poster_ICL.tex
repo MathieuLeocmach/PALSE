@@ -11,20 +11,40 @@
 %\usefonttheme{structuresmallcapsserif}
 %\setbeamertemplate{navigation symbols}{}
 
-\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
-\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
-\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
-
 \mode<presentation>{\usetheme{ilm}}
+
+%\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\colorlet{Main}{ilmorange}
+%\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\colorlet{Accent1}{ilmcolor}
+%\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+\colorlet{Accent2}{ilmcolor!65!black}
+
+
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
-\def\Norulehead#1{\noindent\hbox to \hsize{\hfil\LARGE\textcolor{Main}{\textsf{#1}}}\bigskip}
+\def\Norulehead#1{\noindent\hbox to \hsize{\hfil\LARGE\textcolor{Main}{\textbf{#1}}}\bigskip}
 \def\Head#1{\Norulehead{\dotfill #1}}
 \def\LHead#1{\noindent{\Large \color{Accent2}\textbf{#1}}\smallskip}
-\def\affiliation#1{\Large \color{Accent2}\textit{#1}\smallskip}
-\def\Subhead#1{\noindent{\large\color{Accent1}\textsc{#1}}}
-\def\Title#1{\noindent{\veryHuge\color{ilmorange}\raggedright\textsf{\textbf{#1}}}}
+\def\affiliation#1{\Large \textcolor{Accent2}{\textit{#1}}\smallskip}
+\def\Subhead#1{\noindent{\large\color{Accent1}\textbf{#1}}}
+\def\Title#1{\noindent{\veryHuge\color{Main}\raggedright\textsf{\textbf{#1}}}}
+
+\setbeamertemplate{headline}{%
+	%logo sponsors
+	\let\mydim\relax
+	\newlength\mydim
+	\setlength{\mydim}{0.75cm}
+	\rule[-.3\baselineskip]{0pt}{4.5cm}
+	\hfill\pgfuseimage{cnrs-logo}\hspace*{\mydim}\pgfuseimage{ucbl-logo}\hspace*{\mydim}
+	\includegraphics[height=3cm]{presentation/ENS_Lyon.pdf}\hspace*{\mydim}
+	\pgfuseimage{univlyon-logo}\hspace*{\mydim}
+	\includegraphics[height=4cm]{presentation/invest-avenir.pdf}\hspace*{\mydim}
+	\includegraphics[height=4cm,clip=true, trim=6mm 14mm 6mm 0]{../Yaourt/NEW-Logo-ERC-OUTLINE}\hspace*{\mydim}
+	\includegraphics[height=3cm]{presentation/frama.png}\hspace*{\mydim}
+	\includegraphics[height=4cm]{presentation/ICL}\hspace*{\mydim}
+}
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
@@ -52,18 +72,7 @@
 \usepackage{paralist}
 
 \begin{document}
-%logo sponsors
-\let\mydim\relax
-\newlength\mydim
-\setlength{\mydim}{0.75cm}
-\rule[-.3\baselineskip]{0pt}{5cm}\hfill\pgfuseimage{cnrs-logo}\hspace*{\mydim}\pgfuseimage{ucbl-logo}\hspace*{\mydim}
-\includegraphics[height=3cm]{presentation/ENS_Lyon.pdf}\hspace*{\mydim}
-\pgfuseimage{univlyon-logo}\hspace*{\mydim}
-\includegraphics[height=4cm]{presentation/invest-avenir.pdf}\hspace*{\mydim}
-\includegraphics[height=4cm,clip=true, trim=6mm 14mm 6mm 0]{../Yaourt/NEW-Logo-ERC-OUTLINE}\hspace*{\mydim}
-\includegraphics[height=3cm]{presentation/frama.png}\hspace*{\mydim}
-\includegraphics[height=4cm]{presentation/ICL}\hspace*{0.5cm}
-
+\begin{frame}
 %title
 \begin{textblock}{15}(0,0.8)
 
@@ -75,14 +84,56 @@ Ion pairing controls rheological properties of ``processionary'' polyelectrolyte
 
 \vspace{0.5cm}
 \LHead{Hassan Srour,\textit{$^{1}$} Martien Duvall Deffo Ayagou,\textit{$^{1}$} Thi Thanh-Tam Nguyen,\textit{$^{1}$}, Nicolas Taberlet,\textit{$^{2}$} S\'{e}bastien Manneville,\textit{$^{2}$}\\ Chantal Andraud,\textit{$^{1}$} Cyrille Monnereau,$^{\ast}$\textit{$^{1}$} and Mathieu Leocmach$^{\ast}$\textit{$^{3}$
-}}\hspace{0.1\paperwidth}\texttt{\color{Accent1}\Large mathieu.leocmach@univ-lyon1.fr}\\
+}}\hspace{0.1\paperwidth}\texttt{\color{Main}\Large mathieu.leocmach@univ-lyon1.fr}\\
 
 \affiliation{$^{1}$ Univ Lyon, Ens de Lyon, Universit\'e Claude Bernard Lyon 1, CNRS,
 Laboratoire de Chimie, F-69342 Lyon, France.\\
 $^{2}$ Univ Lyon, Ens de Lyon, Universit\'e Claude Bernard Lyon 1, CNRS,
 Laboratoire de Physique, F-69342 Lyon, France.\\
 $^{3}$ Univ Lyon, Universit\'e Claude Bernard Lyon 1, CNRS, Institut Lumi\`ere Mati\`ere, F-69622, VILLEURBANNE}
+\end{textblock}%title
 
+
+\begin{textblock}{3}(0,4)
+	\Head{Acid-induced gels}
+	
+	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (4\%w \textsc{gdl})
+	
+	
+	
+\Subhead{Microscopy}
+\begin{description}
+\item[macroscope] transmission \& reflection
+\item[confocal] 10\% labelled casein
+\end{description} 
 \end{textblock}
 
+
+
+
+\textblockcolour{lightgray!50!white}
+\TPMargin*{ 0.125\TPHorizModule }
+\begin{textblock}{2.875}(12,4.125)%real width of 3
+	\Norulehead{Take home}
+	Highly tunable hydrogels from short, linear polymer chains
+	
+	\Subhead{Self-assembly}
+	\begin{itemize}
+		\item head-to-body bonds
+		\item processions
+	\end{itemize}
+	\Subhead{Post-functionalisation}
+	\begin{itemize}
+		\item counterions condensation $\times 1000$
+		\item procession length $\times 1000$
+		\item bonding energy $\times 100$
+	\end{itemize}
+	\Subhead{Tunable rheology}
+	\begin{itemize}
+		\item yield strain $\times 1000$
+		\item modulus $/1000$
+	\end{itemize}
+
+\end{textblock}%Conclusion
+\end{frame}
 \end{document}
