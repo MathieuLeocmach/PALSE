@@ -5,6 +5,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 \usepackage[super]{nth}
+
+%math
+\usepackage{amsmath,mathtools}
+\usepackage{amssymb}
+
+%chemistry
+\usepackage[version=3]{mhchem}
+\usepackage{chemfig}
+\usepackage{setspace}
+
+%physics
+\usepackage[separate-uncertainty = true]{siunitx}
+
 %\usetheme{Boadilla}
 %\usecolortheme{rose}
 %\usecolortheme{crane}
@@ -25,7 +38,7 @@
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
 \def\Norulehead#1{\noindent\hbox to \hsize{\hfil\LARGE\textcolor{Main}{\textbf{#1}}}\bigskip}
-\def\Head#1{\Norulehead{\dotfill #1}}
+\def\Head#1{\Norulehead{\hrulefill #1}}
 \def\LHead#1{\noindent{\Large \color{Accent2}\textbf{#1}}\smallskip}
 \def\affiliation#1{\Large \textcolor{Accent2}{\textit{#1}}\smallskip}
 \def\Subhead#1{\noindent{\large\color{Accent1}\textbf{#1}}}
@@ -48,7 +61,7 @@
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
-\usepackage[absolute,overlay,%showboxes
+\usepackage[absolute,overlay,showboxes
 ]{textpos}
 % Set up the grid
 %
@@ -71,6 +84,42 @@
 
 \usepackage{paralist}
 
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap,fit}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{external}
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\let\orig@tikzsetnextfilename=\tikzsetnextfilename
+\renewcommand\tikzsetnextfilename[1]{\orig@tikzsetnextfilename{#1-\overlaynumber}}
+\makeatother
+
+%\tikzset{every picture/.style={beamer externalizing}}
+%\tikzexternalize
+%\tikzsetexternalprefix{fig_poster/}
+
+
+
 \begin{document}
 \begin{frame}
 %title
@@ -78,7 +127,7 @@
 
 {\setlength{\baselineskip}{2.75\baselineskip}\hspace*{0.3\paperwidth}\Title{
 Ion pairing controls rheological properties of ``processionary'' polyelectrolyte hydrogels
-}\par}
+}\hfill \textit{Soft Matter} 2016, \textbf{12}, 9749-9758\par}
 
 \centering
 
@@ -94,22 +143,49 @@ $^{3}$ Univ Lyon, Universit\'e Claude Bernard Lyon 1, CNRS, Institut Lumi\`ere M
 \end{textblock}%title
 
 
-\begin{textblock}{3}(0,4)
-	\Head{Acid-induced gels}
-	
-	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (4\%w \textsc{gdl})
-	
-	
-	
-\Subhead{Microscopy}
-\begin{description}
-\item[macroscope] transmission \& reflection
-\item[confocal] 10\% labelled casein
-\end{description} 
-\end{textblock}
+\begin{textblock}{4}(0,4)
+	\Head{Cation terminated polyanion}
+	\tikzsetnextfilename{polymerisation}%
+	\input{fig_presentation/polymerisation.pgf}
 
+	\bigskip
+	\tikzsetnextfilename{polymerisation_PImBr}%
+	\input{fig_presentation/polymerisation_PImBr.pgf}
+\end{textblock} %synthesis
 
+\begin{textblock}{2.5}(5,4)
+\Head{Yield stress fluid}
+\Subhead{Reversible gel}
 
+Herschel-Bulkley law \hfill$\sigma =\sigma_c + A \dot{\gamma}^n$
+\tikzsetnextfilename{flowcurves}%
+\input{fig_poster/flowcurves.pgf}
+\Subhead{Solution} if
+\begin{itemize}
+	\item ionic strength, pH
+	\item non ionic head
+\end{itemize}
+$\Rightarrow$ Head-to-body ionic bonds
+
+\textit{\footnotesize Srour et al. Macromol. Rapid Comm., 36, 55 (2015)}
+
+\end{textblock} %Yield-stress fluid
+
+\begin{textblock}{2.5}(8.5,4)
+\includegraphics[width=\textwidth]{presentation/Thaumetopea_pityocampa_01.jpg}\\
+	\vspace{-1.5em}\colorbox{lightgray}{\scriptsize Wikimedia commons}
+\end{textblock} %procession picture
+
+\begin{textblock}{4}(0,8)
+	\Head{Procession length}
+	\[ G = \frac{c}{N}k_\mathrm{B}T \qquad \begin{array}{ll}
+	\textcolor{Main}{c} & \text{monomer concentration}\\
+	\textcolor{Main}{N} & \text{\# monomers between crosslinks}\\
+	\end{array}\]
+	$G\approx \SI{13}{\pascal}$\hfill$\Rightarrow$\hfill$N \approx 800 N_0$\hfill$\Rightarrow$\hfill
+	800 chains between CL!
+	
+\end{textblock} %procession length
 
 \textblockcolour{lightgray!50!white}
 \TPMargin*{ 0.125\TPHorizModule }

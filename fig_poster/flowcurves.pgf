@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+    \let\mrad\relax%
+	\newlength\mrad%
+	\setlength{\mrad}{0.5em}%
+% The face style, can be changed
+	\tikzset{face/.style={
+		shape=circle,minimum size=2\mrad,shading=radial,outer sep=0pt,
+	    inner color=white!50!yellow,outer color= yellow!70!orange
+		}}%
+\let\drawcaterpillar\relax
+\newcommand\drawcaterpillar{
+			%face
+			\input{fig_presentation/head.pgf}
+			
+%body segments
+			\foreach \x in {0,2,...,4}{
+				\node[face,inner color=white!50!gray,outer color= gray!90!black, left=\x\mrad of emoticon] (monomer){};
+				%legs
+				\draw[line width=0.25\mrad, ilmorange] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);
+			};
+}
+\begin{loglogaxis}[
+	name=ax,
+	width=\textwidth-5em,
+	xlabel=$\dot\gamma\,(\si{\per\second})$,
+	ylabel={$\sigma$ (\si{\pascal)}},
+	clip marker paths=true,
+	scale only axis,
+	]
+	\addplot+[mark=o] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_8pcw_flow curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, below left=1em and 0]{8\% wt};
+	\addplot+[mark=square] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_22pcw_flow curve_down.txt} node[pos=1, font=\scriptsize, inner xsep=0, above right=0.2em and -0.5em]{22\% wt};
+	\addplot+[black] table[x=shear_rate, y=shear_stress,skip coords between index={0}{20}] {data/Et-P60-Im+-0pc-21-05-14_10pcw_flow_curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, right=0.8em]{10\% wt};
+	\addplot[domain=2e-2:5e2]{0.47+1.19*x^0.7};
+	\addplot[domain=2e-2:5e2]{7.5+15.1*x^0.62};
+\end{loglogaxis}
+
+\begin{scope}[shift=(ax.north), yshift=-2\mrad, xshift=-\mrad]
+			\drawcaterpillar
+			%% horns
+			\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
+\end{scope}
+\begin{scope}[shift=(ax.south), yshift=2\mrad, xshift=-\mrad]
+			\drawcaterpillar
+\end{scope}
+\end{tikzpicture}
