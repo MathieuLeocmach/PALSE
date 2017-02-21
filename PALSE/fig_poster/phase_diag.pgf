@@ -1,0 +1,123 @@
+\usepgfplotslibrary{fillbetween}
+\begin{tikzpicture}[lab/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\pgfplotsset{every axis/.append style={
+    width=\textwidth-4.5em,
+    scale only axis,
+	xlabel=$A$,
+	xmin=1, xmax=1e3,
+	ymin=1, ymax=1e2,
+	ylabel={length$/b$},
+	samples =100,
+	axis on top,
+	extra x ticks = {6.5, 7.1, 90, 140, 640},
+	extra x tick labels = {},
+	extra x tick style  = { grid = major, major grid style={draw=black}, tick style={draw=none}},
+	area legend,
+	legend columns=2,
+	legend style ={cells={anchor=west},at={(0.5,1.03)},
+anchor=south},
+}}
+\begin{loglogaxis}[
+	name=phasediag,
+	%xlabel=$A$,
+	xticklabels={},
+	domain=0.3:808,
+	]
+	%name the curves
+	\addplot[name path=xi, draw=none] 
+		({3.27*x/(1+x*0.4)^(1/4)}, 
+		{12.94 * x^(1/2) * (1 + x/12.25)^(1/4)}) 
+		node[pos=0.45, left] {$\xi$};
+	\addplot[name path=rscr, draw=none] 
+		({3.27*x/(1+x*0.4)^(1/4)}, 
+		{12.94 * x^(1/2) / (1 + x/12.25)^(1/2)}) 
+		node[pos=0.45, below] {$r_\mathrm{scr}$};
+	\addplot[name path=Dcompact, domain=3.3:808, draw=none] (
+		{3.27*x/(1+x*0.4)^(1/4)}, 
+		{x/(1+x*0.4)^(1/2)}) 
+		node[pos=0.3, below] {$D$} |- (rel axis cs:1,1);
+	\path[name path=t] (rel axis cs:0,1) -- (rel axis cs:1,1);
+	\path[name path=l] (rel axis cs:1,0) -- (rel axis cs:1,1);
+	%compact region
+	\addplot[fill=ilmcolor!80!black, draw=none] fill between[of=Dcompact and l];
+	%\addplot[fill=black!60, draw=none] coordinates {(6.635, 2.17) (591.5, 43.38) (591.5, 1e2) (1e3,1e2)}  \closedcycle node at (axis cs:20,3.5) {$D$};
+	%random walk
+	\addplot[name path=Drandom, domain=0.3:3.3, samples=10, fill=black!30, draw=none] (
+		{3.27*x/(1+x*0.4)^(1/4)}, 
+		{x/(1+x*0.4)^(1/2)}) 
+		-| (rel axis cs:1,0);
+	%\addplot[fill=black!30, draw=none] fill between[of=Drandom and l];
+	%\addplot[fill=black!30, draw=none] coordinates {(3.05, 1) (6.635, 2.17) (1e3, 2.17)}  \closedcycle;
+	\addplot[fill=black!30, draw=none] fill between[of=xi and t];
+	%self avoiding walk
+	\addplot[fill=ilmorange!50, draw=none] fill between[of=rscr and xi];
+	%linear
+	\addlegendimage{}
+	\legend{,,,space filling, random walk,, self avoiding, linear};
+	
+	%constant lengthscales
+	\addplot[domain=1:1e3, dotted] {43.58} node[pos=0, anchor=base west] {$\kappa^{-1}$};
+	\addplot[domain=1:1e3, dotted] {2.173} node[pos=0, anchor=south west, inner ysep=0] {$\xi_T$};
+	\addplot[domain=1:1e3, dotted] {1.904} node[pos=0, anchor=north west, inner ysep=0] {$\ell_\mathrm{B}$};
+	%samples
+	\begin{scope}[every node/.style={rotate=90, anchor=south east, inner ysep=0, font=\footnotesize}]
+	\node at (axis cs:6.5,10) {\ce{PPyr+I-}};
+	\node[anchor=north east] at (axis cs:7.1,15) {\ce{PPyr+Br-}};
+	\node at (axis cs:90,45) {\ce{PPyr+Cl-}};
+	\node at (axis cs:140,45) {\ce{PIm+I-}};
+	\node at (axis cs:640,40) {\ce{PIm+Br-}};
+	\end{scope}
+	%\node[lab] at (rel axis cs:0,1) {(a)};
+\end{loglogaxis}
+
+\begin{loglogaxis}[
+	name=phasediag2,
+	anchor=above north west,
+	at={($(phasediag.below south west)+(0,-\baselineskip)$)},
+	domain=0.3:70,
+	]
+	%name the curves
+	\addplot[name path=xi, draw=none] 
+		({3.27*x/(1+x*0.4)^(1/4)}, 
+		{11.80 * x^(1/2) * (1 + x/1.26)^(1/4)}) 
+		node[pos=0.60, left] {$\xi$};
+	\addplot[name path=rscr, draw=none] 
+		({3.27*x/(1+x*0.4)^(1/4)}, 
+		{11.80 * x^(1/2) / (1 + x/1.26)^(1/2)}) 
+		node[pos=0.60, below] {$r_\mathrm{scr}$};
+	\addplot[name path=Dcompact, domain=3.3:70, draw=none] (
+		{3.27*x/(1+x*0.4)^(1/4)}, 
+		{x/(1+x*0.4)^(1/2)}) 
+		node[pos=0.4, below] {$D$} |- (rel axis cs:1,1);
+	\path[name path=t] (rel axis cs:0,1) -- (rel axis cs:1,1);
+	\path[name path=l] (rel axis cs:1,0) -- (rel axis cs:1,1);
+	%compact region
+	\addplot[fill=ilmcolor!80!black, draw=none] fill between[of=Dcompact and l];
+	%random walk
+	\addplot[name path=Drandom, domain=0.3:3.3, samples=10, fill=black!30, draw=none] (
+		{3.27*x/(1+x*0.4)^(1/4)}, 
+		{x/(1+x*0.4)^(1/2)}) 
+		-| (rel axis cs:1,0);
+	\addplot[fill=black!30, draw=none] fill between[of=xi and t];
+	%self avoiding walk
+	\addplot[fill=ilmorange!50, draw=none] fill between[of=rscr and xi];
+	%linear
+	\addlegendimage{}
+	%\legend{,,,space filling, random walk,, self avoiding, linear};
+	
+	%constant lengthscales
+	\addplot[domain=1:1e3, dotted] {13.25} node[pos=0, anchor=base west] {$\kappa^{-1}$};
+	\addplot[domain=1:1e3, dotted] {2.173} node[pos=0, anchor=south west, inner ysep=0] {$\xi_T$};
+	\addplot[domain=1:1e3, dotted] {1.904} node[pos=0, anchor=north west, inner ysep=0] {$\ell_\mathrm{B}$};
+	%samples
+	\begin{scope}[every node/.style={rotate=90, anchor=south east, inner ysep=0, font=\footnotesize}]
+	\node at (axis cs:6.5,10) {\ce{PPyr+I-}};
+	\node[anchor=north east] at (axis cs:7.1,10) {\ce{PPyr+Br-}};
+	\node at (axis cs:90,45) {\ce{PPyr+Cl-}};
+	\node at (axis cs:140,45) {\ce{PIm+I-}};
+	\node at (axis cs:640,40) {\ce{PIm+Br-}};
+	\end{scope}
+	%\node[lab] at (rel axis cs:0,1) {(b)};
+\end{loglogaxis}
+\node[anchor=south east, ilmcolor!80!black, font=\bf] at (phasediag2.north east) {Physiological ionic strength};
+\end{tikzpicture}
