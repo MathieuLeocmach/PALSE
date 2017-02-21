@@ -22,6 +22,7 @@
 \begin{loglogaxis}[
 	name=ax,
 	width=\textwidth-5em,
+	height=5\baselineskip,
 	xlabel=$\dot\gamma\,(\si{\per\second})$,
 	ylabel={$\sigma$ (\si{\pascal)}},
 	clip marker paths=true,
