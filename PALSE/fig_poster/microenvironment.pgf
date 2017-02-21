@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+\let\pas\relax
+\newlength\pas
+\setlength{\pas}{0.55\baselineskip}
+
+\node[minimum height=\pas,circle,fill=ilmcolor, inner sep=0, minimum width=\pas]  at (-30:0.577\pas) {+};
+\node[minimum height=\pas,circle,fill=ilmorange, inner sep=0, minimum width=\pas, text height=0.9\pas, text depth=0\pas,] at (-150:0.577\pas){-};
+\draw node[draw=ilmcolor, dotted, circle, minimum width= 2.4\pas] (elec0){}
+	(90:0.577\pas) circle[radius=0.5\pas];
+
+\draw[ilmcolor, dotted] (elec0.north) -- +(1.75\pas,0) coordinate (elg)
+	(elec0.south) -- +(1.75\pas,0) coordinate (eld);
+\draw[<->] (elg) -- (eld) node[midway, right] {$D<\ell_\mathrm{B}$};
+
+
+\draw[xshift=0.5\textwidth] circle[radius=0.5\pas] 
+	node[draw=ilmcolor, dotted, circle, minimum width= 5\pas] (elec){}
+	node[minimum height=\pas,circle,fill=ilmcolor, inner sep=0, minimum width=\pas] {+}
+	\foreach \x in {-120,-60,...,180}
+	{(\x:\pas) circle[radius=0.5\pas]}
+	node[minimum height=\pas,circle,fill=ilmorange, inner sep=0, minimum width=\pas, text height=0.9\pas, text depth=0\pas,] {-}
+	\foreach \x in {30,90,...,330}
+	{(\x:1.7\pas) circle[radius=0.5\pas]}
+	\foreach \x in {-120,-60,...,180}
+	{(\x:2\pas) circle[radius=0.5\pas]}
+	%node[minimum height=\pas,circle,draw=ilmorange, inner sep=0, minimum width=\pas] (thermalp){}
+;
+\draw[ilmcolor, dotted] (elec.north) -- +(2.75\pas,0) coordinate (elg)
+	(elec.south) -- +(2.75\pas,0) coordinate (eld);
+\draw[<->] (elg) -- (eld) node[midway, right]{$D>\ell_\mathrm{B}$};
+
+%Dielectric constants
+\node[below=0of elec] (er2) {$\epsilon_r\approx 2$};
+\node[anchor=base] at (er2.base-|elec0) {$\epsilon_r\approx 80$};
+
+
+\end{tikzpicture}
