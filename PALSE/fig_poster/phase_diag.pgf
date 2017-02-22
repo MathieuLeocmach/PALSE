@@ -20,7 +20,7 @@ anchor=south},
 \begin{loglogaxis}[
 	name=phasediag,
 	%xlabel=$A$,
-	xticklabels={},
+	%xticklabels={},
 	domain=0.3:808,
 	]
 	%name the curves

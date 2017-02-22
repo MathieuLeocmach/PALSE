@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+\let\mrad\relax%
+	\newlength\mrad%
+	\setlength{\mrad}{0.5em}%
+% The face style, can be changed
+	\tikzset{face/.style={
+		shape=circle,minimum size=2\mrad,shading=radial,outer sep=0pt,
+	    inner color=white!50!yellow,outer color= yellow!70!orange
+		}}%
+\let\drawcaterpillar\relax
+\newcommand\drawcaterpillar{
+			%face
+			\input{fig_presentation/head.pgf}
+			
+%body segments
+			\foreach \x in {0,2,...,4}{
+				\node[face,inner color=white!50!gray,outer color= gray!90!black, left=\x\mrad of emoticon] (monomer){};
+				%legs
+				\draw[line width=0.25\mrad, ilmorange] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);
+			};
+}
+\begin{axis}[
+	name=ax,
+	xlabel={\%wt},
+	ylabel={lifetime (ms)},
+	ymin=0.2,ymax=0.5,ytick={0.2,0.3,0.4,0.5},
+	]
+	\addplot+[black] table {data/IL.fluo} coordinate(IL);
+	\addplot+[ilmcolor!60!black] table {data/P70Ethyl.fluo} coordinate (P70Ethyl);
+	\addplot+[ilmcolor!80, mark=o] table {data/P70Phospho.fluo} coordinate (P70Phospho);
+\end{axis}
+\begin{scope}[shift=(P70Phospho-|ax.south east), xshift=7.5\mrad]
+			\drawcaterpillar
+			%% horns
+			\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
+\end{scope}
+\begin{scope}[shift=(P70Ethyl-|ax.south east), xshift=7.5\mrad]
+			\drawcaterpillar
+\end{scope}
+\begin{scope}[shift=(IL-|ax.south east), xshift=1.5\mrad]
+	\node[face,inner color=white!50!gray,outer color= gray!90!black] (monomer){};
+	\draw[line width=0.25\mrad, ilmorange] (monomer.south) ++(0,0.5\mrad) to[bend left] +(0,-1\mrad);
+\end{scope}
+\node[anchor=north east, inner sep=0, font=\tiny\setatomsep{1.5em}] at (emoticon.east|-ax.north)
+	{\chemfig{%
+		[:-120]\textcolor{ilmorange}{N}|^{\color{ilmorange}+}*5(=[,,,,thick, ilmorange]-[,,,,thick, ilmorange]\textcolor{ilmorange}{N}(-[,,,,thick, ilmorange])-[,,,,thick, ilmorange]=[,,,,thick, ilmorange]-[,,,,thick, ilmorange])([:90,1.5]-C_6H_{13})(-[0,1.5,,,draw=none]Br^{-})
+		}%
+	};
+\end{tikzpicture}
