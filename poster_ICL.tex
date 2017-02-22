@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 \usepackage[super]{nth}
+\usepackage{booktabs}
 
 %math
 \usepackage{amsmath,mathtools}
@@ -61,7 +62,7 @@
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
-\usepackage[absolute,overlay,showboxes
+\usepackage[absolute,overlay%,showboxes
 ]{textpos}
 % Set up the grid
 %
@@ -88,7 +89,7 @@
 % Allow the usage of graphics (.jpg, .png, etc.) in the document
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap,fit}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap,fit,arrows.meta}
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
@@ -218,7 +219,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 
 %\tikzset{external/force remake}
 
-\begin{textblock}{5}(0,12.5)
+\begin{textblock}{5}(0,13)
 	\Head{Rheology}
 	\tikzsetnextfilename{strain}%
 	\input{fig_poster/strain.pgf}
@@ -229,15 +230,17 @@ $\Rightarrow$ Head-to-body ionic bonds
 \end{textblock} %rheology
 
 \begin{textblock}{5}(6,10)
-	\Head{Scaling theory for polyelectrolytes}\\
-	\hfill \textit{\footnotesize Rubinstein Macromol. 1996}
-	
+	\Head{Scaling theory for polyelectrolytes}	
+	\begin{center}
 	\tikzsetnextfilename{scales_stretch}%
-	\hfill\begin{tikzpicture}
+	\begin{tikzpicture}
 	\node[inner sep=0](scales){\input{fig_presentation/scales.pgf}};
+	\node[inner sep=0, anchor=north west, font=\itshape\footnotesize] at (scales.north west) {Rubinstein Macromol. 1996};
 	\draw[->, ultra thick, ilmcolor] (scales.south east) ++(0,-0.3em) -- +(-0.33\textwidth,0) node[midway, below] {linear};
 	\draw[->, ultra thick,ilmorange] (scales.south) ++(0,-0.3em) -- +(-0.35\textwidth,0) node[midway, below] {non linear};
-	\end{tikzpicture}\hfill
+	\end{tikzpicture}
+	\end{center}
+	
 	\begin{description}
 		\item[counterion condensation] 1 dissociated counterion every \alert{$A$} monomers
 		\item[poor solvent] reduced temperature $\alert{\tau} = 1 -T/\Theta > 0.2$
@@ -251,7 +254,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	
 	\Subhead{Can we measure $B$ and $\tau$ from rheology?}
 	\tikzsetnextfilename{stretch}%
-	\input{fig_presentation/stretch.pgf}
+	\input{fig_poster/stretch.pgf}
 	\begin{itemize}
 		\item narrow linear regime $\Rightarrow R_0\approx r_\mathrm{scr} \Rightarrow \left(\frac{B}{B_0}\right)^3 = 1 + \frac{B}{B_s}$
 		\begin{itemize}
@@ -275,23 +278,58 @@ $\Rightarrow$ Head-to-body ionic bonds
 			$B\approx 2.4$ && $E_\text{bond}\approx 2k_\mathrm{B}T$ && $\Theta\approx\SI{220}{\celsius}$\\
 		\end{tabular}
 	\end{itemize}
+%	
+%	\medskip
+%	\hfill\begin{minipage}{3\TPHorizModule}
+%	\sisetup{
+%	separate-uncertainty,
+%	%table-format = 1.3(1),
+%	}\centering\small
+%	\begin{tabular}{@{}lSSSSSS@{}}\cmidrule(l){2-6}%\hline
+%	\Subhead{Results}& {$n$} & {$B$} & {$E_\text{bond}$} & {$D$} & {$A$}\\
+%	&	& & {$k_\mathrm{B}T$} & {$\ell_B$}&\\\hline&&&&&\\[-10pt]
+%	\ce{PIm+Br-}	&	800	&	830	&	123	&	24	&	640\\
+%	\ce{PIm+I-}	&	113	&	113	&	46.8	&	8.7	&	140\\
+%	\ce{PPyr+Cl-}	&	46.8	&	58.2	&	26.6	&	6.2	&	90\\
+%	\ce{PPyr+Br-}	&	1.1	&	2.6	&	2.1	&	1.0	&	7.1\\
+%	\ce{PPyr+I-}	&	1.0	&	2.4	&	2.0	&	0.9	&	6.5\\
+%	\hline
+%	\end{tabular}
+%	\end{minipage}
 \end{textblock} %theory
 
-\begin{textblock}{3}(12,10)
+\begin{textblock}{3}(8,17.5)
 	\Head{Microenvironment}
 
 	\tikzsetnextfilename{microenvironment}%
 	\hfill\input{fig_poster/microenvironment.pgf}\hfill
 \end{textblock} %microenvironement
 
-\begin{textblock}{3}(12,11.5)
-	\Head{Results}
+%\begin{textblock}{3}(8,17.5)
+%	\sisetup{
+%	separate-uncertainty,
+%	%table-format = 1.3(1),
+%	}\centering\small
+%	\begin{tabular}{@{}lSSSSSS@{}}%\hline
+%	\Subhead{Results}& {$n$} & {$B$} & {$E_\text{bond}$} & {$D$} & {$A$}\\
+%	&	& & {$k_\mathrm{B}T$} & {$\ell_B$}&\\\hline&&&&&\\[-10pt]
+%	\ce{PIm+Br-}	&	800	&	830	&	123	&	24	&	640\\
+%	\ce{PIm+I-}	&	113	&	113	&	46.8	&	8.7	&	140\\
+%	\ce{PPyr+Cl-}	&	46.8	&	58.2	&	26.6	&	6.2	&	90\\
+%	\ce{PPyr+Br-}	&	1.1	&	2.6	&	2.1	&	1.0	&	7.1\\
+%	\ce{PPyr+I-}	&	1.0	&	2.4	&	2.0	&	0.9	&	6.5\\
+%	\hline
+%	\end{tabular}
+%\end{textblock} %results
+
+\begin{textblock}{3}(12,10)
+	\Head{Phase diagram}
 	\sisetup{
 	separate-uncertainty,
 	%table-format = 1.3(1),
 	}\centering\small
-	\begin{tabular}{@{}lSSSSSS@{}}%\hline
-	& {$n$} & {$B$} & {$E_\text{bond}$} & {$D$} & {$A$}\\
+	\begin{tabular}{@{}lSSSSSS@{}}%\cmidrule(l){2-6}%\hline
+	\Subhead{Results}& {$n$} & {$B$} & {$E_\text{bond}$} & {$D$} & {$A$}\\
 	&	& & {$k_\mathrm{B}T$} & {$\ell_B$}&\\\hline&&&&&\\[-10pt]
 	\ce{PIm+Br-}	&	800	&	830	&	123	&	24	&	640\\
 	\ce{PIm+I-}	&	113	&	113	&	46.8	&	8.7	&	140\\
@@ -300,19 +338,66 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\ce{PPyr+I-}	&	1.0	&	2.4	&	2.0	&	0.9	&	6.5\\
 	\hline
 	\end{tabular}
-\end{textblock} %results
-
-\begin{textblock}{3}(12,13.5)
-	\Head{Phase diagram}
+	
+	\bigskip
 	\tikzsetnextfilename{phase_diag}%
 	\input{fig_poster/phase_diag.pgf}
+%\end{textblock} %phasediag
+
+%\begin{textblock}{3}(12,14)
+	
 \end{textblock} %results
 
-\begin{textblock}{7}(0,17.5)
-	\Head{Probe mechanical heterogeneities with fluorescence}
+\begin{textblock}{7}(0,18)
+	\Head{Photomassage: mechanically stimulated diffusion}
 \end{textblock} %photomassage title
+	
+\begin{textblock}{3}(0,18.5)
+	\Subhead{Diffusion}
+	\begin{itemize}
+		\item of the polyelectrolyte (made fluorescent)
+		\item in a porous matrix (agar or casein)
+		\item under mechanical stimulation (yield stress)
+	\end{itemize}
+	\tikzsetnextfilename{tensioconf}%
+	\input{fig_poster/tensioconf.pgf}
+	
+	\medskip	
+	Fully immersed \hfill$\Rightarrow$\hfill no capillary force
+	
+	\bigskip
+	\Subhead{Applications}
+	\begin{itemize}
+		\item stress-controlled release
+		\item polycation adsorb on bacteria
+		\item porphyrin head photosensiting
+		\item phototherapy
+	\end{itemize}
+\end{textblock} %photomassage diffusion
 
-\begin{textblock}{3}(0,18)
+\begin{textblock}{3}(4,18.5)
+	\Subhead{Platform}
+	\begin{itemize}
+		\item compression, elongation, shear
+		\item rheological measurement
+		\item confocal microscopy
+	\end{itemize}
+	\includegraphics[width=\textwidth]{presentation/tensiometre_eclate.png}
+	
+	\bigskip
+	\Subhead{Resolution}
+	\begin{itemize}
+		\item deflection \SI{40}{\nano\metre}
+		\item force \SI{10}{\nano\newton}
+		\item stress \SI{0.1}{\milli\pascal}
+	\end{itemize}
+\end{textblock} %photomassage platform
+
+\begin{textblock}{7}(8,19)
+	\Head{Probe mechanical heterogeneities with fluorescence}
+\end{textblock} %probe title
+
+\begin{textblock}{3}(8,19.5)
 	\Subhead{Molecular rotor}\\
 	\includegraphics[width=\textwidth]{fig_poster/molecular_rotor.pdf}
 	\begin{itemize}
@@ -322,7 +407,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\end{itemize}
 \end{textblock} %Molecular rotor
 
-\begin{textblock}{3}(4,18)
+\begin{textblock}{3}(12,19.5)
 	\Subhead{Preliminary results}\\
 	Intership of Amel Ghogia	
 	
