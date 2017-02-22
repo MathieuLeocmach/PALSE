@@ -1,0 +1,79 @@
+\begin{tikzpicture}[every node/.style={font=\footnotesize}]
+\pgfdeclarelayer{background layer}
+\pgfdeclarelayer{foreground layer}
+\pgfsetlayers{background layer,main,foreground layer}
+
+\colorlet{fluo}{ilmcolor!40}
+
+\node[minimum width=5em, minimum height=0.7em, inner sep=0] (sample) {};
+%\fill[fluo] (sample.north west) rectangle ($(sample.south east)!0.75!(sample.north east)$);
+%\fill[top color=fluo] ($(sample.south west)!0.25!(sample.north west)$) rectangle ($(sample.south east)!0.75!(sample.north east)$);
+%\fill[top color=fluo, bottom color=ilmorange!20] (sample.north west) rectangle (sample.south east);
+\begin{scope}
+\clip (sample.north west) rectangle (sample.south east);
+\fill[inner color=fluo] ($(sample.south west)!2!(sample.north west)$) rectangle ($(sample.south east)!0!(sample.north east)$);
+\end{scope}
+\fill[pattern=crosshatch, pattern color=blue!20] (sample.south west) rectangle (sample.north east) node[above right=-0.25em and -0.5em, blue!40, inner xsep=0] {matrix};
+
+
+%laser
+		\node[fill, green, semitransparent, isosceles triangle, anchor=apex, shape border rotate=90, minimum width=3.5em, inner sep=0,  isosceles triangle apex angle=115 %change this to get lense closer to the sample
+			] at (sample.center) (laser) {};
+		
+	%lens
+	\begin{scope}[radius=6em]
+		\path (laser.lower side) ++(0,0.3em) arc[start angle=90,delta angle=-20] coordinate (lensese);
+		\filldraw[lightgray!50] (lensese) arc[start angle=70,delta angle=40] --cycle;
+	\end{scope}
+	\node[fill=lightgray, minimum width=4.5em, minimum height=1em, anchor=north]  at (laser.lower side) (lense){};
+	\node[right=0 of lense, text width=8em,inner ysep=0] (lenselabel) {lens on step motor};% \linebreak (confocal z scan)};
+ 		
+
+%buoy and lever
+\begin{scope}[radius=2em,thick, orange]
+	\path (sample.north) arc[start angle=-90, delta angle=-40] coordinate (uplatenw);
+	\draw[fill=white] (uplatenw) arc[start angle=-130, delta angle=80] -- ++(0, 1em) coordinate (buoy) -| cycle node[above=-0.2em] at (sample.north) {buoy};
+	\draw (buoy) arc[start angle=90, delta angle=-10,radius=50em] coordinate (leverbase) node[pos=0.75, above=-0.1em] {cantilever};
+\end{scope}
+
+
+%sensor
+\node[fill=lightgray, minimum width=1em, minimum height=1.5em, anchor=south east, above=0.25em] (defl) at (buoy-|sample) {};
+\node[above=0 of defl.north east, anchor=west, inner xsep=0] {sensors};
+\draw[->] (defl.north) to [out=90, in=180, out looseness=0.6] ++(5em, 1em) node[right, inner ysep=0] (PC) {PC};
+%micromanipulator arm
+\draw[line width=0.5em, gray, -|] (defl) -| (leverbase) ++(0,-0.25em) -- ++(0, 3.75em) -| ++ (3em, -1em) coordinate (microm);
+\draw[<-] (microm) ++(0.8em,-0.8em) -- ++(45:1em) |-($(PC.north east)+(1em,0)$) -- (PC.east);
+
+%joint
+\begin{scope}[every node/.style={fill=yellow, circle, inner sep=0, minimum width=0.3em}]
+	\node[above=0 of sample.south west] (jointw) {};
+	\node[above=0 of sample.south east] (jointe) {};
+\end{scope}
+%bottom slide
+\draw (jointw.south) ++(-0.25em,0) rectangle ($(jointe.south) +(0.25em,-0.2em)$) node[right, yshift=-0.1em] {cover slip};
+%\node[draw, minimum width=5em, minimum height=0.2em, anchor=north, inner sep=0] (plate) at (sample.south) {};
+
+%container
+\draw[gray, line width=0.5em,-|] (jointe.north) ++(-0.25em,0.2em) -- ++(8.5em,0) coordinate (tankse) -- ++ (0,3.75em) coordinate (tankne)
+(jointw.north) ++(0.25em,0.2em) -- ++(-1em,0) coordinate (tanksw) -- (tanksw|-tankne) coordinate (tanknw) 
+(tankse) -- (tankse|-lenselabel.west) -| ($(microm)+(0,-3.75em)$) node[above,black,inner sep=0] {\si{\micro} manip.};
+
+%solvent
+\begin{pgfonlayer}{background layer}
+\fill[fluo] (tankse) rectangle ($(tanksw)!0.85!(tanknw)$);
+\end{pgfonlayer}
+
+%displacements
+\begin{scope}[{Stealth[width=0.3em]}-{Stealth[width=0.3em]}, red, inner sep=2pt]
+ 			\draw (lense.south west) ++(-0.25em,0) -- ($(lense.north west)+(-0.25em,0)$) node[midway, left]{z} ;
+	\begin{scope}[shift={(microm)}, yshift=-1.5em]
+ 			\draw (0,1em) -- +(0,-2em) node[pos=0, left]{z} ;
+ 			\draw (-1em,0)  -- +(2em,0) node[pos=1, below]{x} ;
+			\fill circle (0.1em);
+			\draw circle (0.25em) node[below left] {y};
+			%\draw (45:1em)  -- +(-135:2em) node[pos=1, below]{y} ;
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}

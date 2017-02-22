@@ -1,0 +1,40 @@
+\begin{tikzpicture}[every node/.style={font=\footnotesize}]
+\let\pas\relax
+\newlength\pas
+\setlength{\pas}{0.8\baselineskip}
+\begin{scope}[
+	decoration={markings,
+		mark=between positions 0.5\pas and 1 step \pas
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.append style={circle, draw, inner sep=0, minimum width=\pas}, 
+	]
+%walk
+\draw[decorate] (0,0) --++(20:\pas) --++(-5:\pas) --++(15:\pas) --++(-4:\pas) --++(0:\pas) --++(-5:\pas) --++(-20:\pas) --++(-10:\pas) coordinate(eq);
+\draw[<->] (mark-1.north) ++(-0.75\pas,0) -- +(0,-\pas) node[midway,left,draw=none] {$D$};
+%tendu
+\draw[decorate] (0,-1.75\pas) -- ++(0:8\pas) coordinate (tendu);
+\draw[<->] (mark-1.north) ++(-0.75\pas,0) -- +(0,-\pas) node[midway,left,draw=none] {$D$};
+\end{scope}
+%stretched
+\begin{scope}[
+	decoration={markings,
+		mark=between positions 0.35\pas and 1 step 0.7\pas
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.style={circle, draw, inner sep=0, minimum width=0.7\pas}, 
+	]
+\draw[decorate] (0,-3\pas) -- ++(0:16\pas) coordinate (stretched);
+\end{scope}
+%forces
+\draw[->, ultra thick] (tendu) -- +(\pas,0);
+\draw[->, ultra thick] (stretched) -- +(4\pas,0);
+%axis an annotations
+\draw[|->] (0,2\pas) coordinate (orig) --+(\columnwidth-3em,0) node[below] {$R$} node[above] {$\gamma$};
+\draw[dashed] (eq) -- (eq|-orig) node[above left, inner xsep=0] {0}  node[below left, inner xsep=0] {$R_0$};
+\draw[dashed, thick, ilmcolor] (tendu) -- (tendu|-orig) node[above right] {$\gamma_0 \ll 1$}  node[below right] {$(1+\gamma_0)R_0$};
+\draw[dashed, ilmorange] (stretched) -- (stretched|-orig) node[above right] {$\gamma_c$}  node[below right] {$(1+\gamma_c)R_0$};
+\node[anchor=south] at ($(tendu)!0.5!(tendu-|stretched)$) {plastic};
+\node[anchor=south] at ($(tendu)!1.5!(tendu-|stretched)$) {fluid};
+
+\end{tikzpicture}
