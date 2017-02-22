@@ -28,9 +28,9 @@
 	clip marker paths=true,
 	scale only axis,
 	]
-	\addplot+[mark=o] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_8pcw_flow curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, below left=1em and 0]{8\% wt};
-	\addplot+[mark=square] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_22pcw_flow curve_down.txt} node[pos=1, font=\scriptsize, inner xsep=0, above right=0.2em and -0.5em]{22\% wt};
-	\addplot+[black] table[x=shear_rate, y=shear_stress,skip coords between index={0}{20}] {data/Et-P60-Im+-0pc-21-05-14_10pcw_flow_curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, right=0.8em]{10\% wt};
+	\addplot+[mark=o, ilmcolor] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_8pcw_flow curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, below left=1em and 0]{8\% wt};
+	\addplot+[mark=square, ilmcolor!60!black] table[x=shear_rate, y=shear_stress] {data/PO3-P60-Im+-0pc-02-06-14_22pcw_flow curve_down.txt} node[pos=1, font=\scriptsize, inner xsep=0, above right=0.2em and -0.5em]{22\% wt};
+	\addplot+[ilmorange] table[x=shear_rate, y=shear_stress,skip coords between index={0}{20}] {data/Et-P60-Im+-0pc-21-05-14_10pcw_flow_curve_down.txt} node[pos=0, font=\scriptsize, inner xsep=0, right=0.8em]{10\% wt};
 	\addplot[domain=2e-2:5e2]{0.47+1.19*x^0.7};
 	\addplot[domain=2e-2:5e2]{7.5+15.1*x^0.62};
 \end{loglogaxis}
