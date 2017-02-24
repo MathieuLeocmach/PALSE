@@ -21,6 +21,8 @@
 }
 \begin{axis}[
 	name=ax,
+	width=\textwidth-3.65em-8\mrad,
+	scale only axis,
 	xlabel={\%wt},
 	ylabel={lifetime (ms)},
 	ymin=0.2,ymax=0.5,ytick={0.2,0.3,0.4,0.5},
@@ -46,4 +48,5 @@
 		[:-120]\textcolor{ilmorange}{N}|^{\color{ilmorange}+}*5(=[,,,,thick, ilmorange]-[,,,,thick, ilmorange]\textcolor{ilmorange}{N}(-[,,,,thick, ilmorange])-[,,,,thick, ilmorange]=[,,,,thick, ilmorange]-[,,,,thick, ilmorange])([:90,1.5]-C_6H_{13})(-[0,1.5,,,draw=none]Br^{-})
 		}%
 	};
+%\draw (ax.outer south west) +(\textwidth,0) |- (emoticon.east);
 \end{tikzpicture}
