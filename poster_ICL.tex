@@ -212,6 +212,8 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\tikzsetnextfilename{postfunc}%
 	\input{fig_poster/postfunc.pgf}
 	
+	\vspace*{0.5\baselineskip}
+	\bigskip
 	\tikzsetnextfilename{solubility}%
 	\input{fig_poster/solubility.pgf}
 	
@@ -220,13 +222,15 @@ $\Rightarrow$ Head-to-body ionic bonds
 
 %\tikzset{external/force remake}
 
-\begin{textblock}{5}(0,13)
+\begin{textblock}{5}(0,13.25)
 	\Head{Rheology}
 	\tikzsetnextfilename{strain}%
 	\input{fig_poster/strain.pgf}
 	\begin{itemize}
 	\item modulus decreases with counterion condensation
-	\item narrow linear regime $\gamma_0\ll 1$
+	\item processions from 1 to 800 chains
+	\item narrow linear regime $\textcolor{ilmcolor}{\gamma_0}\ll 1$
+	\item yield strain \textcolor{ilmorange}{$\gamma_c$} from 2\% to 800\%
 	\end{itemize}
 \end{textblock} %rheology
 
@@ -235,7 +239,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\begin{center}
 	\tikzsetnextfilename{scales_stretch}%
 	\begin{tikzpicture}
-	\node[inner sep=0](scales){\input{fig_presentation/scales.pgf}};
+	\node[inner sep=0](scales){\input{fig_poster/scales.pgf}};
 	\node[inner sep=0, anchor=north west, font=\itshape\footnotesize] at (scales.north west) {Rubinstein Macromol. 1996};
 	\draw[->, ultra thick, ilmcolor] (scales.south east) ++(0,-0.3em) -- +(-0.33\textwidth,0) node[midway, below] {linear};
 	\draw[->, ultra thick,ilmorange] (scales.south) ++(0,-0.3em) -- +(-0.35\textwidth,0) node[midway, below] {non linear};
@@ -252,15 +256,16 @@ $\Rightarrow$ Head-to-body ionic bonds
 		\smallskip
 		\item scales $\geq D$ depend only on $B \sim A^{4/3} \tau$
 	\end{itemize}
-	
-	\bigskip
-	\Subhead{Can we measure $B$ and $\tau$ from rheology?}
+\end{textblock} %theory
+
+\begin{textblock}{5}(6,13.25)
+	\Head{Measure micro from rheology}
 	\tikzsetnextfilename{stretch}%
 	\input{fig_poster/stretch.pgf}
 	\begin{itemize}
-		\item narrow linear regime $\Rightarrow R_0\approx r_\mathrm{scr} \Rightarrow \left(\frac{B}{B_0}\right)^3 = 1 + \frac{B}{B_s}$
-		\begin{itemize}
-			\item $\alert{B_s}(N_0)\approx 12$ screening from \ce{-PO_3^{2-}} heads\tikzsetnextfilename{head}
+		\item narrow linear regime \hfill$\Rightarrow$\hfill $R_0\approx r_\mathrm{scr}$\hfill$\Rightarrow$\hfill $\left(\frac{B}{B_0}\right)^3 = 1 + \frac{B}{B_s}$\hfill$\Rightarrow$\hfill\textcolor{ilmcolor}{$B$}
+		\begin{description}
+			\item[$B_s$]$\sim N_0\approx 12$\hfill screening from \ce{-PO_3^{2-}} heads\tikzsetnextfilename{head}
 				\begin{tikzpicture}
 					\let\mrad\relax%
 					\newlength\mrad%
@@ -270,25 +275,33 @@ $\Rightarrow$ Head-to-body ionic bonds
 					%% horns
 					\draw[every node/.style={shape=circle,inner sep=0.2\mrad,shading=radial,inner color=white!50!ilmcolor,outer color= ilmcolor!90!black}] (emoticon.70) -- ++(70:0.4\mrad) node{} (emoticon.110) -- ++(110:0.4\mrad) node{};
 				\end{tikzpicture}
-			\item if $B \ll B_s$ screening from uncondensed counterions $B = \alert{B_0} \sim bc \left(\frac{k_\mathrm{B}T}{G}\right)^{2/3}$
-			\item if $B \gg B_s$ screening from heads: $B = \left(B_0^3/B_s\right)^{1/2} > B_0$
-		\end{itemize}
+			\item[$B_0$] $\sim bc \left(\frac{k_\mathrm{B}T}{G}\right)^{2/3}$\hfill screening from uncondensed counterions
+		\end{description}\medskip
 		\item flow when stretching energy = bond energy
-		\[E_\mathrm{stretch} = \text{area increment}(\gamma,B) \times \text{surface tension}(\textcolor{ilmcolor}{\tau},B)\]
-		\alert{\ce{PPyr+I-}}: \begin{tabular}{ccccc}
+		\begin{description}
+			\item[$E_\mathrm{stretch}$]\hfill =\hfill area increment$(\gamma,B)$\hfill $\times$\hfill surface tension$(\textcolor{ilmcolor}{\tau},B)$
+		\end{description}\medskip
+		\alert{\ce{PPyr+I-}}:\hfill \begin{tabular}{ccccr@{}}
 			little compaction &$\Rightarrow$& ionic bond in \ce{H2O} &$\Rightarrow$& \textcolor{ilmcolor}{$\tau = 0.4\pm0.07$}\\
 			$B\approx 2.4$ && $E_\text{bond}\approx 2k_\mathrm{B}T$ && $\Theta\approx\SI{220}{\celsius}$\\
 		\end{tabular}
 	\end{itemize}
+	
+	\Subhead{Microenvironment}\hfill
+	\begin{minipage}{3\TPHorizModule}
+		\tikzsetnextfilename{microenvironment}%
+		\hfill\input{fig_poster/microenvironment.pgf}
+	\end{minipage}		
+	
 
 \end{textblock} %theory
 
-\begin{textblock}{3}(8,17.5)
-	\Head{Microenvironment}
-
-	\tikzsetnextfilename{microenvironment}%
-	\hfill\input{fig_poster/microenvironment.pgf}\hfill
-\end{textblock} %microenvironement
+%\begin{textblock}{3}(8,17.5)
+%	\Head{Microenvironment}
+%
+%	\tikzsetnextfilename{microenvironment}%
+%	\hfill\input{fig_poster/microenvironment.pgf}\hfill
+%\end{textblock} %microenvironement
 
 
 \begin{textblock}{3}(12,10)
@@ -317,11 +330,11 @@ $\Rightarrow$ Head-to-body ionic bonds
 	
 \end{textblock} %results
 
-\begin{textblock}{7}(0,18)
+\begin{textblock}{7}(0,19)
 	\Head{Photomassage: mechanically stimulated diffusion}
 \end{textblock} %photomassage title
 	
-\begin{textblock}{3}(0,18.5)
+\begin{textblock}{3}(0,19.5)
 	\Subhead{Diffusion}
 	\begin{itemize}
 		\item of the polyelectrolyte \hfill made fluorescent
@@ -346,7 +359,7 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\end{itemize}
 \end{textblock} %photomassage diffusion
 
-\begin{textblock}{3}(4,18.5)
+\begin{textblock}{3}(4,19.5)
 	\Subhead{Platform}
 	\begin{itemize}
 		\item compression, elongation, shear
@@ -356,12 +369,21 @@ $\Rightarrow$ Head-to-body ionic bonds
 	\includegraphics[width=\textwidth]{presentation/tensiometre_eclate_s.jpg}
 	
 	\bigskip
+	\begin{columns}[b]
+	\column{0.5\textwidth}
 	\Subhead{Resolution}
+	\begin{itemize}
+		%\item deflection \SI{40}{\nano\metre}
+		%\item force \SI{10}{\nano\newton}
+		\item stress \SI{0.1}{\milli\pascal}
+	\end{itemize}
+	\column{0.45\textwidth}
 	\begin{itemize}
 		\item deflection \SI{40}{\nano\metre}
 		\item force \SI{10}{\nano\newton}
-		\item stress \SI{0.1}{\milli\pascal}
+		%\item stress \SI{0.1}{\milli\pascal}
 	\end{itemize}
+	\end{columns}
 \end{textblock} %photomassage platform
 
 \begin{textblock}{7}(8,19)

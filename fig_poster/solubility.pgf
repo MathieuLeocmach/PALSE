@@ -2,12 +2,12 @@
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
-\node (PBr) {PBr} [->, level distance=8em, font=\footnotesize] 
-	child [grow=-15] {node(PImBr) {\ce{P\textcolor{ilmorange}{\ce{Im+}}\textcolor{blue!80!black}{\ce{Br-}}}} [level distance=5em]
+\node (PBr) {PBr} [->, level distance=9em, font=\footnotesize] 
+	child [grow=-20] {node(PImBr) {\ce{P\textcolor{ilmorange}{\ce{Im+}}\textcolor{blue!80!black}{\ce{Br-}}}} [level distance=5em]
 		child[grow=-30] {node(PImF) {\ce{P\textcolor{ilmorange}{\ce{Im+}}\textcolor{blue!80!black}{\ce{F-}}}}} 
 		child[grow=east] {node(PImCl) {\ce{P\textcolor{ilmorange}{\ce{Im+}}\textcolor{blue!80!black}{\ce{Cl-}}}}} 
 		child[grow=west] {node(PImI) {\ce{P\textcolor{ilmorange}{\ce{Im+}}\textcolor{blue!80!black}{\ce{I-}}}}}} 
-	child [grow=-165] {node(PPyrBr) {\ce{P\textcolor{ilmorange}{\ce{Pyr+}}\textcolor{blue!80!black}{\ce{Br-}}}} [level distance=5em]
+	child [grow=-160] {node(PPyrBr) {\ce{P\textcolor{ilmorange}{\ce{Pyr+}}\textcolor{blue!80!black}{\ce{Br-}}}} [level distance=5em]
 		child[grow=-30] {node(PPyrF) {\ce{P\textcolor{ilmorange}{\ce{Pyr+}}\textcolor{blue!80!black}{\ce{F-}}}}} 
 		child[grow=east] {node(PPyrCl) {\ce{P\textcolor{ilmorange}{\ce{Pyr+}}\textcolor{blue!80!black}{\ce{Cl-}}}}} 
 		child[grow=west] {node(PPyrI) {\ce{P\textcolor{ilmorange}{\ce{Pyr+}}\textcolor{blue!80!black}{\ce{I-}}}}}};
