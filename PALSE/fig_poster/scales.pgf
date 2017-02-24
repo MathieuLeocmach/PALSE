@@ -1,0 +1,65 @@
+\begin{tikzpicture}
+\let\pas\relax
+\newlength\pas
+\setlength{\pas}{0.02475\textwidth}
+
+%Below Kuhn length
+\draw[every node/.style={draw, font=\tiny, anchor=east, ellipse, inner sep=0}] (0,0) -- ++(-135:\pas) node (head1){\ce{Nu+X-}} -- ++(-45:\pas) -- ++(-135:\pas) node{\ce{Nu+X-}} -- ++(-45:\pas) coordinate (extr);
+\draw[<->] (0.5\pas,0) +(extr) -- +(extr|-head1) node[midway, right]{$b$};
+\node[draw=ilmcolor,dotted, inner ysep=0pt, inner xsep=0.25\pas, thick,rectangle,fit=(head1.west) (extr)] (Kuhn){};
+%\draw(Kuhn.south west) -- ++(\textwidth,0);
+
+%between Kuhn and thermal
+\draw (4\pas+\baselineskip,0.1\pas) coordinate (th1) -- ++(-135:\pas) -- ++(-240:\pas) -- ++(-80:\pas) -- ++(-210:\pas) -- ++(-115:\pas) coordinate(bl) -- ++(-90:\pas) coordinate(br) -- ++(60:\pas) -- ++(-95:\pas) -- ++(60:\pas) -- ++(-280:\pas) -- ++(-40:\pas) -- ++(-140:\pas) -- ++(-115:\pas)  -- ++(40:\pas)  -- ++(0:\pas);
+\draw[ilmcolor, dotted] (Kuhn.north east) --($(bl)+(-0.75\pas,0)$) -- (bl) (Kuhn.south east) --($(br)+(-0.75\pas,0)$) -- (br);
+\draw[ilmcolor,very thick] (br)--(bl);
+\node[draw=ilmorange, dashed, circle, minimum width= 2.5\pas] (thermalg) at ($(br)+(0.75\pas,0.75\pas)$){};
+
+%between thermal and electrostatic
+\draw[shift=(thermalg), xshift=5\pas+\baselineskip] circle[radius=0.5\pas] 
+	node[draw=ilmcolor, dotted, circle, minimum width= 3\pas] (elec){}
+	\foreach \x in {-120,-60,...,180}
+	{(\x:\pas) circle[radius=0.5\pas]} 
+	node[minimum height=\pas,circle,draw=ilmorange, inner sep=0, minimum width=\pas] (thermalp){}
+;
+\draw[ilmorange, dashed] (thermalg.north) -- +(2\pas,0) coordinate (thh) -- ($(thermalp.north)+(-\pas,0)$) -- (thermalp.north)
+	(thermalg.south) -- +(2\pas,0) coordinate (thb) -- ($(thermalp.south)+(-\pas,0)$) -- (thermalp.south);
+\draw[<->] (thh) -- (thb) node[midway, right]{$\xi_T$};
+
+%from electrostatic to screening
+\draw[shift=(elec.north), xshift=4\pas+\baselineskip]
+	\foreach \x in {0,1,...,6} 
+	{+(-30:\x\pas) node [draw, circle, inner sep=0, minimum width=\pas, rotate=-30] (elecp\x){}}
+	;
+\draw[ilmcolor, dotted] (elec.north) -- +(1.75\pas,0) coordinate (elg)-- ($(elecp0.north)+(-0.75\pas,0)$)-- (elecp0.north)
+	(elec.south) -- +(1.75\pas,0) coordinate (eld)-- ($(elecp0.south)+(-0.75\pas,0)$)-- (elecp0.south);
+\draw[ilmcolor,very thick] (elecp0) circle (0.5\pas);
+\draw[<->] (elg) -- (eld) node[midway, right]{$D$};
+
+% from screening to correlation
+\begin{scope}[
+	decoration={markings,
+		mark=between positions 0.5\pas and 1 step \pas
+		with {\node[name=mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}]{};}
+		},
+	every node/.style={circle, draw, inner sep=0, minimum width=\pas}, 
+	]
+\draw[postaction={decorate}] (elecp0.north) ++(10\pas+\baselineskip,-0.1\pas) --++(-100:\pas) --++(-50:\pas) --++(-90:\pas) --++(-140:\pas) --++(-180:\pas) --++(140:\pas) --++(120:\pas) --++(150:\pas);
+\end{scope}
+\draw[ilmorange, dashed] (elecp0.west)  -- +(60:0.75\pas) coordinate (srcg) -- ($(mark-8.north)+(180:1.25\pas)$) 
+-- (mark-8.north)
+	(elecp6.east) -- +(60:0.75\pas) coordinate (srcd) -- ($(mark-8.south)+(180:1.25\pas)$) -- (mark-8.south);
+\draw[ilmorange] (mark-8) circle (0.5\pas);
+\draw[<->] (srcg) -- (srcd) node[midway, above right, sloped]{$r_\mathrm{scr}$};
+\node[draw=ilmcolor, dotted, circle, minimum width= 4\pas, anchor=south] at (mark-5.south) (corg) {};
+
+%above correlation length
+\draw[decoration={zigzag, segment length=0.5\pas, amplitude=0.05\pas}, decorate] (corg|-th1) ++(6\pas+\baselineskip,0) -- ++(-135:\pas) -- ++(-240:\pas) -- ++(-80:\pas) -- ++(-210:\pas) -- ++(-115:\pas) coordinate(xil) -- ++(-90:\pas) coordinate(xir) -- ++(60:\pas) -- ++(-95:\pas) -- ++(60:\pas) -- ++(-280:\pas) -- ++(-40:\pas) -- ++(-140:\pas) -- ++(-115:\pas)  -- ++(40:\pas)  -- ++(0:\pas) coordinate (end);
+\draw[ilmcolor, dotted] (corg.north) -- +(2.25\pas,0) coordinate (xill) --($(xil)+(-0.75\pas,0)$) -- (xil) 
+(corg.south) -- +(2.25\pas,0)  coordinate (xirr) --($(xir)+(-0.75\pas,0)$)-- (xir);
+\draw[<->] (xill) -- (xirr) node[midway, right]{$\xi$};
+
+%\draw (head1.east) --+(0,\textheight);
+%\draw (Kuhn.west|-mark-5.south) --+(\textwidth,0);
+%\draw[red] (Kuhn.west) ++(\textwidth,0) |- (end);
+\end{tikzpicture}
